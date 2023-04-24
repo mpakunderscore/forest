@@ -1,0 +1,166 @@
+:root {
+    --cell-width: 32px;
+}
+
+#grid {
+    position: relative;
+    /*height: auto;*/
+    /*border: 1px solid white;*/
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    /*background-color: ghostwhite;*/
+}
+
+
+#grid:hover {
+    /*padding: 0;*/
+}
+
+#grid div {
+    position: relative;
+
+    float: left;
+    text-align: center;
+    white-space: nowrap;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                     supported by Chrome and Opera */
+
+    z-index: 1;
+}
+
+.cell {
+    position: relative;
+
+    width: var(--cell-width);
+    height: var(--cell-width);
+    line-height: var(--cell-width);
+    /*border: 1px solid transparent;*/
+
+    /*align-items: center;*/
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    z-index: 1;
+    cursor: pointer;
+
+    font-size: 6px;
+    /*background-color: #b2b2b2;*/
+    color: white;
+
+    transition: .1s background-color;
+}
+
+.cell:hover {
+    /*border: 1px solid gray;*/
+    /*background-color: orange;*/
+}
+
+.cell span {
+    /*padding-left: 6px;*/
+}
+
+.cell img {
+    position: absolute;
+    width: var(--cell-width);
+    /*position: absolute;*/
+    /*left: 50%;*/
+    bottom: 0;
+    /*left: 0;*/
+    /*right: 0;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*background: red;*/
+    z-index: 2;
+
+    transition: 1s filter;
+
+    pointer-events: none;
+}
+
+.cell img:hover {
+    filter: brightness(150%);
+}
+
+[contenteditable]:focus {
+    outline: 0 solid transparent;
+}
+
+#grid div:hover {
+    /*background-color: rgba(0, 0, 0, 0.8);*/
+    /*background-color: white;*/
+    /*color: red;*/
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);*/
+
+    /*transition: none;*/
+    /*transition: box-shadow 1s;*/
+    /*transition-timing-function: linear;*/
+
+    /*z-index: 2;*/
+}
+
+
+.center {
+    /*background-color: black;*/
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);*/
+    /*color: #ff6c18;*/
+    /*animation: shadow 0.5s linear;*/
+
+    /*z-index: 10;*/
+    /*position:relative;*/
+}
+
+.tail {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#grid.right {
+
+}
+
+@keyframes shadow {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.destination {
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+}
+
+.item {
+    z-index: 1;
+    background-color: rgba(255, 48, 19, 0.5);
+    /*box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);*/
+}
+
+#info {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 150px;
+
+    opacity: 0.5;
+
+    background-color: ghostwhite;
+    padding: 10px;
+    border-radius: 3px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
