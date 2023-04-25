@@ -47,7 +47,7 @@ function App() {
     }
 
     const onMap = (map) => {
-        // console.log(map)
+        console.log('Map')
         setMap(map)
     }
 

@@ -1,6 +1,6 @@
 const {generateMap} = require("./map");
 
-const map = generateMap()
+let map = generateMap()
 
 const initSocket = (io) => {
 
@@ -8,6 +8,19 @@ const initSocket = (io) => {
         console.log('Connected: ' + socket.id);
         socket.emit('map', map)
     })
+
+    initGlobalTimer(io)
+}
+
+let tree = false
+
+const initGlobalTimer = (io) => {
+    setInterval(() => {
+        map[10, 10] = tree ? 'A' : 'B'
+        tree = !tree
+        io.emit('map', map)
+    }, 1000)
+
 }
 
 module.exports = {

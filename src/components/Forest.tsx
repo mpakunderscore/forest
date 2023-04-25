@@ -139,6 +139,8 @@ const Forest = (props) => {
             const velocityX = detail.velocityX;
             const velocityY = detail.velocityY;
 
+            // console.log(velocityX + ':' + velocityY)
+
             if (velocityX > .5) {
                 currentPositionX--
                 renderGrid()
@@ -176,9 +178,10 @@ const Forest = (props) => {
             {grid.map((item, i) => {
                 return <div key={i} className={'cell'}>
 
-                    {item.img ?
-                        <img src={item.img.src} style={item.img.style}/> :
-                        (item.x + ':' + item.y)}
+                    {item.img && <img src={item.img.src} style={item.img.style}/>}
+
+                    <div className={'coordinates'}>{item.x}</div>:
+                    <div className={'coordinates'}>{item.y}</div>
 
                     {/*<img src={getGround().src} style={getGround().style}/>*/}
 

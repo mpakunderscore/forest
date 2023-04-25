@@ -20,7 +20,7 @@
     /*padding: 0;*/
 }
 
-#grid div {
+#grid > div {
     position: relative;
 
     float: left;
@@ -57,8 +57,8 @@
     cursor: pointer;
 
     font-size: 6px;
-    /*background-color: #b2b2b2;*/
-    color: white;
+    background-color: #b2b2b2;
+    color: whitesmoke;
 
     transition: .1s background-color;
 }
@@ -68,8 +68,23 @@
     /*background-color: orange;*/
 }
 
-.cell span {
+.cell .coordinates {
+    position: relative;
+    /*line-height: normal;*/
+}
+
+.cell div.coordinates:first-child {
     /*padding-left: 6px;*/
+    /*position: absolute;*/
+    /*right: 1px;*/
+    /*top: 1px;*/
+}
+
+.cell  div.coordinates:last-child {
+    /*padding-left: 6px;*/
+    /*position: absolute;*/
+    /*left: 1px;*/
+    /*bottom: 1px;*/
 }
 
 .cell img {
