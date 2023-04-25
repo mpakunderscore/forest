@@ -1,6 +1,7 @@
 const {generateMap} = require("./map");
 
-let map = generateMap()
+const map = generateMap()
+let updatedMap = [...map]
 
 const initSocket = (io) => {
 
@@ -13,12 +14,36 @@ const initSocket = (io) => {
 }
 
 let tree = false
+let deer = {
+    x: 20,
+    y: 20
+}
+
+let mapWithUnits
+const updateMap = (map) => {
+    updatedMap = JSON.parse(JSON.stringify(map))
+    updatedMap[10][10] = tree ? 'A' : 'B'
+    updatedMap = moveDeer(updatedMap)
+    tree = !tree
+    return updatedMap
+}
+
+const moveDeer = (updatedMap) => {
+
+    if (tree)
+        deer.x = deer.x - 1
+    else
+        deer.y = deer.y - 1
+
+    updatedMap[deer.x][deer.y] = 'D'
+
+    return updatedMap
+}
 
 const initGlobalTimer = (io) => {
     setInterval(() => {
-        map[10, 10] = tree ? 'A' : 'B'
-        tree = !tree
-        io.emit('map', map)
+        const updatedMap = updateMap(map)
+        io.emit('map', updatedMap)
     }, 1000)
 
 }

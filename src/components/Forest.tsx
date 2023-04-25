@@ -3,8 +3,8 @@ import '../css/grid.css'
 import {log} from '../utils/log';
 import {createGesture} from "@ionic/react";
 
-
-let CELL_SIZE = 30;
+let CELL_SIZE_DEFAULT = 30
+let CELL_SIZE = 40;
 document.documentElement.style.setProperty('--cell-width', CELL_SIZE + 'px');
 // let timeStep = 100;
 
@@ -56,8 +56,8 @@ const Forest = (props) => {
 
         log(ratioWidth + ':' + ratioHeight)
 
-        let centerX = ratioWidth/2;
-        let centerY = ratioHeight/2;
+        let centerX = ratioWidth / 2;
+        let centerY = ratioHeight / 2;
 
         // log('ratioW: ' + ratioW)
         // log('ratioW: ' + ratioH)
@@ -74,7 +74,8 @@ const Forest = (props) => {
                 let cell = {
                     x,
                     y,
-                    img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y]) : false};
+                    img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y]) : false
+                };
 
                 grid.push(cell);
             }
@@ -93,12 +94,13 @@ const Forest = (props) => {
         return (event) => {
             if (timer)
                 clearTimeout(timer)
-            timer = setTimeout(func,30, event)
+            timer = setTimeout(func, 30, event)
         }
     }
 
     let defaultWidth = 32
     let getStyle = (width) => {
+        width = width * (CELL_SIZE / CELL_SIZE_DEFAULT)
         return {width: width + 'px', height: width + 'px'}
     }
 
@@ -106,6 +108,7 @@ const Forest = (props) => {
         A: {src: './images/forest/10.png', style: getStyle(33)},
         B: {src: './images/forest/30.png', style: getStyle(60)},
         C: {src: './images/forest/50.png', style: getStyle(100)},
+        D: {src: './images/forest/deer.png', style: getStyle(50)},
         X: {src: './images/forest/100.png', style: getStyle(150)},
         Y: {src: './images/forest/100f.png', style: getStyle(150)},
         Z: {src: './images/forest/100r.png', style: getStyle(150)},
@@ -118,6 +121,27 @@ const Forest = (props) => {
 
     const getGround = () => {
         return {src: './images/forest/texture.png', style: getStyle(CELL_SIZE)}
+    }
+
+    const initKeyboard = () => {
+        document.addEventListener("keydown", function (event) {
+            if (event.which === 39) {
+                currentPositionX += 1
+                renderGrid();
+            }
+            if (event.which === 37) {
+                currentPositionX = -1
+                renderGrid();
+            }
+            if (event.which === 40) {
+                currentPositionY += 1
+                renderGrid();
+            }
+            if (event.which === 38) {
+                currentPositionY -= 1
+                renderGrid();
+            }
+        })
     }
 
     const initGestures = () => {
@@ -166,11 +190,13 @@ const Forest = (props) => {
     useEffect(() => {
         // generateMap()
         initGestures()
+        initKeyboard()
     }, [])
 
     useEffect(() => {
         renderGrid()
-        return () => {}
+        return () => {
+        }
     }, [props.map, currentPositionX, currentPositionY])
 
     return (
@@ -180,7 +206,8 @@ const Forest = (props) => {
 
                     {item.img && <img src={item.img.src} style={item.img.style}/>}
 
-                    <div className={'coordinates'}>{item.x}</div>:
+                    <div className={'coordinates'}>{item.x}</div>
+                    :
                     <div className={'coordinates'}>{item.y}</div>
 
                     {/*<img src={getGround().src} style={getGround().style}/>*/}
