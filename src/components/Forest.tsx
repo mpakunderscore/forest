@@ -3,8 +3,6 @@ import '../css/grid.css'
 import {log} from '../utils/log';
 import {createGesture} from "@ionic/react";
 
-let mapWidth = 200;
-let mapHeight = 200;
 
 let CELL_SIZE = 30;
 document.documentElement.style.setProperty('--cell-width', CELL_SIZE + 'px');
@@ -12,8 +10,6 @@ document.documentElement.style.setProperty('--cell-width', CELL_SIZE + 'px');
 
 let timeStep = 100;
 
-let possibleGreen = 'ABC';
-let possibleTrees = 'XYZ';
 
 let time = new Date().getMilliseconds();
 
@@ -22,7 +18,7 @@ let currentPositionY = 0
 
 const Forest = (props) => {
 
-    let [map, setMap] = useState([]);
+    // let [map, setMap] = useState(props.map);
 
     // let [currentPositionX, setCurrentPositionX] = useState(0);
     // let [currentPositionY, setCurrentPositionY] = useState(0);
@@ -33,29 +29,6 @@ const Forest = (props) => {
     let [grid, setGrid] = useState([])
 
     let [startCount, setStartCount] = useState(0)
-
-    let generateMap = () => {
-
-        let generatedMap = []
-
-        for (let i = 0; i < mapWidth; i++) {
-
-            generatedMap[i] = [mapHeight];
-            for (let j = 0; j < mapHeight; j++) {
-
-                let random = Math.random() * 1000;
-                generatedMap[i][j] = '';
-
-                if (random >= 995)
-                    generatedMap[i][j] = possibleTrees.charAt(Math.floor(Math.random() * possibleTrees.length));
-                else if (random > 950)
-                    generatedMap[i][j] = possibleGreen.charAt(Math.floor(Math.random() * possibleGreen.length));
-            }
-        }
-
-        log('Load map')
-        setMap(generatedMap)
-    }
 
     let renderGrid = () => {
 
@@ -101,7 +74,7 @@ const Forest = (props) => {
                 let cell = {
                     x,
                     y,
-                    img: map && map[x] && map[x][y] ? getImage(map[x][y]) : false};
+                    img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y]) : false};
 
                 grid.push(cell);
             }
@@ -153,13 +126,14 @@ const Forest = (props) => {
             el: document.getElementById('app'),
             threshold: 15,
             gestureName: 'my-gesture',
-            onMove: ev => onMove(ev)
+            onMove: ev => onMove(ev),
         });
 
         gesture.enable();
 
         const onMove = (detail) => {
             const type = detail.type;
+            // console.log(type)
             const currentX = detail.currentX;
             const deltaX = detail.deltaX;
             const velocityX = detail.velocityX;
@@ -188,14 +162,14 @@ const Forest = (props) => {
     }
 
     useEffect(() => {
-        generateMap()
+        // generateMap()
+        initGestures()
     }, [])
 
     useEffect(() => {
         renderGrid()
-        initGestures()
         return () => {}
-    }, [map, currentPositionX, currentPositionY])
+    }, [props.map, currentPositionX, currentPositionY])
 
     return (
         <div id={'grid'}>

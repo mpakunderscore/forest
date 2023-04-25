@@ -68,7 +68,7 @@ let getImage = async (name) => {
     // console.log(response.data.choices[0].message.content)
 }
 
-getImage('texture for ground in forest plant color')
+// getImage('texture for ground in forest plant color')
 
 module.exports = {
     getText, getChat, getImage
