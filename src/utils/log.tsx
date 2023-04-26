@@ -1,3 +1,8 @@
-export const log = (text) => {
-    // console.log(text)
+export const log = (text, type = 'main') => {
+
+    if (type === 'render') {
+
+    } else {
+        console.log(text)
+    }
 }

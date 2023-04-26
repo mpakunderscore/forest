@@ -1,5 +1,5 @@
 :root {
-    --cell-width: 32px;
+    --cell-width: '';
 }
 
 #grid {
@@ -178,4 +178,28 @@
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1;
+}
+
+.controls {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+
+    background-color: ghostwhite;
+}
+
+.controls > div {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 700;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.controls > div:hover {
+    background-color: gray;
 }

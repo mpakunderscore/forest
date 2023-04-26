@@ -4,63 +4,45 @@ import {log} from '../utils/log';
 import {createGesture} from "@ionic/react";
 
 let CELL_SIZE_DEFAULT = 30
-let CELL_SIZE = 40;
-document.documentElement.style.setProperty('--cell-width', CELL_SIZE + 'px');
-// let timeStep = 100;
+// let CELL_SIZE = 30;
 
-let timeStep = 100;
+let secCSS = (size) => {
+    document.documentElement.style.setProperty('--cell-width', size + 'px');
+}
 
-
-let time = new Date().getMilliseconds();
+secCSS(CELL_SIZE_DEFAULT)
 
 let currentPositionX = 0
 let currentPositionY = 0
 
+const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+}
+
 const Forest = (props) => {
 
-    // let [map, setMap] = useState(props.map);
-
-    // let [currentPositionX, setCurrentPositionX] = useState(0);
-    // let [currentPositionY, setCurrentPositionY] = useState(0);
-
-    let [destinationX, setDestinationX] = useState(0);
-    let [destinationY, setDestinationY] = useState(0);
-
     let [grid, setGrid] = useState([])
-
-    let [startCount, setStartCount] = useState(0)
+    let [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
 
     let renderGrid = () => {
 
-        log('RENDER')
+        log('RENDER', 'render')
 
-        log(currentPositionX)
-        log(currentPositionY)
+        log(currentPositionX, 'render')
+        log(currentPositionY, 'render')
 
-        log((window.innerWidth || document.documentElement.offsetWidth) + ':' + (window.innerHeight || document.documentElement.offsetHeight))
+        log((window.innerWidth || document.documentElement.offsetWidth) + ':' + (window.innerHeight || document.documentElement.offsetHeight), 'render')
 
-        let size = CELL_SIZE;
+        // let size = cellSize;
 
-        let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / size)
-        let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / size)
+        let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
+        let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
 
-        // log(ratioW % 2 === 0);
-
-        // if (ratioWidth % 2 === 0) {
-        //     ratioWidth = ratioWidth + 1;
-        // }
-        //
-        // if (ratioHeight % 2 === 0) {
-        //     ratioHeight = ratioHeight + 1;
-        // }
-
-        log(ratioWidth + ':' + ratioHeight)
-
-        let centerX = ratioWidth / 2;
-        let centerY = ratioHeight / 2;
-
-        // log('ratioW: ' + ratioW)
-        // log('ratioW: ' + ratioH)
+        log(ratioWidth + ':' + ratioHeight, 'render')
 
         let grid = []
 
@@ -100,7 +82,7 @@ const Forest = (props) => {
 
     let defaultWidth = 32
     let getStyle = (width) => {
-        width = width * (CELL_SIZE / CELL_SIZE_DEFAULT)
+        width = width * (cellSize / CELL_SIZE_DEFAULT)
         return {width: width + 'px', height: width + 'px'}
     }
 
@@ -110,8 +92,8 @@ const Forest = (props) => {
         C: {src: './images/forest/50.png', style: getStyle(100)},
         D: {src: './images/forest/deer.png', style: getStyle(50)},
         X: {src: './images/forest/100.png', style: getStyle(150)},
-        Y: {src: './images/forest/100f.png', style: getStyle(150)},
-        Z: {src: './images/forest/100r.png', style: getStyle(150)},
+        Y: {src: './images/forest/100f.png', style: getStyle(180)},
+        Z: {src: './images/forest/100r.png', style: getStyle(100)},
 
     }
 
@@ -119,9 +101,9 @@ const Forest = (props) => {
         return images[key]
     }
 
-    const getGround = () => {
-        return {src: './images/forest/texture.png', style: getStyle(CELL_SIZE)}
-    }
+    // const getGround = () => {
+    //     return {src: './images/forest/texture.png', style: getStyle(cellSize)}
+    // }
 
     const initKeyboard = () => {
         document.addEventListener("keydown", function (event) {
@@ -130,7 +112,7 @@ const Forest = (props) => {
                 renderGrid();
             }
             if (event.which === 37) {
-                currentPositionX = -1
+                currentPositionX -= 1
                 renderGrid();
             }
             if (event.which === 40) {
@@ -194,26 +176,43 @@ const Forest = (props) => {
     }, [])
 
     useEffect(() => {
+        secCSS(cellSize)
         renderGrid()
         return () => {
         }
-    }, [props.map, currentPositionX, currentPositionY])
+    }, [props.map, currentPositionX, currentPositionY, cellSize])
 
     return (
-        <div id={'grid'}>
-            {grid.map((item, i) => {
-                return <div key={i} className={'cell'}>
+        <div>
+            <div className={'controls'}>
+                <div onClick={() => {
+                    setCellSize(cellSize - 1)
 
-                    {item.img && <img src={item.img.src} style={item.img.style}/>}
+                }}>-</div>
+                <div onClick={() => {}}>{cellSize}</div>
+                <div onClick={() => {
+                    setCellSize(cellSize + 1)
 
-                    <div className={'coordinates'}>{item.x}</div>
-                    :
-                    <div className={'coordinates'}>{item.y}</div>
+                }}>+</div>
+                <div onClick={() => {
+                    toggleFullScreen()
+                }}>FS</div>
+            </div>
+            <div id={'grid'}>
+                {grid.map((item, i) => {
+                    return <div key={i} className={'cell'}>
 
-                    {/*<img src={getGround().src} style={getGround().style}/>*/}
+                        {item.img && <img src={item.img.src} style={item.img.style}/>}
 
-                </div>
-            })}
+                        <div className={'coordinates'}>{item.x}</div>
+                        :
+                        <div className={'coordinates'}>{item.y}</div>
+
+                        {/*<img src={getGround().src} style={getGround().style}/>*/}
+
+                    </div>
+                })}
+            </div>
         </div>
     )
 }

@@ -1,8 +1,20 @@
+const {updateGround} = require("./ground");
+const {updateAgents} = require("./agents");
 let mapWidth = 200;
 let mapHeight = 200;
 
 let possibleGreen = 'ABC';
 let possibleTrees = 'XYZ';
+
+module.exports.map = exports.generateMap()
+let updatedMap = JSON.parse(JSON.stringify(exports.map))
+
+module.exports.updateMap = (map) => {
+    updatedMap = JSON.parse(JSON.stringify(map))
+    updatedMap = updateGround(updatedMap)
+    updatedMap = updateAgents(updatedMap)
+    return updatedMap
+}
 
 module.exports.generateMap = () => {
 
@@ -24,6 +36,5 @@ module.exports.generateMap = () => {
     }
 
     console.log('Load map')
-
     return generatedMap
 }
