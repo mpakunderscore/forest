@@ -1,5 +1,5 @@
-
 let tree = false
+
 let deer = {
     x: 20,
     y: 20,

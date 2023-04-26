@@ -1,7 +1,4 @@
-const {generateMap, updateMap, map, getMap} = require("./map/map");
-const {getDeer} = require("./units/deer");
-const {updateAgents} = require("./map/agents");
-const {updateGround} = require("./map/ground");
+const {updateMap, getMap} = require("./map/map");
 
 let timeCount = 0
 
