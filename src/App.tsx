@@ -30,6 +30,7 @@ console.log(VERSION)
 
 function App() {
 
+    const [time, setTime] = useState(0)
     const [map, setMap] = useState([])
 
     const initSocket = () => {
@@ -46,9 +47,9 @@ function App() {
         console.log('Disconnect')
     }
 
-    const onMap = (map) => {
-        console.log('Map')
-        setMap(map)
+    const onMap = (mapObject) => {
+        setTime(mapObject.time)
+        setMap(mapObject.map)
     }
 
     useEffect(() => {
@@ -58,7 +59,7 @@ function App() {
 
     return (
         <div id={'app'}>
-            <Forest map={map}/>
+            <Forest map={map} time={time}/>
         </div>
     );
 }

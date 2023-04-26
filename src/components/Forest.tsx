@@ -185,6 +185,7 @@ const Forest = (props) => {
     return (
         <div>
             <div className={'controls'}>
+                <div onClick={() => {}}>{props.time}</div>
                 <div onClick={() => {
                     setCellSize(cellSize - 1)
 

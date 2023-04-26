@@ -6,17 +6,7 @@ let mapHeight = 200;
 let possibleGreen = 'ABC';
 let possibleTrees = 'XYZ';
 
-module.exports.map = exports.generateMap()
-let updatedMap = JSON.parse(JSON.stringify(exports.map))
-
-module.exports.updateMap = (map) => {
-    updatedMap = JSON.parse(JSON.stringify(map))
-    updatedMap = updateGround(updatedMap)
-    updatedMap = updateAgents(updatedMap)
-    return updatedMap
-}
-
-module.exports.generateMap = () => {
+const generateMap = () => {
 
     let generatedMap = []
 
@@ -38,3 +28,19 @@ module.exports.generateMap = () => {
     console.log('Load map')
     return generatedMap
 }
+
+
+module.exports.updateMap = () => {
+    updatedMap = JSON.parse(JSON.stringify(map))
+    updatedMap = updateGround(updatedMap)
+    updatedMap = updateAgents(updatedMap)
+    return updatedMap
+}
+
+module.exports.getMap = () => {
+    return map
+}
+
+let map = generateMap()
+let updatedMap = JSON.parse(JSON.stringify(map))
+
