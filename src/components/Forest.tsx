@@ -241,11 +241,12 @@ const Forest = (props) => {
                     setSelectedCellX('')
                     setSelectedCellY('')
                 }}>
-                    <div className={'title'}>{'Pine tree'.toUpperCase() + ' ' + selectedCellX + ':' + selectedCellY + ' ' + (props.map[selectedCellX][selectedCellY])}</div>
+                    <div className={'title'}>{'Pine tree'.toUpperCase() + ' ' + selectedCellX + ':' + selectedCellY + ' '}</div>
+                    <div className={'text'}>Level: {(props.map[selectedCellX][selectedCellY])}</div>
+                    <div className={'text'}>Seed: {0}</div>
                     <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even growing on rocky cliffs.</div>
-                    <div className={'text'}>
-                        <></>
-                    </div>
+
+
                 </div>}
                 {/*<div className={'description'}>*/}
                 {/*    <div className={'title'}>{'description'.toUpperCase()}</div>*/}
