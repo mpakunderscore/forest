@@ -1,12 +1,16 @@
 // lang domain
 const {DataTypes, Model} = require("sequelize");
 
-class RECIPE extends Model {}
+class MAP_ITEM extends Model {}
 
 let initModels = (sequelize) => {
 
-    RECIPE.init({
-        id: {
+    MAP_ITEM.init({
+        x: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+        },
+        y: {
             type: DataTypes.INTEGER,
             primaryKey: true,
         },
@@ -14,15 +18,13 @@ let initModels = (sequelize) => {
             type: DataTypes.STRING,
             unique: true,
         },
-        likes: {
-            type: DataTypes.INTEGER,
-        },
-        data: {
+        // Array
+        items: {
             type: DataTypes.JSONB,
         },
     }, { sequelize, modelName: 'recipe', timestamps: true })
 }
 
 module.exports = {
-    RECIPE, initModels
+    MAP_ITEM, initModels
 }
