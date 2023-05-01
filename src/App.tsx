@@ -5,6 +5,7 @@ import {Capacitor} from "@capacitor/core";
 import {createGesture} from '@ionic/react';
 import Forest from "./components/Forest";
 import { io } from 'socket.io-client';
+import {initSocket} from "./utils/socket";
 
 
 console.log(navigator.language)
@@ -33,23 +34,6 @@ function App() {
     const [time, setTime] = useState(0)
     const [map, setMap] = useState([])
 
-    const [socket, setSocket] = useState()
-
-    const initSocket = () => {
-        const socket = io('/')
-        socket.on('connect', onConnect)
-        socket.on('disconnect', onDisconnect)
-        socket.on('map', map => onMap(map))
-        // setSocket(socket)
-    }
-
-    const onConnect = () => {
-        console.log('Connect')
-    }
-    const onDisconnect = () => {
-        console.log('Disconnect')
-    }
-
     const onMap = (mapObject) => {
         setTime(mapObject.time)
         setMap(mapObject.map)
@@ -57,12 +41,12 @@ function App() {
 
     useEffect(() => {
         AppCapacitor.addListener('backButton', () => {})
-        initSocket()
+        initSocket(onMap)
     }, [])
 
     return (
         <div id={'app'}>
-            <Forest map={map} time={time} socket={socket}/>
+            <Forest map={map} time={time} />
         </div>
     );
 }

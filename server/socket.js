@@ -8,10 +8,10 @@ const initSocket = (io) => {
         console.log('Connected: ' + socket.id);
         const map = getMap()
         socket.emit('map', {time: timeCount, map})
-    })
 
-    io.on('seed', (seed) => {
-        console.log('Seed: ' + seed);
+        socket.on('seed', (seed) => {
+            console.log('Seed: ' + seed);
+        })
     })
 
     initGlobalTimer(io)

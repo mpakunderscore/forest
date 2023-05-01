@@ -125,3 +125,8 @@ main {
 
     z-index: 2;
 }
+
+#app > div {
+    height: var(--app-height);
+    overflow: hidden;
+}

@@ -3,9 +3,9 @@ import '../css/grid.css'
 import '../css/ui.css'
 import {log} from '../utils/log';
 import {createGesture} from "@ionic/react";
+import {socketAPI} from "../utils/socket";
 
-let CELL_SIZE_DEFAULT = 50
-// let CELL_SIZE = 30;
+let CELL_SIZE_DEFAULT = 30
 
 let secCSS = (size) => {
     document.documentElement.style.setProperty('--cell-width', size + 'px');
@@ -203,7 +203,7 @@ const Forest = (props) => {
         }
     }, [props.map, currentPositionX, currentPositionY, cellSize])
 
-    let [inventory, setInventory] = useState(Array.from(Array(9).keys()))
+    let [inventory, setInventory] = useState(['seed', ''])
     let [selectedItem, setSelectedItem] = useState(-1)
 
     let [selectedCell, setSelectedCell] = useState('')
@@ -213,7 +213,7 @@ const Forest = (props) => {
     const clickTile = (x, y) => {
         log(x + ':' + y)
         setSelectedCell(x + ':' + y)
-        props.socket.emit('seed', {x, y})
+        socketAPI.sendSeed({x, y})
     }
 
     return (
@@ -226,18 +226,25 @@ const Forest = (props) => {
                     {/*<div className={'title'}>{'inventory'.toUpperCase()}</div>*/}
 
                 </div>
+                {selectedCell && <div className={'item'}>
+                    <div className={'title'}>{'Pine tree'.toUpperCase() + ' ' + selectedCell}</div>
+                    <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even growing on rocky cliffs. They release a delightful, calming scent that has become synonymous with the holidays. Many pine tree species are also crucial to the survival of wildlife, providing food and shelter for countless species.</div>
+                    <div></div>
+                </div>}
                 {/*<div className={'description'}>*/}
                 {/*    <div className={'title'}>{'description'.toUpperCase()}</div>*/}
                 {/*</div>*/}
                 <div className={'controls'}>
                     <div onClick={() => {}}>{props.time}</div>
                     <div onClick={() => {
-                        setCellSize(cellSize - 1)
+                        if (cellSize > 10)
+                            setCellSize(cellSize - 10)
 
                     }}>-</div>
                     <div onClick={() => {}}>{cellSize}</div>
                     <div onClick={() => {
-                        setCellSize(cellSize + 1)
+                        if (cellSize < 60)
+                            setCellSize(cellSize + 10)
 
                     }}>+</div>
                     <div onClick={() => {

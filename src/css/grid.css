@@ -57,7 +57,7 @@
     z-index: 1;
     cursor: pointer;
 
-    background-color: #b2b2b2;
+    /*background-color: #b2b2b2;*/
     color: whitesmoke;
     /*opacity: .5;*/
     border-radius: 2px;
@@ -65,13 +65,14 @@
     transition: .1s background-color;
 }
 
-.cell.selected {
-    background-color: #bae8ba;
-}
-
 .cell:hover {
     /*opacity: 1;*/
     filter: brightness(110%);
+    background-color: rgba(178, 178, 178, 0.35);
+}
+
+.cell.selected {
+    background-color: #bae8ba;
 }
 
 .cell img {
@@ -86,6 +87,10 @@
 }
 
 .cell img:hover {
+    filter: brightness(150%);
+}
+
+.cell.selected img {
     filter: brightness(150%);
 }
 
