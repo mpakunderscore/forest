@@ -33,11 +33,14 @@ function App() {
     const [time, setTime] = useState(0)
     const [map, setMap] = useState([])
 
+    const [socket, setSocket] = useState()
+
     const initSocket = () => {
         const socket = io('/')
         socket.on('connect', onConnect)
         socket.on('disconnect', onDisconnect)
         socket.on('map', map => onMap(map))
+        // setSocket(socket)
     }
 
     const onConnect = () => {
@@ -59,7 +62,7 @@ function App() {
 
     return (
         <div id={'app'}>
-            <Forest map={map} time={time}/>
+            <Forest map={map} time={time} socket={socket}/>
         </div>
     );
 }

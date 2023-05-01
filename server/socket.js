@@ -10,6 +10,10 @@ const initSocket = (io) => {
         socket.emit('map', {time: timeCount, map})
     })
 
+    io.on('seed', (seed) => {
+        console.log('Seed: ' + seed);
+    })
+
     initGlobalTimer(io)
 }
 

@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useReducer, useRef} from "react";
 import '../css/grid.css'
+import '../css/ui.css'
 import {log} from '../utils/log';
 import {createGesture} from "@ionic/react";
 
-let CELL_SIZE_DEFAULT = 30
+let CELL_SIZE_DEFAULT = 50
 // let CELL_SIZE = 30;
 
 let secCSS = (size) => {
@@ -28,23 +29,37 @@ const Forest = (props) => {
     let [grid, setGrid] = useState([])
     let [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
 
+
+
     let renderGrid = () => {
 
-        log('RENDER', 'render')
+        log('RENDER')
 
-        log(currentPositionX, 'render')
-        log(currentPositionY, 'render')
+        log(currentPositionX)
+        log(currentPositionY)
 
-        log((window.innerWidth || document.documentElement.offsetWidth) + ':' + (window.innerHeight || document.documentElement.offsetHeight), 'render')
+        log((window.innerWidth || document.documentElement.offsetWidth) + ':' + (window.innerHeight || document.documentElement.offsetHeight))
 
         // let size = cellSize;
 
         let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
         let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
 
-        log(ratioWidth + ':' + ratioHeight, 'render')
+        log(ratioWidth + ':' + ratioHeight)
 
         let grid = []
+
+        // if (ratioWidth % 2 === 0) {
+        //     ratioWidth--
+        // }
+        // if (ratioHeight % 2 === 0) {
+        //     ratioHeight--
+        // }
+
+        let centerX = Math.floor(ratioWidth/2)
+        let centerY = Math.floor(ratioHeight/2)
+
+        log(centerX + ' ' + centerY)
 
         for (let j = 0; j < ratioHeight; j++) {
 
@@ -53,11 +68,16 @@ const Forest = (props) => {
                 const x = i + currentPositionX
                 const y = j + currentPositionY
 
+                let center = false
+                if (i === centerX && j === centerY)
+                    center = true
+
                 let cell = {
                     x,
                     y,
-                    img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y]) : false
-                };
+                    img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y]) : false,
+                    center
+                }
 
                 grid.push(cell);
             }
@@ -91,6 +111,7 @@ const Forest = (props) => {
         B: {src: './images/forest/30.png', style: getStyle(60)},
         C: {src: './images/forest/50.png', style: getStyle(100)},
         D: {src: './images/forest/deer.png', style: getStyle(50)},
+        R: {src: './images/forest/raccoon.png', style: getStyle(30)},
         X: {src: './images/forest/100.png', style: getStyle(150)},
         Y: {src: './images/forest/100f.png', style: getStyle(180)},
         Z: {src: './images/forest/100r.png', style: getStyle(100)},
@@ -182,32 +203,67 @@ const Forest = (props) => {
         }
     }, [props.map, currentPositionX, currentPositionY, cellSize])
 
+    let [inventory, setInventory] = useState(Array.from(Array(9).keys()))
+    let [selectedItem, setSelectedItem] = useState(-1)
+
+    let [selectedCell, setSelectedCell] = useState('')
+
+    let [isCoordinates, showCoordinates] = useState(false)
+
+    const clickTile = (x, y) => {
+        log(x + ':' + y)
+        setSelectedCell(x + ':' + y)
+        props.socket.emit('seed', {x, y})
+    }
+
     return (
         <div>
-            <div className={'controls'}>
-                <div onClick={() => {}}>{props.time}</div>
-                <div onClick={() => {
-                    setCellSize(cellSize - 1)
+            <div className={'ui'}>
+                <div className={'inventory'}>
+                    {inventory.map((item, i) => {
+                        return <div key={i} className={selectedItem === i ? 'selected' : ''} onClick={() => setSelectedItem(i)}>{item}</div>
+                    })}
+                    {/*<div className={'title'}>{'inventory'.toUpperCase()}</div>*/}
 
-                }}>-</div>
-                <div onClick={() => {}}>{cellSize}</div>
-                <div onClick={() => {
-                    setCellSize(cellSize + 1)
+                </div>
+                {/*<div className={'description'}>*/}
+                {/*    <div className={'title'}>{'description'.toUpperCase()}</div>*/}
+                {/*</div>*/}
+                <div className={'controls'}>
+                    <div onClick={() => {}}>{props.time}</div>
+                    <div onClick={() => {
+                        setCellSize(cellSize - 1)
 
-                }}>+</div>
-                <div onClick={() => {
-                    toggleFullScreen()
-                }}>FS</div>
+                    }}>-</div>
+                    <div onClick={() => {}}>{cellSize}</div>
+                    <div onClick={() => {
+                        setCellSize(cellSize + 1)
+
+                    }}>+</div>
+                    <div onClick={() => {
+                        toggleFullScreen()
+                    }}>FS</div>
+                    <div onClick={() => {
+                        showCoordinates(!isCoordinates)
+                    }}>C</div>
+                </div>
             </div>
             <div id={'grid'}>
                 {grid.map((item, i) => {
-                    return <div key={i} className={'cell'}>
+                    return <div key={i}
+                                className={
+                                    'cell' +
+                                    // (item.center ? ' center' : '') +
+                                    ((item.x + ':' + item.y) === selectedCell ? ' selected' : '')
+                                }
+                                onClick={() => clickTile(item.x, item.y)}>
 
                         {item.img && <img src={item.img.src} style={item.img.style}/>}
 
-                        <div className={'coordinates'}>{item.x}</div>
-                        :
-                        <div className={'coordinates'}>{item.y}</div>
+                        {isCoordinates && <div className={'coordinates'}>
+                            <div>{item.x}</div>:
+                            <div>{item.y}</div>
+                        </div>}
 
                         {/*<img src={getGround().src} style={getGround().style}/>*/}
 
