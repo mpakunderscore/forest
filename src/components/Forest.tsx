@@ -215,13 +215,15 @@ const Forest = (props) => {
     let [inventory, setInventory] = useState(['seed', 'look', 'kill', 'poop', 'take', 'feed', 'ask', '', ''])
     let [selectedItem, setSelectedItem] = useState(-1)
 
-    let [selectedCell, setSelectedCell] = useState('')
+    let [selectedCellX, setSelectedCellX] = useState('')
+    let [selectedCellY, setSelectedCellY] = useState('')
 
     let [isCoordinates, showCoordinates] = useState(false)
 
     const clickTile = (x, y) => {
         log(x + ':' + y)
-        setSelectedCell(x + ':' + y)
+        setSelectedCellX(x)
+        setSelectedCellY(y)
         socketAPI.sendSeed({x, y})
     }
 
@@ -235,10 +237,15 @@ const Forest = (props) => {
                     {/*<div className={'title'}>{'inventory'.toUpperCase()}</div>*/}
 
                 </div>
-                {selectedCell && <div className={'item'} onClick={() => {setSelectedCell('')}}>
-                    <div className={'title'}>{'Pine tree'.toUpperCase() + ' ' + selectedCell}</div>
-                    <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even growing on rocky cliffs. They release a delightful, calming scent that has become synonymous with the holidays. Many pine tree species are also crucial to the survival of wildlife, providing food and shelter for countless species.</div>
-                    <div></div>
+                {selectedCellX && <div className={'item'} onClick={() => {
+                    setSelectedCellX('')
+                    setSelectedCellY('')
+                }}>
+                    <div className={'title'}>{'Pine tree'.toUpperCase() + ' ' + selectedCellX + ':' + selectedCellY + ' ' + (props.map[selectedCellX][selectedCellY])}</div>
+                    <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even growing on rocky cliffs.</div>
+                    <div className={'text'}>
+                        <></>
+                    </div>
                 </div>}
                 {/*<div className={'description'}>*/}
                 {/*    <div className={'title'}>{'description'.toUpperCase()}</div>*/}
@@ -271,7 +278,7 @@ const Forest = (props) => {
                                 className={
                                     'cell' +
                                     // (item.center ? ' center' : '') +
-                                    ((item.x + ':' + item.y) === selectedCell ? ' selected' : '') +
+                                    (item.x === selectedCellX && item.y === selectedCellY ? ' selected' : '') +
 
                                     // (' ' + soil[item.soil].type) +
 
