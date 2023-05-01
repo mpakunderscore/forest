@@ -1,17 +1,24 @@
 import React, {useState, useEffect, useReducer, useRef} from "react";
 import '../css/grid.css'
 import '../css/ui.css'
+import '../css/ground.css'
 import {log} from '../utils/log';
 import {createGesture} from "@ionic/react";
 import {socketAPI} from "../utils/socket";
+import {grass, soil} from "./ground";
 
 let CELL_SIZE_DEFAULT = 30
 
-let secCSS = (size) => {
+let setCSS = (size) => {
     document.documentElement.style.setProperty('--cell-width', size + 'px');
 }
 
-secCSS(CELL_SIZE_DEFAULT)
+let setGridCSS = (x, y) => {
+    document.documentElement.style.setProperty('--x-count', x);
+    document.documentElement.style.setProperty('--y-count', y);
+}
+
+setCSS(CELL_SIZE_DEFAULT)
 
 let currentPositionX = 0
 let currentPositionY = 0
@@ -44,6 +51,7 @@ const Forest = (props) => {
 
         let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
         let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
+        setGridCSS(ratioWidth, ratioHeight)
 
         log(ratioWidth + ':' + ratioHeight)
 
@@ -76,7 +84,8 @@ const Forest = (props) => {
                     x,
                     y,
                     img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y]) : false,
-                    center
+                    center,
+                    soil: -1
                 }
 
                 grid.push(cell);
@@ -197,13 +206,13 @@ const Forest = (props) => {
     }, [])
 
     useEffect(() => {
-        secCSS(cellSize)
+        setCSS(cellSize)
         renderGrid()
         return () => {
         }
     }, [props.map, currentPositionX, currentPositionY, cellSize])
 
-    let [inventory, setInventory] = useState(['seed', ''])
+    let [inventory, setInventory] = useState(['seed', 'look', 'kill', 'poop', 'take', 'feed', 'ask', '', ''])
     let [selectedItem, setSelectedItem] = useState(-1)
 
     let [selectedCell, setSelectedCell] = useState('')
@@ -226,7 +235,7 @@ const Forest = (props) => {
                     {/*<div className={'title'}>{'inventory'.toUpperCase()}</div>*/}
 
                 </div>
-                {selectedCell && <div className={'item'}>
+                {selectedCell && <div className={'item'} onClick={() => {setSelectedCell('')}}>
                     <div className={'title'}>{'Pine tree'.toUpperCase() + ' ' + selectedCell}</div>
                     <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even growing on rocky cliffs. They release a delightful, calming scent that has become synonymous with the holidays. Many pine tree species are also crucial to the survival of wildlife, providing food and shelter for countless species.</div>
                     <div></div>
@@ -257,12 +266,18 @@ const Forest = (props) => {
             </div>
             <div id={'grid'}>
                 {grid.map((item, i) => {
+                    log(item.soil)
                     return <div key={i}
                                 className={
                                     'cell' +
                                     // (item.center ? ' center' : '') +
-                                    ((item.x + ':' + item.y) === selectedCell ? ' selected' : '')
+                                    ((item.x + ':' + item.y) === selectedCell ? ' selected' : '') +
+
+                                    // (' ' + soil[item.soil].type) +
+
+                                    ('')
                                 }
+                                style={{background: grass[item.soil] ? grass[item.soil].color : ''}}
                                 onClick={() => clickTile(item.x, item.y)}>
 
                         {item.img && <img src={item.img.src} style={item.img.style}/>}

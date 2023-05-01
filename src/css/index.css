@@ -129,4 +129,11 @@ main {
 #app > div {
     height: var(--app-height);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+img {
+    -webkit-user-drag: none;
 }

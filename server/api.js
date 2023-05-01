@@ -21,6 +21,14 @@ let initAPI = async (app) => {
         response.json({text: out.replaceAll('.', '')})
     })
 
+    app.get(prefix + '/text/:type', async (request, response) => {
+        let text = allTexts[request.params['type']]
+        if (!text)
+            text = allTexts.error
+        let out = await getChat(text)
+        response.json({text: out.replaceAll('.', '')})
+    })
+
     let routes = [];
     app._router.stack.forEach(function (r) {
         if (r.route && r.route.path) {

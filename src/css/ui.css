@@ -5,16 +5,16 @@
     --main-padding: 20px;
 }
 
-.description {
-    position: absolute;
-    right: var(--main-padding);
-    top: 50px;
-    bottom: var(--main-padding);
-    width: 300px;
-    height: 500px;
+/*.description {*/
+/*    position: absolute;*/
+/*    right: var(--main-padding);*/
+/*    top: 50px;*/
+/*    bottom: var(--main-padding);*/
+/*    width: 300px;*/
+/*    height: 500px;*/
 
-    background-color: whitesmoke;
-}
+/*    background-color: whitesmoke;*/
+/*}*/
 
 .inventory {
     position: fixed;
@@ -123,6 +123,17 @@
 }
 
 .item .text {
-    margin: 10px;
-    margin-top: 0;
+    margin: 0 10px 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .item {
+        width: auto;
+        /*top: unset;*/
+        left: var(--main-padding);
+        top: 40%;
+        /*bottom: var(--main-padding);*/
+        /*left: var(--main-padding);*/
+    }
 }
