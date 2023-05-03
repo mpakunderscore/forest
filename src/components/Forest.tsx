@@ -5,7 +5,9 @@ import '../css/ground.css'
 import {log} from '../utils/log';
 import {createGesture} from "@ionic/react";
 import {socketAPI} from "../utils/socket";
-import {grass, soil} from "./ground";
+import {grass, soil} from "./utils/ground";
+import UserControls from "./UserControls";
+import Grid from "./Grid";
 
 let CELL_SIZE_DEFAULT = 30
 
@@ -23,20 +25,12 @@ setCSS(CELL_SIZE_DEFAULT)
 let currentPositionX = 0
 let currentPositionY = 0
 
-const toggleFullScreen = () => {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-    } else if (document.exitFullscreen) {
-        document.exitFullscreen();
-    }
-}
-
 const Forest = (props) => {
 
     let [grid, setGrid] = useState([])
     let [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
 
-
+    let [isCoordinates, showCoordinates] = useState(false)
 
     let renderGrid = () => {
 
@@ -135,76 +129,6 @@ const Forest = (props) => {
     //     return {src: './images/forest/texture.png', style: getStyle(cellSize)}
     // }
 
-    const initKeyboard = () => {
-        document.addEventListener("keydown", function (event) {
-            if (event.which === 39) {
-                currentPositionX += 1
-                renderGrid();
-            }
-            if (event.which === 37) {
-                currentPositionX -= 1
-                renderGrid();
-            }
-            if (event.which === 40) {
-                currentPositionY += 1
-                renderGrid();
-            }
-            if (event.which === 38) {
-                currentPositionY -= 1
-                renderGrid();
-            }
-        })
-    }
-
-    const initGestures = () => {
-
-        const gesture = createGesture({
-            el: document.getElementById('app'),
-            threshold: 15,
-            gestureName: 'my-gesture',
-            onMove: ev => onMove(ev),
-        });
-
-        gesture.enable();
-
-        const onMove = (detail) => {
-            const type = detail.type;
-            // console.log(type)
-            const currentX = detail.currentX;
-            const deltaX = detail.deltaX;
-            const velocityX = detail.velocityX;
-            const velocityY = detail.velocityY;
-
-            // console.log(velocityX + ':' + velocityY)
-
-            if (velocityX > .5) {
-                currentPositionX--
-                renderGrid()
-            }
-
-            if (velocityX < -.5) {
-                currentPositionX++
-                renderGrid()
-            }
-
-            if (velocityY > .5) {
-                currentPositionY--
-                renderGrid()
-            }
-
-            if (velocityY < -.5) {
-                currentPositionY++
-                renderGrid()
-            }
-        }
-    }
-
-    useEffect(() => {
-        // generateMap()
-        initGestures()
-        initKeyboard()
-    }, [])
-
     useEffect(() => {
         setCSS(cellSize)
         renderGrid()
@@ -212,94 +136,49 @@ const Forest = (props) => {
         }
     }, [props.map, currentPositionX, currentPositionY, cellSize])
 
-    let [inventory, setInventory] = useState(['seed', 'look', 'kill', 'poop', 'take', 'feed', 'ask', '', ''])
-    let [selectedItem, setSelectedItem] = useState(-1)
-
     let [selectedCellX, setSelectedCellX] = useState('')
     let [selectedCellY, setSelectedCellY] = useState('')
-
-    let [isCoordinates, showCoordinates] = useState(false)
+    let [selectedItem, setSelectedItem] = useState(false)
 
     const clickTile = (x, y) => {
         log(x + ':' + y)
         setSelectedCellX(x)
         setSelectedCellY(y)
+
+        log(props.map[x][y])
+
+        if (props.map[x][y].length > 0)
+            setSelectedItem(props.map[x][y])
+        else
+            setSelectedItem(false)
+
         socketAPI.sendSeed({x, y})
     }
 
     return (
         <div>
-            <div className={'ui'}>
-                <div className={'inventory'}>
-                    {inventory.map((item, i) => {
-                        return <div key={i} className={selectedItem === i ? 'selected' : ''} onClick={() => setSelectedItem(i)}>{item}</div>
-                    })}
-                    {/*<div className={'title'}>{'inventory'.toUpperCase()}</div>*/}
+            <UserControls cellSize={cellSize}
+                          setCellSize={setCellSize}
+                          renderGrid={renderGrid}
+                          currentPositionX={currentPositionX}
+                          currentPositionY={currentPositionY}
+                          selectedCellX={selectedCellX}
+                          selectedCellY={selectedCellY}
+                          setSelectedCellX={setSelectedCellX}
+                          setSelectedCellY={setSelectedCellY}
+                          isCoordinates={isCoordinates}
+                          showCoordinates={showCoordinates}
+                          selectedItem={selectedItem}
 
-                </div>
-                {selectedCellX && <div className={'item'} onClick={() => {
-                    setSelectedCellX('')
-                    setSelectedCellY('')
-                }}>
-                    <div className={'title'}>{'Pine tree'.toUpperCase() + ' ' + selectedCellX + ':' + selectedCellY + ' '}</div>
-                    <div className={'text'}>Level: {(props.map[selectedCellX][selectedCellY])}</div>
-                    <div className={'text'}>Seed: {0}</div>
-                    <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even growing on rocky cliffs.</div>
+            />
 
+            <Grid grid={grid}
+                  setSelectedCellX={setSelectedCellX}
+                  setSelectedCellY={setSelectedCellY}
+                  isCoordinates={isCoordinates}
+                  clickTile={clickTile}
+            />
 
-                </div>}
-                {/*<div className={'description'}>*/}
-                {/*    <div className={'title'}>{'description'.toUpperCase()}</div>*/}
-                {/*</div>*/}
-                <div className={'controls'}>
-                    <div onClick={() => {}}>{props.time}</div>
-                    <div onClick={() => {
-                        if (cellSize > 10)
-                            setCellSize(cellSize - 10)
-
-                    }}>-</div>
-                    <div onClick={() => {}}>{cellSize}</div>
-                    <div onClick={() => {
-                        if (cellSize < 60)
-                            setCellSize(cellSize + 10)
-
-                    }}>+</div>
-                    <div onClick={() => {
-                        toggleFullScreen()
-                    }}>FS</div>
-                    <div onClick={() => {
-                        showCoordinates(!isCoordinates)
-                    }}>C</div>
-                </div>
-            </div>
-            <div id={'grid'}>
-                {grid.map((item, i) => {
-                    log(item.soil)
-                    return <div key={i}
-                                className={
-                                    'cell' +
-                                    // (item.center ? ' center' : '') +
-                                    (item.x === selectedCellX && item.y === selectedCellY ? ' selected' : '') +
-
-                                    // (' ' + soil[item.soil].type) +
-
-                                    ('')
-                                }
-                                style={{background: grass[item.soil] ? grass[item.soil].color : ''}}
-                                onClick={() => clickTile(item.x, item.y)}>
-
-                        {item.img && <img src={item.img.src} style={item.img.style}/>}
-
-                        {isCoordinates && <div className={'coordinates'}>
-                            <div>{item.x}</div>:
-                            <div>{item.y}</div>
-                        </div>}
-
-                        {/*<img src={getGround().src} style={getGround().style}/>*/}
-
-                    </div>
-                })}
-            </div>
         </div>
     )
 }
