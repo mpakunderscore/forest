@@ -4,17 +4,17 @@ import {log} from "./log";
 let socket
 
 export const initSocket = (onMap) => {
-    socket = io('/')
+    socket = io()
     socket.on('connect', onConnect)
     socket.on('disconnect', onDisconnect)
     socket.on('map', map => onMap(map))
 }
 
 const onConnect = () => {
-    console.log('Connect')
+    log('Connect')
 }
 const onDisconnect = () => {
-    console.log('Disconnect')
+    log('Disconnect')
 }
 
 const sendSeed = (seedObject) => {

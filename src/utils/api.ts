@@ -1,6 +1,7 @@
 // declare let DEBUG: boolean;
 
 let serverUrl = 'https://enomenu.herokuapp.com'
+
 // if (DEBUG) {
 //     serverUrl = 'https://fainodev.herokuapp.com'
 // }

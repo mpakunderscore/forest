@@ -40,20 +40,9 @@ const Forest = (props) => {
 
     let renderGrid = () => {
 
-        log('RENDER')
-
-        log(currentPositionX)
-        log(currentPositionY)
-
-        log((window.innerWidth || document.documentElement.offsetWidth) + ':' + (window.innerHeight || document.documentElement.offsetHeight))
-
-        // let size = cellSize;
-
         let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
         let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
         setGridCSS(ratioWidth, ratioHeight)
-
-        log(ratioWidth + ':' + ratioHeight)
 
         let grid = []
 
@@ -67,7 +56,7 @@ const Forest = (props) => {
         let centerX = Math.floor(ratioWidth/2)
         let centerY = Math.floor(ratioHeight/2)
 
-        log(centerX + ' ' + centerY)
+        // log(centerX + ' ' + centerY)
 
         for (let j = 0; j < ratioHeight; j++) {
 

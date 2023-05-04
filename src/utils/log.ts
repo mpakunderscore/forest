@@ -6,6 +6,6 @@ export const log = (text) => {
     if (type === 'renderGrid') {
         // console.log('renderGrid' + ' >> ' + text)
     } else {
-        // console.log(type + ' > ' + text)
+        console.log(type + ' > ' + text)
     }
 }
