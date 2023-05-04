@@ -19,7 +19,7 @@ let initModels = (sequelize) => {
             type: DataTypes.STRING,
             primaryKey: true,
         },
-        produce: { // 'tree'
+        produce: { // 'seed'
             type: DataTypes.STRING,
             primaryKey: true,
         },

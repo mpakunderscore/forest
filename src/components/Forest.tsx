@@ -109,7 +109,6 @@ const Forest = (props) => {
         }
     }
 
-    let defaultWidth = 32
     let getStyle = (width) => {
         width = width * (cellSize / CELL_SIZE_DEFAULT)
         return {width: width + 'px', height: width + 'px'}
@@ -135,13 +134,6 @@ const Forest = (props) => {
     //     return {src: './images/forest/texture.png', style: getStyle(cellSize)}
     // }
 
-    useEffect(() => {
-        setCSS(cellSize)
-        renderGrid()
-        return () => {
-        }
-    }, [props.map, currentPositionX, currentPositionY, cellSize])
-
     let [selectedCellX, setSelectedCellX] = useState('')
     let [selectedCellY, setSelectedCellY] = useState('')
     let [selectedItem, setSelectedItem] = useState(false)
@@ -161,6 +153,13 @@ const Forest = (props) => {
 
         socketAPI.sendSeed({x, y})
     }
+
+    useEffect(() => {
+        setCSS(cellSize)
+        renderGrid()
+    }, [props.map, currentPositionX, currentPositionY, cellSize])
+
+    // log('render forest')
 
     return (
         <div>

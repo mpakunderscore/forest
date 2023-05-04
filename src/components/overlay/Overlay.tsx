@@ -109,6 +109,7 @@ const Overlay = (props) => {
                       cellSize={props.cellSize}
                       isCoordinates={props.isCoordinates}
                       showCoordinates={props.showCoordinates}
+                      setCellSize={props.setCellSize}
             />
 
         </div>)
