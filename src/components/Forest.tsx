@@ -3,11 +3,9 @@ import '../css/grid.css'
 import '../css/ui.css'
 import '../css/ground.css'
 import {log} from '../utils/log';
-import {createGesture} from "@ionic/react";
 import {socketAPI} from "../utils/socket";
-import {grass, soil} from "./utils/ground";
-import UserControls from "./UserControls";
 import Grid from "./Grid";
+import Overlay from "./overlay/Overlay";
 
 let CELL_SIZE_DEFAULT = 30
 
@@ -24,6 +22,14 @@ setCSS(CELL_SIZE_DEFAULT)
 
 let currentPositionX = 0
 let currentPositionY = 0
+
+const changePositionX = (val) => {
+    currentPositionX = currentPositionX + val
+}
+
+const changePositionY = (val) => {
+    currentPositionY = currentPositionY + val
+}
 
 const Forest = (props) => {
 
@@ -145,11 +151,12 @@ const Forest = (props) => {
         setSelectedCellX(x)
         setSelectedCellY(y)
 
-        log(props.map[x][y])
+        // log(props.map[x][y])
 
-        if (props.map[x][y].length > 0)
+        if (props.map[x][y].length > 0) {
+            log('Selected: ' + props.map[x][y])
             setSelectedItem(props.map[x][y])
-        else
+        } else
             setSelectedItem(false)
 
         socketAPI.sendSeed({x, y})
@@ -157,22 +164,28 @@ const Forest = (props) => {
 
     return (
         <div>
-            <UserControls cellSize={cellSize}
-                          setCellSize={setCellSize}
-                          renderGrid={renderGrid}
-                          currentPositionX={currentPositionX}
-                          currentPositionY={currentPositionY}
-                          selectedCellX={selectedCellX}
-                          selectedCellY={selectedCellY}
-                          setSelectedCellX={setSelectedCellX}
-                          setSelectedCellY={setSelectedCellY}
-                          isCoordinates={isCoordinates}
-                          showCoordinates={showCoordinates}
-                          selectedItem={selectedItem}
+            <Overlay cellSize={cellSize}
+                     setCellSize={setCellSize}
+                     renderGrid={renderGrid}
+                     currentPositionX={currentPositionX}
+                     currentPositionY={currentPositionY}
+                     selectedCellX={selectedCellX}
+                     selectedCellY={selectedCellY}
+                     setSelectedCellX={setSelectedCellX}
+                     setSelectedCellY={setSelectedCellY}
+                     isCoordinates={isCoordinates}
+                     showCoordinates={showCoordinates}
+                     selectedItem={selectedItem}
+                     changePositionX={changePositionX}
+                     changePositionY={changePositionY}
+                     time={props.time}
+                     map={props.map}
 
             />
 
             <Grid grid={grid}
+                  selectedCellX={selectedCellX}
+                  selectedCellY={selectedCellY}
                   setSelectedCellX={setSelectedCellX}
                   setSelectedCellY={setSelectedCellY}
                   isCoordinates={isCoordinates}

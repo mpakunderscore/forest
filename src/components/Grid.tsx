@@ -1,8 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {createGesture} from "@ionic/react";
 import {grass} from "./utils/ground";
+import {log} from "../utils/log";
 
 const Grid = (props) => {
+
+    useEffect(() => {
+
+    }, [])
+
+    log('render grid')
 
     return (
         <div id={'grid'}>
