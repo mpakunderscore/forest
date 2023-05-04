@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer, useRef} from "react";
+import React, {useState, useEffect, useReducer, useRef, useContext} from "react";
 import '../css/grid.css'
 import '../css/ui.css'
 import '../css/ground.css'
@@ -6,19 +6,7 @@ import {log} from '../utils/log';
 import {socketAPI} from "../utils/socket";
 import Grid from "./Grid";
 import Overlay from "./overlay/Overlay";
-
-let CELL_SIZE_DEFAULT = 30
-
-let setCSS = (size) => {
-    document.documentElement.style.setProperty('--cell-width', size + 'px');
-}
-
-let setGridCSS = (x, y) => {
-    document.documentElement.style.setProperty('--x-count', x);
-    document.documentElement.style.setProperty('--y-count', y);
-}
-
-setCSS(CELL_SIZE_DEFAULT)
+import {MapContext} from "./MapContext";
 
 let currentPositionX = 0
 let currentPositionY = 0
@@ -33,8 +21,9 @@ const changePositionY = (val) => {
 
 const Forest = (props) => {
 
+    const { cellSize, setCSS, setGridCSS, CELL_SIZE_DEFAULT } = useContext(MapContext)
+
     let [grid, setGrid] = useState([])
-    let [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
 
     let [isCoordinates, showCoordinates] = useState(false)
 
@@ -72,7 +61,7 @@ const Forest = (props) => {
                 let cell = {
                     x,
                     y,
-                    img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y]) : false,
+                    img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y].type) : false,
                     center,
                     soil: -1
                 }
@@ -148,13 +137,11 @@ const Forest = (props) => {
         renderGrid()
     }, [props.map, currentPositionX, currentPositionY, cellSize])
 
-    // log('render forest')
+    // log('ground forest')
 
     return (
         <div>
-            <Overlay cellSize={cellSize}
-                     setCellSize={setCellSize}
-                     renderGrid={renderGrid}
+            <Overlay renderGrid={renderGrid}
                      currentPositionX={currentPositionX}
                      currentPositionY={currentPositionY}
                      selectedCellX={selectedCellX}

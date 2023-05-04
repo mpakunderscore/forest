@@ -1,6 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
+import {MapContext} from "../MapContext";
 
 const Controls = (props) => {
+
+    const { cellSize, setCellSize } = useContext(MapContext)
+
+    console.log(cellSize)
 
     const toggleFullScreen = () => {
         if (!document.fullscreenElement) {
@@ -18,16 +23,16 @@ const Controls = (props) => {
 
             <div onClick={() => {
                 if (props.cellSize > 10)
-                    props.setCellSize(props.cellSize - 10)
+                    setCellSize(props.cellSize - 10)
             }}>-
             </div>
 
             <div onClick={() => {
-            }}>{props.cellSize}</div>
+            }}>{cellSize}</div>
 
             <div onClick={() => {
                 if (props.cellSize < 60)
-                    props.setCellSize(props.cellSize + 10)
+                    setCellSize(props.cellSize + 10)
             }}>+
             </div>
 

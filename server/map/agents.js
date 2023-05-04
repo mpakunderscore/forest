@@ -56,7 +56,6 @@ const moveAgents = (updatedMap) => {
 
 
 module.exports.updateAgents = (map) => {
-    map[10][10] = tree ? 'A' : 'B'
     map = moveAgents(map)
     return map
 }

@@ -41,7 +41,7 @@ let initModels = (sequelize) => {
         type: { // 'tree'
             type: DataTypes.STRING,
         },
-        level: { // 0'
+        level: { // '0'
             type: DataTypes.INTEGER,
             defaultValue: 0
         },

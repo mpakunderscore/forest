@@ -96,8 +96,8 @@ const Overlay = (props) => {
             }}>
                 <div
                     className={'title'}>{'Pine tree'.toUpperCase() + ' ' + props.selectedCellX + ':' + props.selectedCellY + ' '}</div>
-                <div className={'text'}>Level: {(props.map[props.selectedCellX][props.selectedCellY])}</div>
-                <div className={'text'}>Seed: {0}</div>
+                <div className={'text'}>Level: {(props.map[props.selectedCellX][props.selectedCellY].level)}</div>
+                <div className={'text'}>Seed: {props.map[props.selectedCellX][props.selectedCellY].items}</div>
                 <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even
                     growing on rocky cliffs.
                 </div>
@@ -105,10 +105,8 @@ const Overlay = (props) => {
             </div>}
 
             <Controls time={props.time}
-                      cellSize={props.cellSize}
                       isCoordinates={props.isCoordinates}
                       showCoordinates={props.showCoordinates}
-                      setCellSize={props.setCellSize}
             />
 
         </div>)

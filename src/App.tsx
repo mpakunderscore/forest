@@ -3,6 +3,7 @@ import {App as AppCapacitor} from '@capacitor/app';
 import Forest from "./components/Forest";
 import {initSocket} from "./utils/socket";
 import './css/index.css'
+import {MapContext, MapContextProvider} from "./components/MapContext";
 
 function App() {
 
@@ -21,7 +22,9 @@ function App() {
 
     return (
         <div id={'app'}>
-            <Forest map={map} time={time} />
+            <MapContextProvider>
+                <Forest map={map} time={time} />
+            </MapContextProvider>
         </div>
     );
 }

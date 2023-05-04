@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {createGesture} from "@ionic/react";
-import {grass} from "./utils/ground";
+import {grass} from "./ground/ground";
 import {log} from "../utils/log";
 
 const Grid = (props) => {
@@ -9,7 +9,7 @@ const Grid = (props) => {
 
     }, [])
 
-    // log('render grid')
+    // log('ground grid')
 
     return (
         <div id={'grid'}>
