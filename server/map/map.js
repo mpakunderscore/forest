@@ -6,7 +6,7 @@ let mapHeight = 200;
 let possibleGreen = 'ABC';
 let possibleTrees = 'XYZ';
 
-const mapItem = {
+const mapItemType = {
     x: 0,
     y: 0,
     name: '',
@@ -28,10 +28,10 @@ const generateMap = () => {
             let random = Math.random() * 1000;
 
             if (random >= 995) {
-                generatedMap[i][j] = mapItem
+                generatedMap[i][j] = {...mapItemType}
                 generatedMap[i][j].type = possibleTrees.charAt(Math.floor(Math.random() * possibleTrees.length));
             } else if (random > 950) {
-                generatedMap[i][j] = mapItem
+                generatedMap[i][j] = {...mapItemType}
                 generatedMap[i][j].type = possibleGreen.charAt(Math.floor(Math.random() * possibleGreen.length));
             }
         }

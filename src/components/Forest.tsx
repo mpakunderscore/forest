@@ -105,6 +105,7 @@ const Forest = (props) => {
     }
 
     const getImage = (key) => {
+        // console.log(key)
         return images[key]
     }
 

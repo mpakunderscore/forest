@@ -5,7 +5,7 @@ const Controls = (props) => {
 
     const { cellSize, setCellSize } = useContext(MapContext)
 
-    console.log(cellSize)
+    // console.log(cellSize)
 
     const toggleFullScreen = () => {
         if (!document.fullscreenElement) {
