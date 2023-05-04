@@ -4,7 +4,7 @@ import '../css/ui.css'
 import '../css/ground.css'
 import {log} from '../utils/log';
 import {socketAPI} from "../utils/socket";
-import Grid from "./Grid";
+import Grid from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
 import {MapContext} from "./MapContext";
 
@@ -24,8 +24,6 @@ const Forest = (props) => {
     const { cellSize, setCSS, setGridCSS, CELL_SIZE_DEFAULT } = useContext(MapContext)
 
     let [grid, setGrid] = useState([])
-
-    let [isCoordinates, showCoordinates] = useState(false)
 
     let renderGrid = () => {
 
@@ -61,7 +59,7 @@ const Forest = (props) => {
                 let cell = {
                     x,
                     y,
-                    img: props.map && props.map[x] && props.map[x][y] ? getImage(props.map[x][y].type) : false,
+                    type: props.map && props.map[x] && props.map[x][y] ? props.map[x][y].type : false,
                     center,
                     soil: -1
                 }
@@ -85,28 +83,6 @@ const Forest = (props) => {
                 clearTimeout(timer)
             timer = setTimeout(func, 30, event)
         }
-    }
-
-    let getStyle = (width) => {
-        width = width * (cellSize / CELL_SIZE_DEFAULT)
-        return {width: width + 'px', height: width + 'px'}
-    }
-
-    let images = {
-        A: {src: './images/forest/10.png', style: getStyle(33)},
-        B: {src: './images/forest/30.png', style: getStyle(60)},
-        C: {src: './images/forest/50.png', style: getStyle(100)},
-        D: {src: './images/forest/deer.png', style: getStyle(50)},
-        R: {src: './images/forest/raccoon.png', style: getStyle(30)},
-        X: {src: './images/forest/100.png', style: getStyle(150)},
-        Y: {src: './images/forest/100f.png', style: getStyle(180)},
-        Z: {src: './images/forest/100r.png', style: getStyle(100)},
-
-    }
-
-    const getImage = (key) => {
-        // console.log(key)
-        return images[key]
     }
 
     // const getGround = () => {
@@ -149,8 +125,6 @@ const Forest = (props) => {
                      selectedCellY={selectedCellY}
                      setSelectedCellX={setSelectedCellX}
                      setSelectedCellY={setSelectedCellY}
-                     isCoordinates={isCoordinates}
-                     showCoordinates={showCoordinates}
                      selectedItem={selectedItem}
                      changePositionX={changePositionX}
                      changePositionY={changePositionY}
@@ -164,7 +138,6 @@ const Forest = (props) => {
                   selectedCellY={selectedCellY}
                   setSelectedCellX={setSelectedCellX}
                   setSelectedCellY={setSelectedCellY}
-                  isCoordinates={isCoordinates}
                   clickTile={clickTile}
             />
 

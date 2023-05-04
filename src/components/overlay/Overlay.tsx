@@ -104,10 +104,7 @@ const Overlay = (props) => {
 
             </div>}
 
-            <Controls time={props.time}
-                      isCoordinates={props.isCoordinates}
-                      showCoordinates={props.showCoordinates}
-            />
+            <Controls time={props.time}/>
 
         </div>)
 }

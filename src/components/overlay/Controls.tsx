@@ -3,7 +3,7 @@ import {MapContext} from "../MapContext";
 
 const Controls = (props) => {
 
-    const { cellSize, setCellSize } = useContext(MapContext)
+    const { cellSize, setCellSize, isCoordinates, showCoordinates } = useContext(MapContext)
 
     // console.log(cellSize)
 
@@ -22,8 +22,8 @@ const Controls = (props) => {
             }}>{props.time}</div>
 
             <div onClick={() => {
-                if (props.cellSize > 10)
-                    setCellSize(props.cellSize - 10)
+                if (cellSize > 10)
+                    setCellSize(cellSize - 10)
             }}>-
             </div>
 
@@ -31,8 +31,8 @@ const Controls = (props) => {
             }}>{cellSize}</div>
 
             <div onClick={() => {
-                if (props.cellSize < 60)
-                    setCellSize(props.cellSize + 10)
+                if (cellSize < 60)
+                    setCellSize(cellSize + 10)
             }}>+
             </div>
 
@@ -42,9 +42,9 @@ const Controls = (props) => {
                  }}>FS
             </div>
 
-            <div className={(props.isCoordinates ? 'active' : '')}
+            <div className={(isCoordinates ? 'active' : '')}
                  onClick={() => {
-                     props.showCoordinates(!props.isCoordinates)
+                     showCoordinates(!isCoordinates)
                  }}>DG
             </div>
 

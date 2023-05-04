@@ -7,7 +7,9 @@ export type MapContextType = {
     setCellSize: (number) => void
     setCSS: (size) => void,
     setGridCSS:  (x, y) => void,
-    CELL_SIZE_DEFAULT
+    CELL_SIZE_DEFAULT,
+    isCoordinates: boolean,
+    showCoordinates: (value) => void
 }
 
 const MapContext = createContext<MapContextType>({} as MapContextType)
@@ -26,13 +28,16 @@ setCSS(CELL_SIZE_DEFAULT)
 const MapContextProvider = ({children}) => {
 
     const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
+    const [isCoordinates, showCoordinates] = useState(false)
 
     const context = {
         cellSize,
         setCellSize,
         setCSS,
         setGridCSS,
-        CELL_SIZE_DEFAULT
+        CELL_SIZE_DEFAULT,
+        isCoordinates,
+        showCoordinates
     }
 
     return (
