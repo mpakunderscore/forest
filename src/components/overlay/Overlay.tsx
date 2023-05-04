@@ -11,19 +11,15 @@ const Overlay = (props) => {
         document.addEventListener("keydown", function (event) {
             if (event.which === 39) {
                 props.changePositionX(1)
-                props.renderGrid();
             }
             if (event.which === 37) {
                 props.changePositionX(-1)
-                props.renderGrid();
             }
             if (event.which === 40) {
                 props.changePositionY(1)
-                props.renderGrid();
             }
             if (event.which === 38) {
                 props.changePositionY(-1)
-                props.renderGrid();
             }
         })
     }
@@ -51,22 +47,22 @@ const Overlay = (props) => {
 
             if (velocityX > .5) {
                 props.changePositionX(-1)
-                props.renderGrid()
+                // props.renderGrid()
             }
 
             if (velocityX < -.5) {
                 props.changePositionX(1)
-                props.renderGrid()
+                // props.renderGrid()
             }
 
             if (velocityY > .5) {
                 props.changePositionY(-1)
-                props.renderGrid()
+                // props.renderGrid()
             }
 
             if (velocityY < -.5) {
                 props.changePositionY(1)
-                props.renderGrid()
+                // props.renderGrid()
             }
         }
     }

@@ -3,11 +3,11 @@ import React, {createContext, useState} from 'react';
 let CELL_SIZE_DEFAULT = 30
 
 export type MapContextType = {
+    CELL_SIZE_DEFAULT: number,
     cellSize: number,
     setCellSize: (number) => void
     setCSS: (size) => void,
     setGridCSS:  (x, y) => void,
-    CELL_SIZE_DEFAULT,
     isCoordinates: boolean,
     showCoordinates: (value) => void
 }
@@ -31,11 +31,11 @@ const MapContextProvider = ({children}) => {
     const [isCoordinates, showCoordinates] = useState(false)
 
     const context = {
+        CELL_SIZE_DEFAULT,
         cellSize,
         setCellSize,
         setCSS,
         setGridCSS,
-        CELL_SIZE_DEFAULT,
         isCoordinates,
         showCoordinates
     }

@@ -6,7 +6,9 @@ import {MapContext} from "../MapContext";
 
 const Grid = (props) => {
 
-    const { cellSize, CELL_SIZE_DEFAULT, isCoordinates } = useContext(MapContext)
+    let [grid, setGrid] = useState([])
+
+    const { cellSize, CELL_SIZE_DEFAULT, isCoordinates, setCSS, setGridCSS } = useContext(MapContext)
 
     let getStyle = (width) => {
         width = width * (cellSize / CELL_SIZE_DEFAULT)
@@ -30,16 +32,85 @@ const Grid = (props) => {
         return images[key]
     }
 
+    let renderGrid = (map) => {
+
+        // console.log(map)
+
+        let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
+        let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
+        setGridCSS(ratioWidth, ratioHeight)
+
+        // grid = []
+
+        // if (ratioWidth % 2 === 0) {
+        //     ratioWidth--
+        // }
+        // if (ratioHeight % 2 === 0) {
+        //     ratioHeight--
+        // }
+
+        let centerX = Math.floor(ratioWidth/2)
+        let centerY = Math.floor(ratioHeight/2)
+
+        // log(centerX + ' ' + centerY)
+
+        grid = []
+
+        for (let j = 0; j < ratioHeight; j++) {
+
+            for (let i = 0; i < ratioWidth; i++) {
+
+                // console.log(props.currentPositionX)
+
+                const x = i + props.currentPositionX
+                const y = j + props.currentPositionY
+
+                let center = false
+                if (i === centerX && j === centerY)
+                    center = true
+
+                let cell = {
+                    i,
+                    j,
+                    x,
+                    y,
+                    type: map[x] && map[x][y] && !map[x][y].empty ? map[x][y].type : false,
+                    center,
+                    soil: -1
+                }
+
+                // console.log(cell.type)
+
+                grid.push(cell);
+            }
+        }
+
+        setGrid(grid)
+    }
+
+    let debounce = (func) => {
+
+        let timer;
+        return (event) => {
+            if (timer)
+                clearTimeout(timer)
+            timer = setTimeout(func, 30, event)
+        }
+    }
+
+    // console.log(props.map)
+
     useEffect(() => {
-
-    }, [])
-
-    // log('ground grid')
+        setCSS(cellSize)
+        renderGrid(props.map)
+        window.addEventListener('resize', debounce(() => renderGrid(props.map)))
+    }, [props.map, props.currentPositionX, props.currentPositionY, cellSize])
 
     return (
         <div id={'grid'}>
-            {props.grid.map((item, i) => {
+            {grid.map((item, i) => {
                 return <div key={i}
+                            // id={item.x + ':' + item.y}
                             className={
                                 'cell' +
                                 // (item.center ? ' center' : '') +

@@ -21,69 +21,53 @@ const changePositionY = (val) => {
 
 const Forest = (props) => {
 
-    const { cellSize, setCSS, setGridCSS, CELL_SIZE_DEFAULT } = useContext(MapContext)
+    const { cellSize, setCSS, setGridCSS } = useContext(MapContext)
 
-    let [grid, setGrid] = useState([])
-
-    let renderGrid = () => {
-
-        let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
-        let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
-        setGridCSS(ratioWidth, ratioHeight)
-
-        let grid = []
-
-        // if (ratioWidth % 2 === 0) {
-        //     ratioWidth--
-        // }
-        // if (ratioHeight % 2 === 0) {
-        //     ratioHeight--
-        // }
-
-        let centerX = Math.floor(ratioWidth/2)
-        let centerY = Math.floor(ratioHeight/2)
-
-        // log(centerX + ' ' + centerY)
-
-        for (let j = 0; j < ratioHeight; j++) {
-
-            for (let i = 0; i < ratioWidth; i++) {
-
-                const x = i + currentPositionX
-                const y = j + currentPositionY
-
-                let center = false
-                if (i === centerX && j === centerY)
-                    center = true
-
-                let cell = {
-                    x,
-                    y,
-                    type: props.map && props.map[x] && props.map[x][y] ? props.map[x][y].type : false,
-                    center,
-                    soil: -1
-                }
-
-                grid.push(cell);
-            }
-        }
-
-        setGrid(grid)
-    }
-
-    React.useEffect(() => {
-        window.addEventListener('resize', debounce(() => renderGrid()))
-    })
-
-    let debounce = (func) => {
-
-        let timer;
-        return (event) => {
-            if (timer)
-                clearTimeout(timer)
-            timer = setTimeout(func, 30, event)
-        }
-    }
+    // let renderGrid = () => {
+    //
+    //     let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
+    //     let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
+    //     setGridCSS(ratioWidth, ratioHeight)
+    //
+    //     let grid = []
+    //
+    //     // if (ratioWidth % 2 === 0) {
+    //     //     ratioWidth--
+    //     // }
+    //     // if (ratioHeight % 2 === 0) {
+    //     //     ratioHeight--
+    //     // }
+    //
+    //     let centerX = Math.floor(ratioWidth/2)
+    //     let centerY = Math.floor(ratioHeight/2)
+    //
+    //     // log(centerX + ' ' + centerY)
+    //
+    //     for (let j = 0; j < ratioHeight; j++) {
+    //
+    //         for (let i = 0; i < ratioWidth; i++) {
+    //
+    //             const x = i + currentPositionX
+    //             const y = j + currentPositionY
+    //
+    //             let center = false
+    //             if (i === centerX && j === centerY)
+    //                 center = true
+    //
+    //             let cell = {
+    //                 x,
+    //                 y,
+    //                 type: props.map && props.map[x] && props.map[x][y] ? props.map[x][y].type : false,
+    //                 center,
+    //                 soil: -1
+    //             }
+    //
+    //             grid.push(cell);
+    //         }
+    //     }
+    //
+    //     setGrid(grid)
+    // }
 
     // const getGround = () => {
     //     return {src: './images/forest/texture.png', style: getStyle(cellSize)}
@@ -109,17 +93,11 @@ const Forest = (props) => {
         socketAPI.sendSeed({x, y})
     }
 
-    useEffect(() => {
-        setCSS(cellSize)
-        renderGrid()
-    }, [props.map, currentPositionX, currentPositionY, cellSize])
-
     // log('ground forest')
 
     return (
         <div>
-            <Overlay renderGrid={renderGrid}
-                     currentPositionX={currentPositionX}
+            <Overlay currentPositionX={currentPositionX}
                      currentPositionY={currentPositionY}
                      selectedCellX={selectedCellX}
                      selectedCellY={selectedCellY}
@@ -133,12 +111,14 @@ const Forest = (props) => {
 
             />
 
-            <Grid grid={grid}
+            <Grid currentPositionX={currentPositionX}
+                  currentPositionY={currentPositionY}
                   selectedCellX={selectedCellX}
                   selectedCellY={selectedCellY}
                   setSelectedCellX={setSelectedCellX}
                   setSelectedCellY={setSelectedCellY}
                   clickTile={clickTile}
+                  map={props.map}
             />
 
         </div>
