@@ -27,7 +27,10 @@ const Grid = (props) => {
                             style={{background: grass[item.soil] ? grass[item.soil].color : ''}}
                             onClick={() => props.clickTile(item.x, item.y)}>
 
-                    {item.img && <img src={item.img.src} style={item.img.style}/>}
+                    {item.img && <img src={item.img.src} style={
+                        {...item.img.style,
+                            border: props.isCoordinates ? '1px solid red' : ''
+                        }}/>}
 
                     {props.isCoordinates && <div className={'coordinates'}>
                         <div>{item.x}</div>:

@@ -107,6 +107,10 @@
     background-color: gray;
 }
 
+.controls > div.active {
+    background-color: dimgray;
+}
+
 .item {
     position: fixed;
     right: var(--main-padding);

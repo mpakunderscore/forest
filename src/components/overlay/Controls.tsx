@@ -31,19 +31,23 @@ const Controls = (props) => {
             }}>+
             </div>
 
-            <div onClick={() => {
-                toggleFullScreen()
-            }}>FS
+            <div className={(document.fullscreenElement ? 'active' : '')}
+                 onClick={() => {
+                     toggleFullScreen()
+                 }}>FS
             </div>
 
-            <div onClick={() => {
-                props.showCoordinates(!props.isCoordinates)
-            }}>C
+            <div className={(props.isCoordinates ? 'active' : '')}
+                 onClick={() => {
+                     props.showCoordinates(!props.isCoordinates)
+                 }}>DG
             </div>
 
-            <div onClick={() => {
-                props.showCoordinates(!props.isCoordinates)
-            }}>S
+            <div className={(document.fullscreenElement ? 'active' : '')}
+                 onClick={() => {
+                     // props.showCoordinates(!props.isCoordinates)
+
+                 }}>SD
             </div>
 
         </div>
