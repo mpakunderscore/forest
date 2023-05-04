@@ -89,7 +89,7 @@ const Overlay = (props) => {
                 })}
             </div>
 
-            {/*Item*/}
+            {/*Item description*/}
             {props.selectedCellX && props.selectedItem && <div className={'item'} onClick={() => {
                 props.setSelectedCellX('')
                 props.setSelectedCellY('')
@@ -101,7 +101,6 @@ const Overlay = (props) => {
                 <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even
                     growing on rocky cliffs.
                 </div>
-
 
             </div>}
 
