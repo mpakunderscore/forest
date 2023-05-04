@@ -8,7 +8,6 @@ export const initSocket = (onMap) => {
     socket.on('connect', onConnect)
     socket.on('disconnect', onDisconnect)
     socket.on('map', map => onMap(map))
-    // setSocket(socket)
 }
 
 const onConnect = () => {

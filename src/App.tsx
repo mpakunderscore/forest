@@ -35,7 +35,7 @@ function App() {
     const [map, setMap] = useState([])
 
     const onMap = (mapObject) => {
-        // setTime(mapObject.time)
+        setTime(mapObject.time)
         setMap(mapObject.map)
     }
 

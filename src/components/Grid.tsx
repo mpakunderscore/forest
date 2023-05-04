@@ -9,7 +9,7 @@ const Grid = (props) => {
 
     }, [])
 
-    log('render grid')
+    // log('render grid')
 
     return (
         <div id={'grid'}>
