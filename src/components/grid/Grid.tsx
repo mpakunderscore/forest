@@ -54,7 +54,6 @@ const Grid = (props) => {
                     j,
                     x,
                     y,
-                    name: map[x] && map[x][y] && map[x][y].name ? map[x][y].name : false,
                     type: map[x] && map[x][y] && map[x][y].type ? map[x][y].type : false,
                     level: map[x] && map[x][y] && map[x][y].level ? map[x][y].level : false,
                     center,

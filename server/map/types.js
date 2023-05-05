@@ -1,40 +1,31 @@
 const mapItemDefault = {
-    id: '',
+    id: 0,
 
     x: 0,
     y: 0,
 
-    name: '',
     type: '',
 
     level: 1,
     items: [],
 
+    action: () => {},
+
     user: '',
 }
 
+const getTree = () => {
+    let item = {...mapItemDefault}
+    item.type = 'tree'
+    item.level = 1
+    item.action = () => {}
+    return item
+}
+
 const itemTypes = {
-    tree: {
-        oak: {},
-        maple: {},
-        pine: {}
-    },
-    stone: {}
+    tree: {},
+    deer: {},
+    raccoon: {},
 }
 
-const unitTypes = {
-    animal: {
-        deer: {},
-        fox: {},
-        raccoon: {},
-    },
-    robot: {
-        hunter: {},
-        assembler: {},
-    },
-    human: {
-        lumberjack: {}
-    }
-}
-
-module.exports = {itemTypes, unitTypes, mapItemDefault}
+module.exports = {getTree, mapItemDefault}

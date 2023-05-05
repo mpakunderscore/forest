@@ -18,13 +18,17 @@ const Cell = (props) => {
     }
 
     const itemImage = {
-        pine1: {src: './images/forest/items/trees/pine/50.png', style: getStyle(50)},
-        pine2: {src: './images/forest/items/trees/pine/70.png', style: getStyle(100)},
+        tree1: {src: './images/forest/items/trees/pine/50.png', style: getStyle(50)},
+        tree2: {src: './images/forest/items/trees/pine/70.png', style: getStyle(100)},
         deer1: {src: './images/forest/units/deer.png', style: getStyle(50)},
         raccoon1: {src: './images/forest/units/raccoon.png', style: getStyle(30)},
     }
 
-    const image = getImage(props.item.name + props.item.level)
+    const image = getImage(props.item.type + props.item.level)
+
+    console.log(props.item)
+
+    console.log(image)
 
     return <img src={image.src}
                 style={{...image.style, border: isCoordinates ? debugBorder : ''}}
