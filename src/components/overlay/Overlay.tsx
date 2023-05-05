@@ -4,7 +4,7 @@ import Controls from "./Controls";
 
 const Overlay = (props) => {
 
-    let [inventory, setInventory] = useState(['seed', 'look', 'kill', 'poop', 'take', 'feed', 'ask', 'follow', ''])
+    let [inventory, setInventory] = useState(['seed', '', '', '', '', '', '', '', ''])
     let [selectedInventory, setSelectedInventory] = useState(-1)
 
     const initKeyboard = () => {
@@ -73,6 +73,8 @@ const Overlay = (props) => {
         initKeyboard()
     }, [])
 
+    // const item = props.map[props.selectedCellX][props.selectedCellY]
+
     return (
         <div className={'ui'}>
 
@@ -92,8 +94,9 @@ const Overlay = (props) => {
             }}>
                 <div
                     className={'title'}>{'Pine tree'.toUpperCase() + ' ' + props.selectedCellX + ':' + props.selectedCellY + ' '}</div>
+                <div className={'text'}>Type: {(props.map[props.selectedCellX][props.selectedCellY].type)}</div>
                 <div className={'text'}>Level: {(props.map[props.selectedCellX][props.selectedCellY].level)}</div>
-                <div className={'text'}>Seed: {props.map[props.selectedCellX][props.selectedCellY].items}</div>
+                <div className={'text'}>Seed: {props.map[props.selectedCellX][props.selectedCellY].items.length}</div>
                 <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even
                     growing on rocky cliffs.
                 </div>

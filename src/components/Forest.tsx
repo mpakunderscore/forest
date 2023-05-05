@@ -6,92 +6,45 @@ import {log} from '../utils/log';
 import {socketAPI} from "../utils/socket";
 import Grid from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
-import {MapContext} from "./MapContext";
 
-let currentPositionX = 0
-let currentPositionY = 0
-
-const changePositionX = (val) => {
-    currentPositionX = currentPositionX + val
-}
-
-const changePositionY = (val) => {
-    currentPositionY = currentPositionY + val
-}
+// let currentPositionX = 0
+// let currentPositionY = 0
 
 const Forest = (props) => {
 
-    const { cellSize, setCSS, setGridCSS } = useContext(MapContext)
+    const [currentPositionX, setCurrentPositionX] = useState(0)
+    const [currentPositionY, setCurrentPositionY] = useState(0)
 
-    // let renderGrid = () => {
-    //
-    //     let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
-    //     let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
-    //     setGridCSS(ratioWidth, ratioHeight)
-    //
-    //     let grid = []
-    //
-    //     // if (ratioWidth % 2 === 0) {
-    //     //     ratioWidth--
-    //     // }
-    //     // if (ratioHeight % 2 === 0) {
-    //     //     ratioHeight--
-    //     // }
-    //
-    //     let centerX = Math.floor(ratioWidth/2)
-    //     let centerY = Math.floor(ratioHeight/2)
-    //
-    //     // log(centerX + ' ' + centerY)
-    //
-    //     for (let j = 0; j < ratioHeight; j++) {
-    //
-    //         for (let i = 0; i < ratioWidth; i++) {
-    //
-    //             const x = i + currentPositionX
-    //             const y = j + currentPositionY
-    //
-    //             let center = false
-    //             if (i === centerX && j === centerY)
-    //                 center = true
-    //
-    //             let cell = {
-    //                 x,
-    //                 y,
-    //                 type: props.map && props.map[x] && props.map[x][y] ? props.map[x][y].type : false,
-    //                 center,
-    //                 soil: -1
-    //             }
-    //
-    //             grid.push(cell);
-    //         }
-    //     }
-    //
-    //     setGrid(grid)
-    // }
+    const changePositionX = (val) => {
+        setCurrentPositionX(currentPositionX + val)
+    }
 
-    // const getGround = () => {
-    //     return {src: './images/forest/texture.png', style: getStyle(cellSize)}
-    // }
+    const changePositionY = (val) => {
+        setCurrentPositionY(currentPositionY + val)
+    }
 
     let [selectedCellX, setSelectedCellX] = useState('')
     let [selectedCellY, setSelectedCellY] = useState('')
+
     let [selectedItem, setSelectedItem] = useState(false)
 
     const clickTile = (x, y) => {
-        log(x + ':' + y)
+
         setSelectedCellX(x)
         setSelectedCellY(y)
 
-        // log(props.map[x][y])
-
-        if (props.map[x][y].length > 0) {
+        if (!props.map[x][y].empty) {
             log('Selected: ' + props.map[x][y])
             setSelectedItem(props.map[x][y])
         } else
             setSelectedItem(false)
 
-        socketAPI.sendSeed({x, y})
+        // socketAPI.sendSeed({x, y})
     }
+
+    useEffect(() => {
+
+    }, [currentPositionX, currentPositionY])
 
     // log('ground forest')
 

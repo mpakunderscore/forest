@@ -3,6 +3,9 @@
     z-index: 3;
 
     --main-padding: 20px;
+
+    --color-buttons-background-hover: gray;
+    --color-buttons-background-selected: dimgray;
 }
 
 /*.description {*/
@@ -49,9 +52,10 @@
     line-height: 40px;
     text-align: center;
 
-    background-color: gray;
-    color: whitesmoke;
+    background-color: lightgray;
+    color: black;
     font-size: 10px;
+    font-weight: 700;
 
     /*margin: 5px;*/
 
@@ -59,11 +63,11 @@
 }
 
 .inventory > div:hover {
-    background-color: lightgreen;
+    background-color: var(--color-buttons-background-hover);
 }
 
 .inventory > div.selected {
-    background-color: #40c240;
+    background-color: var(--color-buttons-background-selected);
 }
 
 .title {
@@ -82,6 +86,8 @@
     position: fixed;
     display: flex;
     flex-direction: row;
+
+    /*padding: 5px;*/
 
     bottom: var(--main-padding);
     right: var(--main-padding);
@@ -104,11 +110,11 @@
 }
 
 .controls > div:hover {
-    background-color: gray;
+    background-color: var(--color-buttons-background-hover);
 }
 
 .controls > div.active {
-    background-color: dimgray;
+    background-color: var(--color-buttons-background-selected);
 }
 
 .item {
