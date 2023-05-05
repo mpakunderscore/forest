@@ -11,7 +11,7 @@ let raccoon = {
 
 const moveDeerAction = (map) => {
     let paramY = Math.floor(Math.random() * 3) - 1
-    if (checkExistX(map, deer, paramY)) {
+    if (checkExistY(map, deer, paramY)) {
         deer.y = deer.y + paramY
     }
     let paramX = Math.floor(Math.random() * 3) - 1

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {createGesture} from "@ionic/react";
 import Controls from "./Controls";
+import ItemView from "./ItemView";
 
 const Overlay = (props) => {
 
@@ -87,21 +88,10 @@ const Overlay = (props) => {
                 })}
             </div>
 
-            {/*Item description*/}
-            {props.selectedCellX && props.selectedItem && <div className={'item'} onClick={() => {
-                props.setSelectedCellX('')
-                props.setSelectedCellY('')
-            }}>
-                <div
-                    className={'title'}>{'Pine tree'.toUpperCase() + ' ' + props.selectedCellX + ':' + props.selectedCellY + ' '}</div>
-                <div className={'text'}>Type: {(props.map[props.selectedCellX][props.selectedCellY].type)}</div>
-                <div className={'text'}>Level: {(props.map[props.selectedCellX][props.selectedCellY].level)}</div>
-                <div className={'text'}>Seed: {props.map[props.selectedCellX][props.selectedCellY].items}</div>
-                <div className={'text'}>Pine trees have adapted to thrive in harsh environments, with some species even
-                    growing on rocky cliffs.
-                </div>
-
-            </div>}
+            {props.selectedCellX && <ItemView map={props.map}
+                      selectedCellX={props.selectedCellX}
+                      selectedCellY={props.selectedCellY}
+            />}
 
             <Controls time={props.time}/>
 
