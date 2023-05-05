@@ -1,7 +1,7 @@
 const {initAPI} = require("./server/api");
 const {initSocket} = require("./server/socket");
-const {getChat} = require("./server/openai");
 const {initDatabase} = require('./server/database/database')
+const {initTimer} = require('./server/timer')
 
 const { Server } = require('socket.io')
 const path = require('path')
@@ -25,6 +25,7 @@ require('dotenv').config()
 initAPI(app).then()
 initSocket(io)
 initDatabase()
+initTimer()
 
 // google.readGoogleTable().then(r => {})
 

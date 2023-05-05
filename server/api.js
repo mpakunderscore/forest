@@ -1,4 +1,4 @@
-const {getChat} = require("./openai");
+const {getChat} = require("./openai/openai");
 const {getMap} = require("./map/map");
 let prefix = '/api'
 

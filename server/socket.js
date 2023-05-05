@@ -1,30 +1,33 @@
 const {updateMap, getMap} = require("./map/map");
+const {getTimeCount} = require("./timer");
 
-let timeCount = 0
+let io
 
-const initSocket = (io) => {
+const initSocket = (server) => {
+
+    io = server
 
     io.on('connection', (socket) => {
+
         console.log('Connected: ' + socket.id);
         const map = getMap()
-        socket.emit('map', {time: timeCount, map})
+        socket.emit('map', {time: getTimeCount(), map})
 
         socket.on('seed', (seed) => {
             console.log('Seed: ' + seed);
         })
     })
-
-    initGlobalTimer(io)
 }
 
-const initGlobalTimer = (io) => {
-    setInterval(() => {
-        timeCount++
-        const map = updateMap()
-        io.emit('map', {time: timeCount, map})
-    }, 1000)
+const broadcast = (name, value) => {
+    io.emit(name, value)
 }
+
+const broadcastNames = {
+
+}
+
 
 module.exports = {
-    initSocket
+    initSocket, broadcast
 }
