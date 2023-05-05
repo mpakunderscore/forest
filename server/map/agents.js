@@ -42,8 +42,8 @@ const checkExistX = (map, agent, paramX) => {
 const moveAgents = (updatedMap) => {
     moveDeerAction(updatedMap)
     moveRaccoonAction(updatedMap)
-    updatedMap[deer.x][deer.y] = {...mapItemDefault, type: 'animal', name: 'deer', level: 1}
-    updatedMap[raccoon.x][raccoon.y] = {...mapItemDefault, type: 'animal', name: 'raccoon', level: 1}
+    updatedMap[deer.x][deer.y] = {...mapItemDefault, type: 'deer', level: 1}
+    updatedMap[raccoon.x][raccoon.y] = {...mapItemDefault, type: 'raccoon', level: 1}
     return updatedMap
 }
 

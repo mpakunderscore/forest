@@ -26,9 +26,9 @@ const Cell = (props) => {
 
     const image = getImage(props.item.type + props.item.level)
 
-    console.log(props.item)
+    // console.log(props.item)
 
-    console.log(image)
+    // console.log(image)
 
     return <img src={image.src}
                 style={{...image.style, border: isCoordinates ? debugBorder : ''}}
