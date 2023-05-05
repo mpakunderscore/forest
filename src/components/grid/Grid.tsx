@@ -3,34 +3,13 @@ import {createGesture} from "@ionic/react";
 import {grass} from "../ground/ground";
 import {log} from "../../utils/log";
 import {MapContext} from "../MapContext";
+import Cell from "./Cell";
 
 const Grid = (props) => {
 
     let [grid, setGrid] = useState([])
 
     const { cellSize, CELL_SIZE_DEFAULT, isCoordinates, setCSS, setGridCSS } = useContext(MapContext)
-
-    let getStyle = (width) => {
-        width = width * (cellSize / CELL_SIZE_DEFAULT)
-        return {width: width + 'px', height: width + 'px'}
-    }
-
-    let images = {
-        A: {src: './images/forest/10.png', style: getStyle(33)},
-        B: {src: './images/forest/30.png', style: getStyle(60)},
-        C: {src: './images/forest/50.png', style: getStyle(100)},
-        D: {src: './images/forest/deer.png', style: getStyle(50)},
-        R: {src: './images/forest/raccoon.png', style: getStyle(30)},
-        X: {src: './images/forest/100.png', style: getStyle(150)},
-        Y: {src: './images/forest/100f.png', style: getStyle(180)},
-        Z: {src: './images/forest/100r.png', style: getStyle(100)},
-
-    }
-
-    const getImage = (key) => {
-        // console.log(key)
-        return images[key]
-    }
 
     let renderGrid = (map) => {
 
@@ -69,12 +48,15 @@ const Grid = (props) => {
                 if (i === centerX && j === centerY)
                     center = true
 
+                // TODO
                 let cell = {
                     i,
                     j,
                     x,
                     y,
-                    type: map[x] && map[x][y] && !map[x][y].empty ? map[x][y].type : false,
+                    name: map[x] && map[x][y] && map[x][y].name ? map[x][y].name : false,
+                    type: map[x] && map[x][y] && map[x][y].type ? map[x][y].type : false,
+                    level: map[x] && map[x][y] && map[x][y].level ? map[x][y].level : false,
                     center,
                     soil: -1
                 }
@@ -123,9 +105,7 @@ const Grid = (props) => {
                             style={{background: grass[item.soil] ? grass[item.soil].color : ''}}
                             onClick={() => props.clickTile(item.x, item.y)}>
 
-                    {item.type && <img src={getImage(item.type).src}
-                                       style={{...getImage(item.type).style, border: isCoordinates ? '1px solid red' : ''}}
-                    />}
+                    {item.type && <Cell item={item}/>}
 
                     {isCoordinates && <div className={'coordinates'}>
                         <div>{item.x}</div>:

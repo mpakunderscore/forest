@@ -14,14 +14,18 @@ const generateMap = () => {
             let random = Math.random() * 1000;
 
             // TODO Empty
-            generatedMap[i][j] = {empty: true}
+            // generatedMap[i][j] = {empty: true}
 
-            if (random >= 995) {
+            if (random >= 900) {
+
                 generatedMap[i][j] = {...mapItemDefault}
-                // generatedMap[i][j].type = possibleTrees.charAt(Math.floor(Math.random() * possibleTrees.length));
-            } else if (random > 950) {
-                generatedMap[i][j] = {...mapItemDefault}
-                // generatedMap[i][j].type = possibleGreen.charAt(Math.floor(Math.random() * possibleGreen.length));
+                generatedMap[i][j].type = 'tree'
+                generatedMap[i][j].name = 'pine'
+                generatedMap[i][j].level = 1
+
+                if (random > 950) {
+                    generatedMap[i][j].level = 2
+                }
             }
         }
     }

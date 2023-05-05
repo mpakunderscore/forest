@@ -1,15 +1,15 @@
 const {updateMap} = require("./map/map")
-const {emitSocket} = require("./socket");
+const {broadcast} = require("./socket");
 
 let timeCount = 0
 
-const initTimer = (io) => {
+const initTimer = () => {
 
     setInterval(() => {
 
         timeCount++
         const map = updateMap()
-        emitSocket('map', {time: timeCount, map})
+        broadcast('map', {time: timeCount, map})
 
     }, 1000)
 }

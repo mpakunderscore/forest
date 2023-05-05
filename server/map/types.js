@@ -1,4 +1,6 @@
 const mapItemDefault = {
+    id: '',
+
     x: 0,
     y: 0,
 
@@ -17,21 +19,21 @@ const itemTypes = {
         maple: {},
         pine: {}
     },
-    stone: {
-
-    }
+    stone: {}
 }
 
 const unitTypes = {
     animal: {
-        deer: {
-
-        }
+        deer: {},
+        fox: {},
+        raccoon: {},
     },
     robot: {
-        assembler: {
-
-        }
+        hunter: {},
+        assembler: {},
+    },
+    human: {
+        lumberjack: {}
     }
 }
 
