@@ -3,7 +3,7 @@ import {createGesture} from "@ionic/react";
 import {grass} from "../ground/ground";
 import {log} from "../../utils/log";
 import {MapContext} from "../MapContext";
-import Cell from "./Cell";
+import CellImage from "./CellImage";
 
 const Grid = (props) => {
 
@@ -104,7 +104,7 @@ const Grid = (props) => {
                             style={{background: grass[item.soil] ? grass[item.soil].color : ''}}
                             onClick={() => props.clickTile(item.x, item.y)}>
 
-                    {item.type && <Cell item={item}/>}
+                    {item.type && <CellImage item={item}/>}
 
                     {isCoordinates && <div className={'coordinates'}>
                         <div>{item.x}</div>:

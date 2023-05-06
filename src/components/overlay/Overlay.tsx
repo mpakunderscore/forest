@@ -88,7 +88,7 @@ const Overlay = (props) => {
                 })}
             </div>
 
-            {props.selectedCellX && <ItemView map={props.map}
+            {props.selectedItem && <ItemView map={props.map}
                       selectedCellX={props.selectedCellX}
                       selectedCellY={props.selectedCellY}
             />}

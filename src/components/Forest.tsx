@@ -33,7 +33,7 @@ const Forest = (props) => {
         setSelectedCellX(x)
         setSelectedCellY(y)
 
-        if (props.map[x][y]) {
+        if (props.map[x][y] && props.map[x][y].type) {
             console.log(props.map[x][y])
             setSelectedItem(props.map[x][y])
         } else

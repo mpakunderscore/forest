@@ -32,11 +32,11 @@ const moveRaccoonAction = (map) => {
 }
 
 const checkExistY = (map, agent, paramY) => {
-    return !map[agent.x][agent.y + paramY]
+    return !map[agent.x] || !map[agent.x][agent.y + paramY]
 }
 
 const checkExistX = (map, agent, paramX) => {
-    return !map[agent.x + paramX][agent.y]
+    return !map[agent.x + paramX] || !map[agent.x + paramX][agent.y]
 }
 
 const moveAgents = (updatedMap) => {

@@ -3,7 +3,7 @@ import {MapContext} from "../MapContext";
 
 const debugBorder = '1px solid red'
 
-const Cell = (props) => {
+const CellImage = (props) => {
 
     const { cellSize, CELL_SIZE_DEFAULT, isCoordinates, setCSS, setGridCSS } = useContext(MapContext)
 
@@ -35,4 +35,4 @@ const Cell = (props) => {
     />
 }
 
-export default Cell
+export default CellImage
