@@ -14,13 +14,17 @@ const initSocket = (server) => {
         socket.emit('map', {time: 0, map})
 
         socket.on('seed', (seed) => {
-            console.log('Seed: ' + seed);
+            setSeed(seed)
         })
     })
 }
 
 const broadcast = (name, value) => {
     io.emit(name, value)
+}
+
+const setSeed = (seed) => {
+    console.log('Seed: ' + seed);
 }
 
 module.exports = {
