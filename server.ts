@@ -1,7 +1,7 @@
-const {initAPI} = require("./api");
-const {initSocket} = require("./socket");
-const {initDatabase} = require('./database/database')
-const {initTimer} = require('./timer')
+const {initAPI} = require("./server/api");
+const {initSocket} = require("./server/socket");
+const {initDatabase} = require('./server/database/database')
+const {initTimer} = require('./server/timer')
 
 const { Server } = require('socket.io')
 const path = require('path')

@@ -2,9 +2,9 @@
     "name": "animal",
     "version": "0.2.0",
     "description": "Animal",
-    "main": "server/server.ts",
+    "main": "server.ts",
     "scripts": {
-        "start": "node server/server.ts",
+        "start": "node server.ts",
         "watch": "webpack --watch",
         "build": "NODE_ENV=production webpack --stats-error-details",
         "test": "mocha --require babel-mocha.js",

@@ -6,7 +6,9 @@ const {generateMap} = require("./generator");
 // let possibleTrees = 'XYZ';
 
 module.exports.updateMap = () => {
+
     updatedMap = JSON.parse(JSON.stringify(map))
+
     updatedMap = updateGround(updatedMap)
     updatedMap = updateAgents(updatedMap)
     return updatedMap
