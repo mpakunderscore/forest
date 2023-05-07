@@ -1,34 +1,20 @@
-const {mapItemDefault} = require("./types");
-let deer = {
-    x: 20,
-    y: 20,
-}
+const {mapItemDefault} = require("./types")
 
-let raccoon = {
-    x: 30,
-    y: 30,
-}
+let units = []
 
-const moveDeerAction = (map) => {
-    let paramY = Math.floor(Math.random() * 3) - 1
-    if (checkExistY(map, deer, paramY)) {
-        deer.y = deer.y + paramY
-    }
+const moveAgent = (map, agent) => {
+
     let paramX = Math.floor(Math.random() * 3) - 1
-    if (checkExistX(map, deer, paramX)) {
-        deer.x = deer.x + paramX
+    if (checkExistX(map, agent, paramX)) {
+        agent.x = agent.x + paramX
     }
-}
 
-const moveRaccoonAction = (map) => {
     let paramY = Math.floor(Math.random() * 3) - 1
-    if (checkExistY(map, raccoon, paramY)) {
-        raccoon.y = raccoon.y + paramY
+    if (checkExistY(map, agent, paramY)) {
+        agent.y = agent.y + paramY
     }
-    let paramX = Math.floor(Math.random() * 3) - 1
-    if (checkExistX(map, raccoon, paramX)) {
-        raccoon.x = raccoon.x + paramX
-    }
+
+    map[agent.x][agent.y] = {...agent}
 }
 
 const checkExistY = (map, agent, paramY) => {
@@ -40,10 +26,9 @@ const checkExistX = (map, agent, paramX) => {
 }
 
 const moveAgents = (updatedMap) => {
-    moveDeerAction(updatedMap)
-    moveRaccoonAction(updatedMap)
-    updatedMap[deer.x][deer.y] = {...mapItemDefault, type: 'deer', level: 1}
-    updatedMap[raccoon.x][raccoon.y] = {...mapItemDefault, type: 'raccoon', level: 1}
+    for (let i = 0; i < units.length; i++) {
+        moveAgent(updatedMap, units[i])
+    }
     return updatedMap
 }
 

@@ -12,13 +12,13 @@ const ItemView = (props) => {
             props.setSelectedCellX('')
             props.setSelectedCellY('')
         }}>
-            <div className={'title'}>Type: {item.type}</div>
-            <div className={'text'}>Level: {item.level}</div>
-            <div className={'text'}>Seed: {item.items}</div>
-            <div className={'text'}>ID: {item.id}</div>
-            <div className={'text'}>{props.selectedCellX + ':' + props.selectedCellY}</div>
-            <div className={'text'}>
-
+            <div>
+                <div className={'title'}>Type: {item.type}</div>
+                <div className={'text'}>Level: {item.level}</div>
+                <div className={'text'}>Seed: {item.items}</div>
+                <div className={'text'}>ID: {item.id}</div>
+                <div className={'text'}>{props.selectedCellX + ':' + props.selectedCellY}</div>
+                <div className={'text'}></div>
             </div>
 
         </div>

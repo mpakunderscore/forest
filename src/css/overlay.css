@@ -132,8 +132,14 @@
     background-color: whitesmoke;
 }
 
+.item > div {
+    margin: 5px;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
 .item .text {
-    margin: 0 10px 10px;
+    /*margin: 0 10px 10px;*/
 }
 
 
