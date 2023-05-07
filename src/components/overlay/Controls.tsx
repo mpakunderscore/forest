@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
-import {MapContext} from "../MapContext";
+import {MapContext} from "../../context/MapContext";
 
 const Controls = (props) => {
 
-    const { cellSize, setCellSize, isCoordinates, showCoordinates } = useContext(MapContext)
+    const {cellSize, setCellSize, isCoordinates, showCoordinates} = useContext(MapContext)
 
     // console.log(cellSize)
 

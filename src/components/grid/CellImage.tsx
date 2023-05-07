@@ -1,11 +1,11 @@
 import React, {useContext} from "react";
-import {MapContext} from "../MapContext";
+import {MapContext} from "../../context/MapContext";
 
 const debugBorder = '1px solid red'
 
 const CellImage = (props) => {
 
-    const { cellSize, CELL_SIZE_DEFAULT, isCoordinates, setCSS, setGridCSS } = useContext(MapContext)
+    const {cellSize, CELL_SIZE_DEFAULT, isCoordinates, setCSS, setGridCSS} = useContext(MapContext)
 
     const getImage = (key) => {
         // console.log(key)

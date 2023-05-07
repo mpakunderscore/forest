@@ -1,5 +1,3 @@
-import {Capacitor} from "@capacitor/core";
-
 // console.log(navigator.language)
 // console.warn(navigator.userAgent)
 

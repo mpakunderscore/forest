@@ -7,23 +7,23 @@ export type MapContextType = {
     cellSize: number,
     setCellSize: (number) => void
     setCSS: (size) => void,
-    setGridCSS:  (x, y) => void,
+    setGridCSS: (x, y) => void,
     isCoordinates: boolean,
     showCoordinates: (value) => void
 }
 
 const MapContext = createContext<MapContextType>({} as MapContextType)
 
-let setCSS = (size) => {
+let setCellCSS = (size) => {
     document.documentElement.style.setProperty('--cell-width', size + 'px');
 }
+
+setCellCSS(CELL_SIZE_DEFAULT)
 
 let setGridCSS = (x, y) => {
     document.documentElement.style.setProperty('--x-count', x);
     document.documentElement.style.setProperty('--y-count', y);
 }
-
-setCSS(CELL_SIZE_DEFAULT)
 
 const MapContextProvider = ({children}) => {
 
@@ -34,7 +34,7 @@ const MapContextProvider = ({children}) => {
         CELL_SIZE_DEFAULT,
         cellSize,
         setCellSize,
-        setCSS,
+        setCSS: setCellCSS,
         setGridCSS,
         isCoordinates,
         showCoordinates
@@ -47,4 +47,4 @@ const MapContextProvider = ({children}) => {
     )
 }
 
-export { MapContext, MapContextProvider }
+export {MapContext, MapContextProvider}

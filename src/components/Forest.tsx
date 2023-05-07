@@ -1,9 +1,7 @@
-import React, {useState, useEffect, useReducer, useRef, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import '../css/grid.css'
 import '../css/ui.css'
 import '../css/ground.css'
-import {log} from '../utils/log';
-import {socketAPI} from "../utils/socket";
 import Grid from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
 

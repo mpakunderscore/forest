@@ -89,8 +89,8 @@ const Overlay = (props) => {
             </div>
 
             {props.selectedItem && <ItemView map={props.map}
-                      selectedCellX={props.selectedCellX}
-                      selectedCellY={props.selectedCellY}
+                                             selectedCellX={props.selectedCellX}
+                                             selectedCellY={props.selectedCellY}
             />}
 
             <Controls time={props.time}/>

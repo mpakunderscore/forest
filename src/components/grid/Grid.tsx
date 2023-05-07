@@ -1,15 +1,13 @@
 import React, {useContext, useEffect, useState} from "react";
-import {createGesture} from "@ionic/react";
 import {grass} from "../ground/ground";
-import {log} from "../../utils/log";
-import {MapContext} from "../MapContext";
+import {MapContext} from "../../context/MapContext";
 import CellImage from "./CellImage";
 
 const Grid = (props) => {
 
     let [grid, setGrid] = useState([])
 
-    const { cellSize, CELL_SIZE_DEFAULT, isCoordinates, setCSS, setGridCSS } = useContext(MapContext)
+    const {cellSize, CELL_SIZE_DEFAULT, isCoordinates, setCSS, setGridCSS} = useContext(MapContext)
 
     let renderGrid = (map) => {
 
@@ -28,8 +26,8 @@ const Grid = (props) => {
         //     ratioHeight--
         // }
 
-        let centerX = Math.floor(ratioWidth/2)
-        let centerY = Math.floor(ratioHeight/2)
+        let centerX = Math.floor(ratioWidth / 2)
+        let centerY = Math.floor(ratioHeight / 2)
 
         // log(centerX + ' ' + centerY)
 
@@ -91,7 +89,7 @@ const Grid = (props) => {
         <div id={'grid'}>
             {grid.map((item, i) => {
                 return <div key={i}
-                            // id={item.x + ':' + item.y}
+                    // id={item.x + ':' + item.y}
                             className={
                                 'cell' +
                                 // (item.center ? ' center' : '') +
@@ -107,7 +105,8 @@ const Grid = (props) => {
                     {item.type && <CellImage item={item}/>}
 
                     {isCoordinates && <div className={'coordinates'}>
-                        <div>{item.x}</div>:
+                        <div>{item.x}</div>
+                        :
                         <div>{item.y}</div>
                     </div>}
 

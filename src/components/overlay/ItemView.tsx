@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {MapContext} from "../MapContext";
+import {MapContext} from "../../context/MapContext";
 
 const ItemView = (props) => {
 
