@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {App as AppCapacitor} from '@capacitor/app';
 import Forest from "./components/Forest";
 import {initSocket} from "./utils/socket";
-import './css/index.css'
 import {MapContextProvider} from "./context/MapContext";
+import './css/index.css'
 
 function App() {
 

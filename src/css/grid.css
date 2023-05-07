@@ -13,31 +13,6 @@
     justify-content: center;
 }
 
-
-#grid:hover {
-    /*padding: 0;*/
-}
-
-#grid > div {
-    /*flex: 1 0 21%; !* explanation below *!*/
-    position: relative;
-
-    float: left;
-    text-align: center;
-    white-space: nowrap;
-
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently
-                                     supported by Chrome and Opera */
-
-    z-index: 1;
-}
-
 .cell {
     position: relative;
 
@@ -46,7 +21,8 @@
     line-height: var(--cell-width);
     /*border: 1px solid transparent;*/
 
-    /*align-items: center;*/
+    text-align: center;
+    user-select: none;
 
     display: flex;
     flex-direction: row;
@@ -59,15 +35,12 @@
     color: whitesmoke;
     /*opacity: .5;*/
 
-
     transition: .1s background-color;
 }
 
 .cell:hover {
-    /*opacity: 1;*/
     filter: brightness(110%);
     background-color: rgba(178, 178, 178, 0.35);
-    /*border-radius: 5px;*/
 }
 
 .cell.selected {

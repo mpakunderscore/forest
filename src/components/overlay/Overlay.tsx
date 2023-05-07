@@ -77,7 +77,7 @@ const Overlay = (props) => {
     // const item = props.map[props.selectedCellX][props.selectedCellY]
 
     return (
-        <div className={'ui'}>
+        <div className={'overlay'}>
 
             {/*Inventory*/}
             <div className={'inventory'}>

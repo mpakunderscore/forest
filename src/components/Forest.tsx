@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../css/grid.css'
-import '../css/ui.css'
-import '../css/ground.css'
+import '../css/overlay.css'
 import Grid from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
 
