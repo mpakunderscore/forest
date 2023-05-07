@@ -9,8 +9,8 @@ import Overlay from "./overlay/Overlay";
 
 const Forest = (props) => {
 
-    const [currentPositionX, setCurrentPositionX] = useState(0)
-    const [currentPositionY, setCurrentPositionY] = useState(0)
+    const [currentPositionX, setCurrentPositionX] = useState(-10)
+    const [currentPositionY, setCurrentPositionY] = useState(-10)
 
     const changePositionX = (val) => {
         setCurrentPositionX(currentPositionX + val)

@@ -3,9 +3,11 @@ import {MapContext} from "../../context/MapContext";
 
 const ItemView = (props) => {
 
-    const {cellSize, setCellSize, isCoordinates, showCoordinates} = useContext(MapContext)
+    // const {cellSize, setCellSize, isCoordinates, showCoordinates} = useContext(MapContext)
 
     const item = props.map[props.selectedCellX][props.selectedCellY]
+
+    // console.log(item)
 
     return (
         <div className={'item'} onClick={() => {
@@ -13,12 +15,14 @@ const ItemView = (props) => {
             props.setSelectedCellY('')
         }}>
             <div>
-                <div className={'title'}>Type: {item.type}</div>
-                <div className={'text'}>Level: {item.level}</div>
-                <div className={'text'}>Seed: {item.items}</div>
                 <div className={'text'}>ID: {item.id}</div>
-                <div className={'text'}>{props.selectedCellX + ':' + props.selectedCellY}</div>
-                <div className={'text'}></div>
+                <div className={'text'}>Type: {item.type}</div>
+                <div className={'text'}>Level: {item.level}</div>
+                <div className={'text'}>Age: {item.level}</div>
+                <div className={'text'}>Seed: {item.items}</div>
+                <div className={'text'}>X: {props.selectedCellX}</div>
+                <div className={'text'}>Y: {props.selectedCellY}</div>
+                <div className={'text'}>User: {item.user}</div>
             </div>
 
         </div>

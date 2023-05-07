@@ -47,13 +47,14 @@ const Grid = (props) => {
                     center = true
 
                 // TODO
-                let cell = {
+                let cell = {...map[x] && map[x][y] && map[x][y].type ? map[x][y].type : {},
                     i,
                     j,
                     x,
                     y,
                     type: map[x] && map[x][y] && map[x][y].type ? map[x][y].type : false,
                     level: map[x] && map[x][y] && map[x][y].level ? map[x][y].level : false,
+                    user: map[x] && map[x][y] && map[x][y].user ? map[x][y].user : false,
                     center,
                     soil: -1
                 }
@@ -94,6 +95,7 @@ const Grid = (props) => {
                                 'cell' +
                                 // (item.center ? ' center' : '') +
                                 (item.x === props.selectedCellX && item.y === props.selectedCellY ? ' selected' : '') +
+                                (item.user === 'mpakunderscore' ? ' user' : '') +
 
                                 // (' ' + soil[item.soil].type) +
 

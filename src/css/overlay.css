@@ -133,6 +133,7 @@
 }
 
 .item > div {
+    padding: 5px;
     margin: 5px;
     background-color: lightgray;
     border-radius: 5px;

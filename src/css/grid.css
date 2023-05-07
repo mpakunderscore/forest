@@ -43,9 +43,20 @@
     background-color: rgba(178, 178, 178, 0.35);
 }
 
+.cell.selected.user {
+    background-color: rgba(49, 255, 255, 0.9);
+    border-radius: 5px;
+}
+
 .cell.selected {
-    background-color: #bae8ba !important;
+    background-color: #bae8ba;
     border-radius: 2px;
+}
+
+
+.cell.user {
+    background-color: rgba(49, 140, 255, 0.9);
+    border-radius: 5px;
 }
 
 .cell img {

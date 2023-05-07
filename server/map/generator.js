@@ -2,6 +2,8 @@ const {mapItemDefault, getTree} = require("./types");
 
 const DEFAULT_MAP_WIDTH = 200
 const DEFAULT_MAP_HEIGHT = 200
+
+let treesCount = 0
 const generateMap = () => {
 
     let generatedMap = {}
@@ -17,7 +19,7 @@ const generateMap = () => {
             // generatedMap[i][j] = {empty: true}
 
             if (random >= 900) {
-                generatedMap[i][j] = getTree()
+                generatedMap[i][j] = getTree(treesCount++)
                 if (random > 950) {
                     generatedMap[i][j].level = 2
                 }

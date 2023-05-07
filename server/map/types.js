@@ -14,10 +14,17 @@ const mapItemDefault = {
     user: '',
 }
 
-const getTree = () => {
+const getTree = (id) => {
+    console.log(id)
     let item = {...mapItemDefault}
+    item.id = id
     item.type = 'tree'
     item.level = 1
+
+    if (id < 3) {
+        item.user = 'mpakunderscore'
+    }
+
     item.action = () => {}
     return item
 }
