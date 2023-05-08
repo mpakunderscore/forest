@@ -5,7 +5,6 @@ const mapItemDefault = {
     type: '',
     level: 1,
     items: [],
-    action: () => {},
     user: '',
 }
 

@@ -1,5 +1,5 @@
 const {updateGround} = require("./ground");
-const {updateAgents} = require("./agents");
+const {updateAgents} = require("./agents/agents");
 const {generateMap} = require("./generator");
 
 // let possibleGreen = 'ABC';

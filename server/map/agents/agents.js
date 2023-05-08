@@ -1,4 +1,4 @@
-const {mapItemDefault} = require("./types")
+const {mapItemDefault} = require("../types")
 
 let units = []
 
@@ -11,11 +11,19 @@ const createUnits = () => {
         agent.type = 'deer'
         units.push(agent)
     }
+
+    for (let i = 0; i < 10; i++) {
+
+        let agent = {...mapItemDefault}
+        agent.id = 'raccoon' + i
+        agent.type = 'raccoon'
+        units.push(agent)
+    }
 }
 
 createUnits()
 
-const moveAgent = (map, agent) => {
+const updateAgent = (map, agent) => {
 
     let paramX = Math.floor(Math.random() * 3) - 1
     if (checkExistX(map, agent, paramX)) {
@@ -40,7 +48,7 @@ const checkExistX = (map, agent, paramX) => {
 
 const moveAgents = (updatedMap) => {
     for (let i = 0; i < units.length; i++) {
-        moveAgent(updatedMap, units[i])
+        updateAgent(updatedMap, units[i])
     }
     return updatedMap
 }
