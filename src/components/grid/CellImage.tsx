@@ -15,9 +15,11 @@ const CellImage = (props) => {
         return style
     }
 
-    const unitsImages = {
-        deer: {src: './images/forest/units/deer.png', style: getStyle(50)},
-        raccoon: {src: './images/forest/units/raccoon.png', style: getStyle(30)},
+    const unitsImages = (type, transform) => {
+        return {
+            deer: {src: './images/forest/units/deer.png', style: getStyle(50, transform)},
+            raccoon: {src: './images/forest/units/raccoon.png', style: getStyle(30)},
+        }[type]
     }
 
     const getImage = (type, level, id) => {
@@ -35,7 +37,7 @@ const CellImage = (props) => {
 
             return treeImage
         } else
-            return unitsImages[type]
+            return unitsImages(type, false)
 
     }
 

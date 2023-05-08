@@ -8,10 +8,9 @@ const generateMap = () => {
 
     let generatedMap = {}
 
-    for (let i = 0; i < DEFAULT_MAP_WIDTH; i++) {
-
+    for (let i = -DEFAULT_MAP_WIDTH; i < DEFAULT_MAP_WIDTH; i++) {
         generatedMap[i] = {}
-        for (let j = 0; j < DEFAULT_MAP_HEIGHT; j++) {
+        for (let j = -DEFAULT_MAP_HEIGHT; j < DEFAULT_MAP_HEIGHT; j++) {
 
             let random = Math.random() * 1000;
 

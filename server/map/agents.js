@@ -2,6 +2,18 @@ const {mapItemDefault} = require("./types")
 
 let units = []
 
+const createUnits = () => {
+
+    for (let i = 0; i < 100; i++) {
+
+        let agent = {...mapItemDefault}
+        agent.type = 'deer'
+        units.push(agent)
+    }
+}
+
+createUnits()
+
 const moveAgent = (map, agent) => {
 
     let paramX = Math.floor(Math.random() * 3) - 1
@@ -18,11 +30,11 @@ const moveAgent = (map, agent) => {
 }
 
 const checkExistY = (map, agent, paramY) => {
-    return !map[agent.x] || !map[agent.x][agent.y + paramY]
+    return (!map[agent.x] || !map[agent.x][agent.y + paramY])
 }
 
 const checkExistX = (map, agent, paramX) => {
-    return !map[agent.x + paramX] || !map[agent.x + paramX][agent.y]
+    return (!map[agent.x + paramX] || !map[agent.x + paramX][agent.y])
 }
 
 const moveAgents = (updatedMap) => {

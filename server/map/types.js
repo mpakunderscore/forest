@@ -21,7 +21,7 @@ const getTree = (id, i, j) => {
     item.type = 'tree'
     item.level = 1
 
-    if (i < 5 && j < 5) {
+    if (i < 5 && i > 0 && j < 5 && j > 0) {
         item.user = 'mpakunderscore'
     }
 
