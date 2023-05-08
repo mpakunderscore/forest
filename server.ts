@@ -1,3 +1,6 @@
+const {updateMap} = require("./server/map/map");
+const {broadcast} = require("./server/socket");
+
 const {initAPI} = require("./server/api");
 const {initSocket} = require("./server/socket");
 const {initDatabase} = require('./server/database/database')
@@ -25,7 +28,11 @@ require('dotenv').config()
 initAPI(app).then()
 initSocket(io)
 initDatabase()
-initTimer()
+
+initTimer((time) => {
+    const map = updateMap()
+    broadcast('map', {time, map})
+})
 
 // google.readGoogleTable().then(r => {})
 

@@ -1,17 +1,18 @@
 const {updateMap} = require("./map/map")
 const {broadcast} = require("./socket");
 
+const TIMER_INTERVAL = 1000
+
 let timeCount = 0
 
-const initTimer = () => {
+const initTimer = (event) => {
 
     setInterval(() => {
 
         timeCount++
-        const map = updateMap()
-        broadcast('map', {time: timeCount, map})
+        event(timeCount)
 
-    }, 1000)
+    }, TIMER_INTERVAL)
 }
 
 const getTimeCount = () => {

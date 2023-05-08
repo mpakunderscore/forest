@@ -27,20 +27,20 @@ const ItemView = (props) => {
                 <div>User: {item.user}</div>
             </div>
 
-            <div className={'text item-controls'}>
-                <div onClick={() => {
-                    centerView(item)
-                }}>Center</div>
-                <div onClick={() => {
-                    centerViewAuto()
-                }}>Auto</div>
-            </div>
+            {/*<div className={'text item-controls'}>*/}
+            {/*    <div onClick={() => {*/}
+            {/*        centerView(item)*/}
+            {/*    }}>Center</div>*/}
+            {/*    <div onClick={() => {*/}
+            {/*        centerViewAuto()*/}
+            {/*    }}>Auto</div>*/}
+            {/*</div>*/}
 
-            <div className={'text item-controls'}>
-                <div>Prev</div>
-                <div>4 / 10</div>
-                <div>Next</div>
-            </div>
+            {/*<div className={'text item-controls'}>*/}
+            {/*    <div>Prev</div>*/}
+            {/*    <div>4 / 10</div>*/}
+            {/*    <div>Next</div>*/}
+            {/*</div>*/}
 
         </div>
     )
