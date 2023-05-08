@@ -1,59 +1,31 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect} from "react";
 import '../css/grid.css'
 import '../css/overlay.css'
 import Grid from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
-
-// let currentPositionX = 0
-// let currentPositionY = 0
+import {UserContext} from "../context/UserContext";
 
 const Forest = (props) => {
 
-    let [selectedCellX, setSelectedCellX] = useState('')
-    let [selectedCellY, setSelectedCellY] = useState('')
-
-    let [selectedItem, setSelectedItem] = useState(false)
+    const {selectedItem, setSelectedItem} = useContext(UserContext)
 
     const clickTile = (x, y) => {
 
-        setSelectedCellX(x)
-        setSelectedCellY(y)
-
         if (props.map[x][y] && props.map[x][y].type) {
-            // console.log(props.map[x][y])
             setSelectedItem(props.map[x][y])
         } else
             setSelectedItem(false)
-
-        // socketAPI.sendSeed({x, y})
     }
 
     useEffect(() => {
-
     }, [])
 
     // log('ground forest')
 
     return (
         <div>
-            <Overlay selectedCellX={selectedCellX}
-                     selectedCellY={selectedCellY}
-                     setSelectedCellX={setSelectedCellX}
-                     setSelectedCellY={setSelectedCellY}
-                     selectedItem={selectedItem}
-                     time={props.time}
-                     map={props.map}
-
-            />
-
-            <Grid selectedCellX={selectedCellX}
-                  selectedCellY={selectedCellY}
-                  setSelectedCellX={setSelectedCellX}
-                  setSelectedCellY={setSelectedCellY}
-                  clickTile={clickTile}
-                  map={props.map}
-            />
-
+            <Grid clickTile={clickTile} map={props.map}/>
+            <Overlay time={props.time} map={props.map}/>
         </div>
     )
 }

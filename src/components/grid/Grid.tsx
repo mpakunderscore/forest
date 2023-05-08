@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {grass} from "../ground/ground";
 import {MapContext} from "../../context/MapContext";
 import CellImage from "./CellImage";
+import {UserContext} from "../../context/UserContext";
 
 const Grid = (props) => {
 
@@ -18,6 +19,8 @@ const Grid = (props) => {
         contextX,
         contextY
     } = useContext(MapContext)
+
+    const {selectedItem, setSelectedItem} = useContext(UserContext)
 
     let renderGrid = (map) => {
 
@@ -56,7 +59,7 @@ const Grid = (props) => {
                 if (i === centerX && j === centerY)
                     center = true
 
-                // TODO
+                // TODO ?
                 let cell = {
                     id: map[x] && map[x][y] && map[x][y].id ? map[x][y].id : false,
                     ...map[x] && map[x][y] && map[x][y].type ? map[x][y].type : {},
@@ -106,7 +109,7 @@ const Grid = (props) => {
                             className={
                                 'cell' +
                                 // (item.center ? ' center' : '') +
-                                (item.x === props.selectedCellX && item.y === props.selectedCellY ? ' selected' : '') +
+                                (item.x === selectedItem.x && item.y === selectedItem.y ? ' selected' : '') +
                                 (item.user === 'mpakunderscore' ? ' user' : '') +
 
                                 // (' ' + soil[item.soil].type) +

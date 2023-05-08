@@ -2,6 +2,8 @@
     --cell-width: '';
     --x-count: '';
     --y-count: '';
+
+    --cell-vorder-radius: 5px;
 }
 
 #grid {
@@ -41,22 +43,24 @@
 .cell:hover {
     filter: brightness(110%);
     background-color: rgba(178, 178, 178, 0.35);
+    border-radius: var(--cell-vorder-radius);
 }
 
 .cell.selected.user {
     background-color: rgba(49, 255, 255, 0.9);
-    border-radius: 10px;
+    border-radius: var(--cell-vorder-radius);
 }
 
 .cell.selected {
-    background-color: #bae8ba;
-    border-radius: 2px;
+    background-color: rgba(49, 140, 255, 0.9);
+    border-radius: var(--cell-vorder-radius);
 }
 
 
 .cell.user {
-    background-color: rgba(49, 140, 255, 0.9);
-    border-radius: 10px;
+    /*background-color: rgba(49, 140, 255, 0.9);*/
+    background-color: rgba(87, 255, 49, 0.9);
+    border-radius: var(--cell-vorder-radius);
 }
 
 .cell img {

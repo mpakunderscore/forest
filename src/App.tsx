@@ -4,6 +4,7 @@ import Forest from "./components/Forest";
 import {initSocket} from "./utils/socket";
 import {MapContextProvider} from "./context/MapContext";
 import './css/index.css'
+import {UserContextProvider} from "./context/UserContext";
 
 function App() {
 
@@ -16,15 +17,16 @@ function App() {
     }
 
     useEffect(() => {
-        AppCapacitor.addListener('backButton', () => {
-        })
+        AppCapacitor.addListener('backButton', () => {})
         initSocket(onMap)
     }, [])
 
     return (
         <div id={'app'}>
             <MapContextProvider>
-                <Forest map={map} time={time}/>
+                <UserContextProvider>
+                    <Forest map={map} time={time}/>
+                </UserContextProvider>
             </MapContextProvider>
         </div>
     );
