@@ -1,16 +1,11 @@
 const mapItemDefault = {
     id: 0,
-
     x: 0,
     y: 0,
-
     type: '',
-
     level: 1,
     items: [],
-
     action: () => {},
-
     user: '',
 }
 

@@ -4,9 +4,10 @@ let units = []
 
 const createUnits = () => {
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 10; i++) {
 
         let agent = {...mapItemDefault}
+        agent.id = 'deer' + i
         agent.type = 'deer'
         units.push(agent)
     }

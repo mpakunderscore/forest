@@ -18,6 +18,7 @@ const Grid = (props) => {
         currentPositionY,
         // contextX,
         // contextY
+        centerView
     } = useContext(MapContext)
 
     let {userItems, setUserItems, selectedItem, setSelectedItem, userItemsIds, setUserItemsIds} = useContext(UserContext)
@@ -58,6 +59,10 @@ const Grid = (props) => {
                     soil: -1
                 }
 
+                if (map[x] && map[x][y] && map[x][y].id === selectedItem.id)
+                    centerView(map[x][y])
+
+
                 // console.log(cell.type)
 
                 grid.push(cell);
@@ -95,7 +100,7 @@ const Grid = (props) => {
                             className={
                                 'cell' +
                                 // (item.center ? ' center' : '') +
-                                (item.x === selectedItem.x && item.y === selectedItem.y ? ' selected' : '') +
+                                (item.id === selectedItem.id ? ' selected' : '') +
                                 (item.user === 'mpakunderscore' ? ' user' : '') +
                                 (isCoordinates ? ' debug' : '') +
 
