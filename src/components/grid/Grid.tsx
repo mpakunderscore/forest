@@ -20,44 +20,29 @@ const Grid = (props) => {
         // contextY
     } = useContext(MapContext)
 
-    const {selectedItem, setSelectedItem} = useContext(UserContext)
+    let {userItems, setUserItems, selectedItem, setSelectedItem, userItemsIds, setUserItemsIds} = useContext(UserContext)
 
     let renderGrid = (map) => {
-
-        // console.log(map)
 
         let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
         let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
         setGridCSS(ratioWidth, ratioHeight)
 
-        // grid = []
-
-        // if (ratioWidth % 2 === 0) {
-        //     ratioWidth--
-        // }
-        // if (ratioHeight % 2 === 0) {
-        //     ratioHeight--
-        // }
-
-        let centerX = Math.floor(ratioWidth / 2)
-        let centerY = Math.floor(ratioHeight / 2)
-
-        // log(centerX + ' ' + centerY)
-
         grid = []
+        userItems = []
+        userItemsIds = []
 
         for (let j = 0; j < ratioHeight; j++) {
 
             for (let i = 0; i < ratioWidth; i++) {
 
-                // console.log(props.currentPositionX)
-
                 const x = i + currentPositionX
                 const y = j + currentPositionY
 
-                let center = false
-                if (i === currentPositionX && j === currentPositionY)
-                    center = true
+                if (map[x] && map[x][y] && map[x][y].user && map[x][y].user === 'mpakunderscore') {
+                    userItems.push(map[x][y])
+                    userItemsIds.push(map[x][y].id)
+                }
 
                 // TODO ?
                 let cell = {
@@ -70,7 +55,6 @@ const Grid = (props) => {
                     type: map[x] && map[x][y] && map[x][y].type ? map[x][y].type : false,
                     level: map[x] && map[x][y] && map[x][y].level ? map[x][y].level : false,
                     user: map[x] && map[x][y] && map[x][y].user ? map[x][y].user : false,
-                    center,
                     soil: -1
                 }
 
@@ -80,6 +64,8 @@ const Grid = (props) => {
             }
         }
 
+        setUserItems(userItems)
+        setUserItemsIds(userItemsIds)
         setGrid(grid)
     }
 

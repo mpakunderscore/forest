@@ -7,23 +7,22 @@ import {createGesture} from "@ionic/react";
 // const POSITION_Y_DEFAULT = -10
 
 export type UserContextType = {
+    userItemsIds,
+    setUserItemsIds,
+    userItems,
+    setUserItems,
     selectedItem,
     setSelectedItem
 }
 
 type MapItemDefault = {
     id: 0,
-
     x: 0,
     y: 0,
-
     type: '',
-
     level: 1,
     items: [],
-
     action: () => {},
-
     user: '',
 }
 
@@ -31,11 +30,19 @@ const UserContext = createContext<UserContextType>({} as UserContextType)
 
 const UserContextProvider = ({children}) => {
 
-    let [selectedItem, setSelectedItem] = useState(false)
+    const [userItemsIds, setUserItemsIds] = useState([])
+
+    const [userItems, setUserItems] = useState([])
+
+    const [selectedItem, setSelectedItem] = useState(false)
 
     const context = {
+        userItemsIds,
+        setUserItemsIds,
+        userItems,
+        setUserItems,
         selectedItem,
-        setSelectedItem
+        setSelectedItem,
     }
 
     useEffect(() => {
