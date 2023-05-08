@@ -105,7 +105,7 @@ const Grid = (props) => {
         <div className={'grid' + (isCoordinates ? ' debug' : '')}>
             {grid.map((item, i) => {
                 return <div key={i}
-                    // id={item.x + ':' + item.y}
+                            id={'cell' + i}
                             className={
                                 'cell' +
                                 // (item.center ? ' center' : '') +

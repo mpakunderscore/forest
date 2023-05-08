@@ -1,13 +1,17 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {MapContext} from "../../context/MapContext";
 import {UserContext} from "../../context/UserContext";
 
 const ItemView = (props) => {
 
     const {selectedItem, setSelectedItem} = useContext(UserContext)
-    const {centerView, centerViewAuto} = useContext(MapContext)
+    const {centerView, centerViewAuto, currentPositionX, currentPositionY} = useContext(MapContext)
 
     const item = selectedItem
+
+    useEffect(() => {
+
+    }, [selectedItem, currentPositionX, currentPositionY])
 
     // console.log(item)
 
