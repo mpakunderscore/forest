@@ -19,9 +19,20 @@ const generateMap = () => {
             // generatedMap[i][j] = {empty: true}
 
             if (random >= 900) {
-                generatedMap[i][j] = getTree(treesCount++)
+                generatedMap[i][j] = getTree(treesCount++, i, j)
+                generatedMap[i][j].x = i
+                generatedMap[i][j].y = j
                 if (random > 950) {
                     generatedMap[i][j].level = 2
+                }
+                if (random > 970) {
+                    generatedMap[i][j].level = 3
+                }
+                if (random > 990) {
+                    generatedMap[i][j].level = 4
+                }
+                if (random > 995) {
+                    generatedMap[i][j].level = 5
                 }
             }
         }

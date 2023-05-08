@@ -45,7 +45,7 @@
 
 .cell.selected.user {
     background-color: rgba(49, 255, 255, 0.9);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .cell.selected {
@@ -56,7 +56,7 @@
 
 .cell.user {
     background-color: rgba(49, 140, 255, 0.9);
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .cell img {

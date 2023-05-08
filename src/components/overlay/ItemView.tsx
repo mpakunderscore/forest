@@ -18,7 +18,6 @@ const ItemView = (props) => {
                 <div className={'text'}>ID: {item.id}</div>
                 <div className={'text'}>Type: {item.type}</div>
                 <div className={'text'}>Level: {item.level}</div>
-                <div className={'text'}>Age: {item.level}</div>
                 <div className={'text'}>Seed: {item.items}</div>
                 <div className={'text'}>X: {props.selectedCellX}</div>
                 <div className={'text'}>Y: {props.selectedCellY}</div>

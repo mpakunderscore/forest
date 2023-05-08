@@ -7,7 +7,17 @@ const Grid = (props) => {
 
     let [grid, setGrid] = useState([])
 
-    const {cellSize, CELL_SIZE_DEFAULT, isCoordinates, setCSS, setGridCSS} = useContext(MapContext)
+    const {
+        cellSize,
+        CELL_SIZE_DEFAULT,
+        isCoordinates,
+        setCellCSS,
+        setGridCSS,
+        currentPositionX,
+        currentPositionY,
+        contextX,
+        contextY
+    } = useContext(MapContext)
 
     let renderGrid = (map) => {
 
@@ -39,15 +49,17 @@ const Grid = (props) => {
 
                 // console.log(props.currentPositionX)
 
-                const x = i + props.currentPositionX
-                const y = j + props.currentPositionY
+                const x = i + contextX
+                const y = j + contextY
 
                 let center = false
                 if (i === centerX && j === centerY)
                     center = true
 
                 // TODO
-                let cell = {...map[x] && map[x][y] && map[x][y].type ? map[x][y].type : {},
+                let cell = {
+                    id: map[x] && map[x][y] && map[x][y].id ? map[x][y].id : false,
+                    ...map[x] && map[x][y] && map[x][y].type ? map[x][y].type : {},
                     i,
                     j,
                     x,
@@ -81,10 +93,10 @@ const Grid = (props) => {
     // console.log(props.map)
 
     useEffect(() => {
-        setCSS(cellSize)
+        setCellCSS(cellSize)
         renderGrid(props.map)
         window.addEventListener('resize', debounce(() => renderGrid(props.map)))
-    }, [props.map, props.currentPositionX, props.currentPositionY, cellSize])
+    }, [props.map, currentPositionX, currentPositionY, cellSize])
 
     return (
         <div id={'grid'}>

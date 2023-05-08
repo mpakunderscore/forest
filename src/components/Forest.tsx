@@ -9,17 +9,6 @@ import Overlay from "./overlay/Overlay";
 
 const Forest = (props) => {
 
-    const [currentPositionX, setCurrentPositionX] = useState(-10)
-    const [currentPositionY, setCurrentPositionY] = useState(-10)
-
-    const changePositionX = (val) => {
-        setCurrentPositionX(currentPositionX + val)
-    }
-
-    const changePositionY = (val) => {
-        setCurrentPositionY(currentPositionY + val)
-    }
-
     let [selectedCellX, setSelectedCellX] = useState('')
     let [selectedCellY, setSelectedCellY] = useState('')
 
@@ -31,7 +20,7 @@ const Forest = (props) => {
         setSelectedCellY(y)
 
         if (props.map[x][y] && props.map[x][y].type) {
-            console.log(props.map[x][y])
+            // console.log(props.map[x][y])
             setSelectedItem(props.map[x][y])
         } else
             setSelectedItem(false)
@@ -41,29 +30,23 @@ const Forest = (props) => {
 
     useEffect(() => {
 
-    }, [currentPositionX, currentPositionY])
+    }, [])
 
     // log('ground forest')
 
     return (
         <div>
-            <Overlay currentPositionX={currentPositionX}
-                     currentPositionY={currentPositionY}
-                     selectedCellX={selectedCellX}
+            <Overlay selectedCellX={selectedCellX}
                      selectedCellY={selectedCellY}
                      setSelectedCellX={setSelectedCellX}
                      setSelectedCellY={setSelectedCellY}
                      selectedItem={selectedItem}
-                     changePositionX={changePositionX}
-                     changePositionY={changePositionY}
                      time={props.time}
                      map={props.map}
 
             />
 
-            <Grid currentPositionX={currentPositionX}
-                  currentPositionY={currentPositionY}
-                  selectedCellX={selectedCellX}
+            <Grid selectedCellX={selectedCellX}
                   selectedCellY={selectedCellY}
                   setSelectedCellX={setSelectedCellX}
                   setSelectedCellY={setSelectedCellY}
