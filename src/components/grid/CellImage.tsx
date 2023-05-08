@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {MapContext} from "../../context/MapContext";
 
-const debugBorder = '1px solid red'
+const debugBorder = '1px solid rgba(255, 0, 0, 0.5)'
 
 const CellImage = (props) => {
 

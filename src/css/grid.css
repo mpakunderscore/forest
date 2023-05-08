@@ -3,16 +3,22 @@
     --x-count: '';
     --y-count: '';
 
-    --cell-vorder-radius: 5px;
+    /*--cell-border-radius: 5px;*/
+    --cell-border-radius: 0;
 }
 
-#grid {
+.grid {
     position: relative;
     display: grid;
     grid-template-columns: repeat(var(--x-count), var(--cell-width));
     grid-template-rows: repeat(var(--y-count), var(--cell-width));
 
     justify-content: center;
+}
+
+.grid.debug {
+    /*border-left: 1px solid rgba(0, 0, 0, 0.3);*/
+    /*border-top: 1px solid rgba(0, 0, 0, 0.3);*/
 }
 
 .cell {
@@ -40,27 +46,34 @@
     transition: .1s background-color;
 }
 
+.cell.debug {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
 .cell:hover {
-    filter: brightness(110%);
+    filter: brightness(140%);
     background-color: rgba(178, 178, 178, 0.35);
-    border-radius: var(--cell-vorder-radius);
+    border-radius: var(--cell-border-radius);
 }
 
 .cell.selected.user {
     background-color: rgba(49, 255, 255, 0.9);
-    border-radius: var(--cell-vorder-radius);
+    border-radius: var(--cell-border-radius);
+    filter: brightness(140%);
 }
 
 .cell.selected {
     background-color: rgba(49, 140, 255, 0.9);
-    border-radius: var(--cell-vorder-radius);
+    border-radius: var(--cell-border-radius);
 }
 
 
 .cell.user {
     /*background-color: rgba(49, 140, 255, 0.9);*/
     background-color: rgba(87, 255, 49, 0.9);
-    border-radius: var(--cell-vorder-radius);
+    filter: brightness(140%);
+    border-radius: var(--cell-border-radius);
 }
 
 .cell img {

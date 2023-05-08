@@ -16,8 +16,8 @@ const Grid = (props) => {
         setGridCSS,
         currentPositionX,
         currentPositionY,
-        contextX,
-        contextY
+        // contextX,
+        // contextY
     } = useContext(MapContext)
 
     const {selectedItem, setSelectedItem} = useContext(UserContext)
@@ -52,11 +52,11 @@ const Grid = (props) => {
 
                 // console.log(props.currentPositionX)
 
-                const x = i + contextX
-                const y = j + contextY
+                const x = i + currentPositionX
+                const y = j + currentPositionY
 
                 let center = false
-                if (i === centerX && j === centerY)
+                if (i === currentPositionX && j === currentPositionY)
                     center = true
 
                 // TODO ?
@@ -102,7 +102,7 @@ const Grid = (props) => {
     }, [props.map, currentPositionX, currentPositionY, cellSize])
 
     return (
-        <div id={'grid'}>
+        <div className={'grid' + (isCoordinates ? ' debug' : '')}>
             {grid.map((item, i) => {
                 return <div key={i}
                     // id={item.x + ':' + item.y}
@@ -111,6 +111,7 @@ const Grid = (props) => {
                                 // (item.center ? ' center' : '') +
                                 (item.x === selectedItem.x && item.y === selectedItem.y ? ' selected' : '') +
                                 (item.user === 'mpakunderscore' ? ' user' : '') +
+                                (isCoordinates ? ' debug' : '') +
 
                                 // (' ' + soil[item.soil].type) +
 

@@ -17,8 +17,10 @@ export type MapContextType = {
     currentPositionX: number,
     currentPositionY: number,
     changePosition: (x, y) => void,
-    contextX: number,
-    contextY: number
+    // contextX: number,
+    // contextY: number,
+    centerView: (item) => void
+    centerViewAuto: () => void
 }
 
 const MapContext = createContext<MapContextType>({} as MapContextType)
@@ -34,17 +36,12 @@ let setGridCSS = (x, y) => {
     document.documentElement.style.setProperty('--y-count', y);
 }
 
-let contextX = POSITION_X_DEFAULT
-let contextY = POSITION_Y_DEFAULT
+// let contextX = POSITION_X_DEFAULT
+// let contextY = POSITION_Y_DEFAULT
 
 const MapContextProvider = ({children}) => {
-
     const initKeyboard = () => {
         document.addEventListener("keydown", function (event) {
-
-            // console.log('keydown: ' + contextX)
-            // contextX++
-
             if (event.which === 39) {
                 changePosition(1, 0)
             }
@@ -99,18 +96,46 @@ const MapContextProvider = ({children}) => {
         }
     }
 
-    const [currentPositionX, setCurrentPositionX] = useState(-10)
-    const [currentPositionY, setCurrentPositionY] = useState(-10)
+    const [currentPositionX, setCurrentPositionX] = useState(POSITION_X_DEFAULT)
+    const [currentPositionY, setCurrentPositionY] = useState(POSITION_Y_DEFAULT)
 
     const changePosition = (x, y) => {
         setCurrentPositionX(currentPositionX + x)
-        contextX = contextX + x
+        // contextX = contextX + x
         setCurrentPositionY(currentPositionY + y)
-        contextY = contextY + y
+        // contextY = contextY + y
     }
 
     const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
     const [isCoordinates, showCoordinates] = useState(false)
+
+    const centerView = (item) => {
+        let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
+        let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
+        let centerX = Math.floor(ratioWidth / 2)
+        let centerY = Math.floor(ratioHeight / 2)
+
+        // let centerX = 0
+        // let centerY = 0
+
+        console.log(item)
+        console.log(centerX + ':' + centerY)
+
+        // changePosition(0, 1)
+
+        setCurrentPositionX(item.x - centerX)
+        setCurrentPositionY(item.y - centerY)
+
+        // contextX = item.x - centerX
+        // contextY = item.y - centerY
+
+    }
+
+    const centerViewAuto = () => {
+        setCenterViewAuto(!isCenterViewAuto)
+    }
+
+    const [isCenterViewAuto, setCenterViewAuto] = useState(false)
 
     const context = {
         CELL_SIZE_DEFAULT,
@@ -123,8 +148,10 @@ const MapContextProvider = ({children}) => {
         currentPositionX,
         currentPositionY,
         changePosition,
-        contextX,
-        contextY
+        // contextX,
+        // contextY,
+        centerView,
+        centerViewAuto
     }
 
     useEffect(() => {

@@ -143,6 +143,13 @@
     /*margin: 0 10px 10px;*/
 }
 
+.item-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
 
 @media only screen and (max-width: 600px) {
     .item {
