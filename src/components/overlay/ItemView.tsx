@@ -35,23 +35,68 @@ const ItemView = (props) => {
 
     return (
         <div className={'item'} onClick={() => {}}>
+
+            <div className={'center'} onClick={() => centerView(item)}>[-]</div>
+
             <div className={'text'}>
-                <div>ID: {item.id}</div>
                 <div>Type: {item.type}</div>
+                <div>ID: {item.id}</div>
+                <div>Map: {item.x}:{item.y}</div>
+
                 <div>Level: {item.level}</div>
                 <div>Seed: {item.items}</div>
                 <div>User: {item.user}</div>
-                <div>X: {item.x}</div>
-                <div>Y: {item.y}</div>
+            </div>
+
+            <div className={'text item-items'}>
+                <div>
+                    <div>Quantumite</div>
+                    <div>4</div>
+                </div>
+            </div>
+
+
+            <div className={'text item-items'}>
+
+                <div>
+                    <div className={'button'} onClick={() => {}}>Water</div>
+                    <div onClick={() => {}}>{84 + ' / ' + 340}</div>
+                </div>
+
+                <div>
+                    <div>CO2</div>
+                    <div onClick={() => {}}>{2 + ' / ' + 4}</div>
+                </div>
+
+                <div>
+                    <div>Nitrogen</div>
+                    <div onClick={() => {}}>{.1 + ' / ' + 1}</div>
+                </div>
+
+                <div>
+                    <div>Phosphorus</div>
+                    <div onClick={() => {}}>{.03 + ' / ' + .2}</div>
+                </div>
+
+            </div>
+
+            {/*<div className={'text item-controls'}>*/}
+            {/*    <div className={'button'} onClick={() => {*/}
+            {/*        centerView(item)*/}
+            {/*    }}>Center</div>*/}
+            {/*    <div onClick={() => {*/}
+            {/*        // centerViewAuto()*/}
+            {/*    }}></div>*/}
+            {/*</div>*/}
+
+            <div className={'text item-controls'}>
+                <div className={'button'} onClick={() => {}}>Upgrade</div>
+                <div onClick={() => {}}>{item.level + ' > ' + (item.level + 1)}</div>
             </div>
 
             <div className={'text item-controls'}>
-                <div className={'button'} onClick={() => {
-                    centerView(item)
-                }}>Center</div>
-                <div onClick={() => {
-                    // centerViewAuto()
-                }}></div>
+                <div>Seed</div>
+                <div>Root connection</div>
             </div>
 
             {selectedItem.user !== '' && <div className={'text item-controls'}>

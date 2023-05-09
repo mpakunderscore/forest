@@ -5,7 +5,7 @@ import {UserContext} from "../../context/UserContext";
 const Controls = (props) => {
 
     const {cellSize, setCellSize, isCoordinates, showCoordinates, centerView} = useContext(MapContext)
-    const {userItems, isSound, setSound} = useContext(UserContext)
+    const {userItems, isSound, setSound, selectedItem} = useContext(UserContext)
 
     // console.log(cellSize)
 
@@ -24,8 +24,11 @@ const Controls = (props) => {
             }}>{props.time}</div>
 
             <div onClick={() => {
-                if (cellSize > 10)
+                if (cellSize > 10) {
                     setCellSize(cellSize - 10)
+                    if (selectedItem)
+                        centerView(selectedItem)
+                }
             }}>-
             </div>
 
@@ -33,8 +36,11 @@ const Controls = (props) => {
             }}>{cellSize}</div>
 
             <div onClick={() => {
-                if (cellSize < 60)
+                if (cellSize < 60) {
                     setCellSize(cellSize + 10)
+                    if (selectedItem)
+                        centerView(selectedItem)
+                }
             }}>+
             </div>
 
@@ -52,7 +58,7 @@ const Controls = (props) => {
 
             <div className={(isSound ? 'active' : '')}
                  onClick={() => {
-                     // setSound(!isSound)
+                     setSound(!isSound)
                  }}>Sound
             </div>
 

@@ -15,14 +15,12 @@ const Forest = (props) => {
 
         if (props.map[x][y] && props.map[x][y].type) {
             setSelectedItem(props.map[x][y])
-            // centerView(props.map[x][y])
         } else
             setSelectedItem(false)
     }
 
     useEffect(() => {
-        // if (userItems[0])
-        //     centerView(userItems[0])
+
     }, [])
 
 
@@ -32,6 +30,12 @@ const Forest = (props) => {
         <div>
             <Grid clickTile={clickTile} map={props.map}/>
             <Overlay time={props.time} map={props.map}/>
+
+            {/*<iframe width="0" height="0" src="https://www.youtube.com/embed/XxEhuSJF780?controls=0"*/}
+            {/*        title="YouTube video player"*/}
+            {/*        frameBorder="0"*/}
+            {/*        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"*/}
+            {/*        allowFullScreen></iframe>*/}
         </div>
     )
 }

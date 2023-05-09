@@ -122,7 +122,7 @@
     right: var(--main-padding);
     top: var(--main-padding);
     /*bottom: var(--main-padding);*/
-    width: 300px;
+    width: 200px;
     /*height: 200px;*/
 
     border-radius: 5px;
@@ -130,6 +130,12 @@
     font-size: 12px;
 
     background-color: whitesmoke;
+}
+
+.item .center {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .item > div {
@@ -148,6 +154,13 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 10px;
+}
+
+.item-items > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /*margin-top: 10px;*/
 }
 
 .button:hover {
