@@ -138,6 +138,11 @@
     right: 0;
 }
 
+.item .center:hover {
+    color: red;
+    cursor: pointer;
+}
+
 .item > div {
     padding: 5px;
     margin: 5px;

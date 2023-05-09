@@ -50,8 +50,8 @@ const ItemView = (props) => {
 
             <div className={'text item-items'}>
                 <div>
-                    <div>Quantumite</div>
-                    <div>4</div>
+                    <div>Sentient</div>
+                    <div>{item.user ? 4 : 0}</div>
                 </div>
             </div>
 
@@ -96,7 +96,7 @@ const ItemView = (props) => {
 
             <div className={'text item-controls'}>
                 <div>Seed</div>
-                <div>Root connection</div>
+                <div>Root</div>
             </div>
 
             {selectedItem.user !== '' && <div className={'text item-controls'}>
