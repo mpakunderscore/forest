@@ -4,6 +4,10 @@ const DEFAULT_MAP_WIDTH = 200
 const DEFAULT_MAP_HEIGHT = 200
 
 let treesCount = 0
+
+const noNear = () => {
+
+}
 const generateMap = () => {
 
     let generatedMap = {}
@@ -17,7 +21,11 @@ const generateMap = () => {
             // TODO Empty
             // generatedMap[i][j] = {empty: true}
 
-            if (random >= 900) {
+            const noNear = () => {
+                return !generatedMap[i-1] || (!generatedMap[i][j-1] && !generatedMap[i-1][j])
+            }
+
+            if (random >= 900 && noNear()) {
                 generatedMap[i][j] = getTree(treesCount++, i, j)
                 generatedMap[i][j].x = i
                 generatedMap[i][j].y = j

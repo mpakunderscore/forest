@@ -1,9 +1,11 @@
 import React, {useContext} from "react";
 import {MapContext} from "../../context/MapContext";
+import {UserContext} from "../../context/UserContext";
 
 const Controls = (props) => {
 
-    const {cellSize, setCellSize, isCoordinates, showCoordinates} = useContext(MapContext)
+    const {cellSize, setCellSize, isCoordinates, showCoordinates, centerView} = useContext(MapContext)
+    const {userItems, isSound, setSound} = useContext(UserContext)
 
     // console.log(cellSize)
 
@@ -39,20 +41,25 @@ const Controls = (props) => {
             <div className={(document.fullscreenElement ? 'active' : '')}
                  onClick={() => {
                      toggleFullScreen()
-                 }}>FS
+                 }}>Fullscreen
             </div>
 
             <div className={(isCoordinates ? 'active' : '')}
                  onClick={() => {
                      showCoordinates(!isCoordinates)
-                 }}>DG
+                 }}>Debug
             </div>
 
-            <div className={(document.fullscreenElement ? 'active' : '')}
+            <div className={(isSound ? 'active' : '')}
                  onClick={() => {
-                     // props.showCoordinates(!props.isCoordinates)
+                     // setSound(!isSound)
+                 }}>Sound
+            </div>
 
-                 }}>SD
+            <div className={('')}
+                 onClick={() => {
+                     centerView(userItems[0])
+                 }}>Home
             </div>
 
         </div>

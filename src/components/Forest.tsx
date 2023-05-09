@@ -8,20 +8,23 @@ import {MapContext} from "../context/MapContext";
 
 const Forest = (props) => {
 
-    const {selectedItem, setSelectedItem} = useContext(UserContext)
+    const {selectedItem, setSelectedItem, userItems} = useContext(UserContext)
     const {centerView} = useContext(MapContext)
 
     const clickTile = (x, y) => {
 
         if (props.map[x][y] && props.map[x][y].type) {
             setSelectedItem(props.map[x][y])
-            centerView(props.map[x][y])
+            // centerView(props.map[x][y])
         } else
             setSelectedItem(false)
     }
 
     useEffect(() => {
+        // if (userItems[0])
+        //     centerView(userItems[0])
     }, [])
+
 
     // log('ground forest')
 

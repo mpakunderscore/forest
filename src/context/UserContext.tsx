@@ -1,5 +1,6 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import {createGesture} from "@ionic/react";
+import {MapContext} from "./MapContext";
 
 // const CELL_SIZE_DEFAULT = 30
 
@@ -12,18 +13,9 @@ export type UserContextType = {
     userItems,
     setUserItems,
     selectedItem,
-    setSelectedItem
-}
-
-type MapItemDefault = {
-    id: 0,
-    x: 0,
-    y: 0,
-    type: '',
-    level: 1,
-    items: [],
-    action: () => {},
-    user: '',
+    setSelectedItem,
+    isSound,
+    setSound
 }
 
 const UserContext = createContext<UserContextType>({} as UserContextType)
@@ -36,6 +28,8 @@ const UserContextProvider = ({children}) => {
 
     const [selectedItem, setSelectedItem] = useState(false)
 
+    const [isSound, setSound] = useState(false)
+
     const context = {
         userItemsIds,
         setUserItemsIds,
@@ -43,6 +37,8 @@ const UserContextProvider = ({children}) => {
         setUserItems,
         selectedItem,
         setSelectedItem,
+        isSound,
+        setSound
     }
 
     useEffect(() => {

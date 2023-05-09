@@ -43,6 +43,8 @@ const Grid = (props) => {
                 if (map[x] && map[x][y] && map[x][y].user && map[x][y].user === 'mpakunderscore') {
                     userItems.push(map[x][y])
                     userItemsIds.push(map[x][y].id)
+                    // if (userItems.length === 1)
+                    //     centerView(map[x][y])
                 }
 
                 // TODO ?
@@ -59,8 +61,8 @@ const Grid = (props) => {
                     soil: -1
                 }
 
-                if (map[x] && map[x][y] && map[x][y].id === selectedItem.id)
-                    centerView(map[x][y])
+                // if (map[x] && map[x][y] && map[x][y].id === selectedItem.id)
+                //     centerView(map[x][y])
 
 
                 // console.log(cell.type)
@@ -91,6 +93,9 @@ const Grid = (props) => {
         renderGrid(props.map)
         window.addEventListener('resize', debounce(() => renderGrid(props.map)))
     }, [props.map, currentPositionX, currentPositionY, cellSize])
+
+    useEffect(() => {
+    }, [])
 
     return (
         <div className={'grid' + (isCoordinates ? ' debug' : '')}>

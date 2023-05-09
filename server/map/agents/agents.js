@@ -25,14 +25,19 @@ createUnits()
 
 const updateAgent = (map, agent) => {
 
-    let paramX = Math.floor(Math.random() * 3) - 1
-    if (checkExistX(map, agent, paramX)) {
-        agent.x = agent.x + paramX
-    }
+    let action = Math.floor(Math.random() * 5) - 1
 
-    let paramY = Math.floor(Math.random() * 3) - 1
-    if (checkExistY(map, agent, paramY)) {
-        agent.y = agent.y + paramY
+    if (action >= 1) {
+
+        let paramX = Math.floor(Math.random() * 3) - 1
+        if (checkExistX(map, agent, paramX)) {
+            agent.x = agent.x + paramX
+        }
+
+        let paramY = Math.floor(Math.random() * 3) - 1
+        if (checkExistY(map, agent, paramY)) {
+            agent.y = agent.y + paramY
+        }
     }
 
     map[agent.x][agent.y] = {...agent}
