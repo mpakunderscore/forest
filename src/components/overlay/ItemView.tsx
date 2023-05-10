@@ -80,6 +80,10 @@ const ItemView = (props) => {
 
             </div>
 
+            <div className={'text item-controls'}>
+                <div>Network inventory</div>
+            </div>
+
             {/*<div className={'text item-controls'}>*/}
             {/*    <div className={'button'} onClick={() => {*/}
             {/*        centerView(item)*/}
@@ -90,13 +94,18 @@ const ItemView = (props) => {
             {/*</div>*/}
 
             <div className={'text item-controls'}>
-                <div className={'button'} onClick={() => {}}>Upgrade</div>
-                <div onClick={() => {}}>{item.level + ' > ' + (item.level + 1)}</div>
+                <div className={'button'} onClick={() => {}}>Upgrade to {(item.level + 1)}</div>
+                <div onClick={() => {}}>{'300 Water'}</div>
             </div>
 
             <div className={'text item-controls'}>
-                <div>Seed</div>
-                <div>Root</div>
+                <div className={'button'}>Seed</div>
+                <div>30:33</div>
+            </div>
+
+            <div className={'text item-controls'}>
+                <div className={'button'}>Root</div>
+                <div>100 Water</div>
             </div>
 
             {selectedItem.user !== '' && <div className={'text item-controls'}>

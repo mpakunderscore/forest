@@ -36,7 +36,7 @@ const Controls = (props) => {
             }}>{cellSize}</div>
 
             <div onClick={() => {
-                if (cellSize < 60) {
+                if (cellSize < 80) {
                     setCellSize(cellSize + 10)
                     if (selectedItem)
                         centerView(selectedItem)

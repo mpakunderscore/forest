@@ -72,6 +72,7 @@
 
 .title {
     padding: 10px;
+
 }
 
 .cell .coordinates {
@@ -173,14 +174,68 @@
     cursor: pointer;
 }
 
+.welcome {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 400px;
+    /*height: 200px;*/
+
+    overflow: hidden;
+    border-radius: 5px;
+
+    background-color: ghostwhite;
+}
+
+.welcome > div {
+    margin: 5px;
+    border-radius: 5px;
+    background-color: lightgray;
+    padding-bottom: 1px;
+}
+
+.welcome img {
+    /*width: calc(100% - 10px);*/
+    /*height: calc(100% - 10px);*/
+    margin: 5px;
+    border-radius: 5px;
+    /*height: 100px;*/
+}
+
+.welcome .title {
+    font-size: 30px;
+    font-weight: 300;
+    padding-bottom: 0;
+}
+
+.welcome .text {
+    margin: 10px;
+}
+
+.welcome input {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 5px 5px 5px 10px;
+    width: calc(100% - 20px);
+}
+
 
 @media only screen and (max-width: 600px) {
     .item {
         width: auto;
+        height: auto;
         /*top: unset;*/
         left: var(--main-padding);
         top: 40%;
         /*bottom: var(--main-padding);*/
         /*left: var(--main-padding);*/
+    }
+    .welcome {
+        top: 40%;
+        width: calc(100% - 40px);
+        height: auto;
     }
 }

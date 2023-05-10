@@ -5,6 +5,7 @@ import ItemView from "./ItemView";
 import {MapContext} from "../../context/MapContext";
 import Inventory from "./Inventory";
 import {UserContext} from "../../context/UserContext";
+import Welcome from "./Welcome";
 
 const Overlay = (props) => {
 
@@ -16,6 +17,8 @@ const Overlay = (props) => {
 
     return (
         <div className={'overlay'}>
+
+            <Welcome/>
 
             <Inventory/>
 
