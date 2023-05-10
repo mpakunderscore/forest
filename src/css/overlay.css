@@ -180,7 +180,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    width: 400px;
+    width: 600px;
     /*height: 200px;*/
 
     overflow: hidden;
@@ -234,7 +234,7 @@
         /*left: var(--main-padding);*/
     }
     .welcome {
-        top: 40%;
+        top: 20px;
         width: calc(100% - 40px);
         height: auto;
     }

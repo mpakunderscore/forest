@@ -12,15 +12,17 @@ const Overlay = (props) => {
     // const {changePosition} = useContext(MapContext)
     const {selectedItem} = useContext(UserContext)
 
+    const [isWelcome, setWelcome] = useState(true)
+
     useEffect(() => {
     }, [])
 
     return (
         <div className={'overlay'}>
 
-            <Welcome/>
+            {isWelcome && <Welcome setWelcome={setWelcome}/>}
 
-            <Inventory/>
+            {/*<Inventory/>*/}
 
             {selectedItem && <ItemView map={props.map}/>}
 

@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import {MapContext} from "../../context/MapContext";
 import {UserContext} from "../../context/UserContext";
+const song = new Audio('./ambient.mp3');
 
 const Controls = (props) => {
 
@@ -47,7 +48,7 @@ const Controls = (props) => {
             <div className={(document.fullscreenElement ? 'active' : '')}
                  onClick={() => {
                      toggleFullScreen()
-                 }}>Fullscreen
+                 }}>FS
             </div>
 
             <div className={(isCoordinates ? 'active' : '')}
@@ -59,6 +60,10 @@ const Controls = (props) => {
             <div className={(isSound ? 'active' : '')}
                  onClick={() => {
                      setSound(!isSound)
+                     if (!isSound)
+                        song.play()
+                     else
+                         song.pause()
                  }}>Sound
             </div>
 
