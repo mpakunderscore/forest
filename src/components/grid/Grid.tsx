@@ -58,7 +58,8 @@ const Grid = (props) => {
                     type: map[x] && map[x][y] && map[x][y].type ? map[x][y].type : false,
                     level: map[x] && map[x][y] && map[x][y].level ? map[x][y].level : false,
                     user: map[x] && map[x][y] && map[x][y].user ? map[x][y].user : false,
-                    soil: -1
+
+                    soil: Math.floor(Math.random() * 7)
                 }
 
                 // if (map[x] && map[x][y] && map[x][y].id === selectedItem.id)
@@ -113,7 +114,7 @@ const Grid = (props) => {
 
                                 ('')
                             }
-                            style={{background: grass[item.soil] ? grass[item.soil].color : ''}}
+                            style={{background: !item.type && grass[item.soil] ? grass[item.soil].color : ''}}
                             onClick={() => props.clickTile(item.x, item.y)}>
 
                     {item.type && <CellImage item={item}/>}

@@ -15,7 +15,8 @@ export type UserContextType = {
     selectedItem,
     setSelectedItem,
     isSound,
-    setSound
+    setSound,
+    setUser
 }
 
 const UserContext = createContext<UserContextType>({} as UserContextType)
@@ -30,6 +31,8 @@ const UserContextProvider = ({children}) => {
 
     const [isSound, setSound] = useState(false)
 
+    const [user, setUser] = useState(localStorage.getItem(('user')))
+
     const context = {
         userItemsIds,
         setUserItemsIds,
@@ -38,7 +41,8 @@ const UserContextProvider = ({children}) => {
         selectedItem,
         setSelectedItem,
         isSound,
-        setSound
+        setSound,
+        setUser
     }
 
     useEffect(() => {

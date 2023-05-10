@@ -155,6 +155,12 @@
     /*margin: 0 10px 10px;*/
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .item-controls {
     display: flex;
     flex-direction: row;
@@ -189,24 +195,35 @@
     background-color: ghostwhite;
 }
 
-.welcome > div {
+.welcome > div.block {
     margin: 5px;
     border-radius: 5px;
     background-color: lightgray;
-    padding-bottom: 1px;
+    overflow: hidden;
 }
 
 .welcome img {
     /*width: calc(100% - 10px);*/
     /*height: calc(100% - 10px);*/
-    margin: 5px;
-    border-radius: 5px;
+    /*width: calc(100% - 10px);*/
+    width: 100%;
+
+    object-fit: cover;
+    height: 100px;
+    display: block;
+    /*margin: 5px;*/
+    /*margin-bottom: 0;*/
+    /*border-radius: 5px;*/
     /*height: 100px;*/
 }
 
 .welcome .title {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: whitesmoke;
     font-size: 30px;
-    font-weight: 300;
+    font-weight: 700;
     padding-bottom: 0;
 }
 
