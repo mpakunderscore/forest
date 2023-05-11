@@ -62,7 +62,7 @@ const Grid = (props) => {
                     user: map[x] && map[x][y] && map[x][y].user ? map[x][y].user : false,
 
                     // soil: map[x] ? Math.floor(Math.random() * ((i + j) % 4) + Math.random() * ((i * j) % 2)) : 1
-                    soil: 7
+                    soil: -1
                 }
 
                 // if (map[x] && map[x][y] && map[x][y].id === selectedItem.id)
