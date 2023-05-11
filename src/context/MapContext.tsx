@@ -107,7 +107,7 @@ const MapContextProvider = ({children}) => {
     }
 
     const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
-    const [isCoordinates, showCoordinates] = useState(false)
+    const [isCoordinates, showCoordinates] = useState(true)
 
     const centerView = (item) => {
         let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
