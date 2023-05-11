@@ -48,8 +48,8 @@ const Welcome = (props) => {
             </div>
             <div className={'block'}>
                 <div className={'row'}>
-                    <div className={'text'}>Please, select username:</div>
-                    <input value={username} onChange={e => setUsername(e.target.value)} spellCheck={false} placeholder={'Username'}/>
+                    {/*<div className={'text'}>Please, select username:</div>*/}
+                    <input value={username} onChange={e => setUsername(e.target.value)} spellCheck={false} placeholder={'Please select username'}/>
                 </div>
             </div>
             <div className={'block'}>

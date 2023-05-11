@@ -2,18 +2,13 @@ import React, {useState} from "react";
 
 const Username = (props) => {
 
-    // const {cellSize, setCellSize, isCoordinates, showCoordinates} = useContext(MapContext)
-
-    let [inventory, setInventory] = useState(['seed', '', '', '', '', '', '', '', ''])
-    let [selectedInventory, setSelectedInventory] = useState(-1)
-
     return (
         <div className={'username'}>
             <div>
                 <div className={'text'}>
                     <div className={'row'}>
                         <div>Name</div>
-                        <div>{'mpakunderscore'}</div>
+                        <div>{''}</div>
                     </div>
                     <div className={'row'}>
                         <div>Sentient</div>

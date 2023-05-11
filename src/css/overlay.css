@@ -9,7 +9,7 @@
 
     /*--color-buttons-background-selected: dimgray;*/
 
-    --color-background-window: rgba(0, 0, 0, 0.7);
+    --color-background-window: rgba(0, 0, 0, 0.8);
 
     /*--border-radius: 5px;*/
     --border-radius: 0;
@@ -80,9 +80,7 @@
 .title {
     /*position: relative;*/
     /*padding: 24px;*/
-    line-height: 90px;
-    padding-left: 20px;
-    letter-spacing: 5px;
+
 
 }
 
@@ -211,17 +209,20 @@
 }
 
 .welcome > div.block {
-    margin: 5px;
+    /*margin: 5px;*/
     border-radius: var(--border-radius);
-    background-color: #e8e8e8;
+    /*background-color: #e8e8e8;*/
+    color: #e8e8e8;
     overflow: hidden;
 }
 
 .welcome img {
     /*width: calc(100% - 10px);*/
     /*height: calc(100% - 10px);*/
-    /*width: calc(100% - 10px);*/
-    width: 100%;
+    width: calc(100% - 20px);
+    /*width: 100%;*/
+    margin: 10px;
+    margin-bottom: 0;
 
     object-fit: cover;
     height: 100px;
@@ -240,6 +241,11 @@
     font-size: 30px;
     font-weight: 700;
     padding-bottom: 0;
+
+    line-height: 100px;
+    padding-left: 20px;
+    letter-spacing: 5px;
+
 }
 
 .welcome .text {
@@ -250,7 +256,9 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     padding: 5px 5px 5px 10px;
-    width: 50%;
+    width: 100%;
+    margin: 0 10px;
+    height: 42px;
     /*margin: 0 0 0 10px;*/
 }
 
