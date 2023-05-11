@@ -36,7 +36,7 @@ const ItemView = (props) => {
     return (
         <div className={'item'} onClick={() => {}}>
 
-            <div className={'center'} onClick={() => centerView(item)}>[-]</div>
+            <div className={'center'} onClick={() => centerView(item)}>[center]</div>
 
             <div className={'text'}>
                 <div>Type: {item.type}</div>
@@ -54,7 +54,6 @@ const ItemView = (props) => {
                     <div>{item.user ? 4 : 0}</div>
                 </div>
             </div>
-
 
             <div className={'text item-items'}>
 

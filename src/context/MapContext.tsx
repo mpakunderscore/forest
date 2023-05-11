@@ -57,44 +57,44 @@ const MapContextProvider = ({children}) => {
         })
     }
 
-    const initGestures = () => {
-
-        const gesture = createGesture({
-            el: document.getElementById('app'),
-            threshold: 15,
-            gestureName: 'my-gesture',
-            onMove: ev => onMove(ev),
-        });
-
-        gesture.enable();
-
-        const onMove = (detail) => {
-            const type = detail.type;
-            // console.log(type)
-            const currentX = detail.currentX;
-            const deltaX = detail.deltaX;
-            const velocityX = detail.velocityX;
-            const velocityY = detail.velocityY;
-
-            // console.log(velocityX + ':' + velocityY)
-
-            if (velocityX > .5) {
-                changePosition(-1, 0)
-            }
-
-            if (velocityX < -.5) {
-                changePosition(1, 0)
-            }
-
-            if (velocityY > .5) {
-                changePosition(0, -1)
-            }
-
-            if (velocityY < -.5) {
-                changePosition(0, 1)
-            }
-        }
-    }
+    // const initGestures = () => {
+    //
+    //     const gesture = createGesture({
+    //         el: document.getElementById('app'),
+    //         threshold: 15,
+    //         gestureName: 'my-gesture',
+    //         onMove: ev => onMove(ev),
+    //     });
+    //
+    //     gesture.enable();
+    //
+    //     const onMove = (detail) => {
+    //         const type = detail.type;
+    //         // console.log(type)
+    //         const currentX = detail.currentX;
+    //         const deltaX = detail.deltaX;
+    //         const velocityX = detail.velocityX;
+    //         const velocityY = detail.velocityY;
+    //
+    //         // console.log(velocityX + ':' + velocityY)
+    //
+    //         if (velocityX > .5) {
+    //             changePosition(-1, 0)
+    //         }
+    //
+    //         if (velocityX < -.5) {
+    //             changePosition(1, 0)
+    //         }
+    //
+    //         if (velocityY > .5) {
+    //             changePosition(0, -1)
+    //         }
+    //
+    //         if (velocityY < -.5) {
+    //             changePosition(0, 1)
+    //         }
+    //     }
+    // }
 
     const [currentPositionX, setCurrentPositionX] = useState(POSITION_X_DEFAULT)
     const [currentPositionY, setCurrentPositionY] = useState(POSITION_Y_DEFAULT)
@@ -155,7 +155,7 @@ const MapContextProvider = ({children}) => {
     }
 
     useEffect(() => {
-        initGestures()
+        // initGestures()
         initKeyboard()
     }, [])
 

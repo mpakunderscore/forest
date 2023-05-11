@@ -7,6 +7,10 @@
     --color-buttons-background-hover: gray;
     --color-buttons-background-selected: dimgray;
 
+    /*--color-buttons-background-selected: dimgray;*/
+
+    --color-background-window: rgba(0, 0, 0, 0.7);
+
     /*--border-radius: 5px;*/
     --border-radius: 0;
 }
@@ -74,7 +78,11 @@
 }
 
 .title {
-    padding: 10px;
+    /*position: relative;*/
+    /*padding: 24px;*/
+    line-height: 90px;
+    padding-left: 20px;
+    letter-spacing: 5px;
 
 }
 
@@ -133,7 +141,7 @@
 
     font-size: 12px;
 
-    background-color: whitesmoke;
+    background-color: var(--color-background-window);
 }
 
 .item .center {
@@ -178,6 +186,10 @@
     /*margin-top: 10px;*/
 }
 
+.button {
+    font-weight: 700;
+}
+
 .button:hover {
     color: red;
     cursor: pointer;
@@ -195,13 +207,13 @@
     overflow: hidden;
     border-radius: var(--border-radius);
 
-    background-color: ghostwhite;
+    background-color: var(--color-background-window);
 }
 
 .welcome > div.block {
     margin: 5px;
     border-radius: var(--border-radius);
-    background-color: lightgray;
+    background-color: #e8e8e8;
     overflow: hidden;
 }
 
@@ -245,6 +257,28 @@
 .welcome .button.active {
     opacity: .9;
     /*margin: 10px;*/
+}
+
+.username {
+    position: fixed;
+    left: var(--main-padding);
+    top: var(--main-padding);
+    /*bottom: var(--main-padding);*/
+    width: 200px;
+    /*height: 200px;*/
+
+    border-radius: var(--border-radius);
+
+    font-size: 12px;
+
+    background-color: var(--color-background-window);
+}
+
+.username > div {
+    padding: 5px;
+    margin: 5px;
+    background-color: lightgray;
+    border-radius: var(--border-radius);
 }
 
 

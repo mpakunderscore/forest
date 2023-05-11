@@ -6,6 +6,7 @@ import {MapContext} from "../../context/MapContext";
 import Inventory from "./Inventory";
 import {UserContext} from "../../context/UserContext";
 import Welcome from "./Welcome";
+import Username from "./Username";
 
 const Overlay = (props) => {
 
@@ -23,6 +24,8 @@ const Overlay = (props) => {
             {isWelcome && <Welcome setWelcome={setWelcome}/>}
 
             {/*<Inventory/>*/}
+
+            <Username/>
 
             {selectedItem && <ItemView map={props.map}/>}
 
