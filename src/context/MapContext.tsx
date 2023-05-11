@@ -40,22 +40,6 @@ let setGridCSS = (x, y) => {
 // let contextY = POSITION_Y_DEFAULT
 
 const MapContextProvider = ({children}) => {
-    const initKeyboard = () => {
-        document.addEventListener("keydown", function (event) {
-            if (event.which === 39) {
-                changePosition(1, 0)
-            }
-            if (event.which === 37) {
-                changePosition(-1, 0)
-            }
-            if (event.which === 40) {
-                changePosition(0, 1)
-            }
-            if (event.which === 38) {
-                changePosition(0, -1)
-            }
-        })
-    }
 
     // const initGestures = () => {
     //
@@ -100,10 +84,8 @@ const MapContextProvider = ({children}) => {
     const [currentPositionY, setCurrentPositionY] = useState(POSITION_Y_DEFAULT)
 
     const changePosition = (x, y) => {
-        setCurrentPositionX(currentPositionX + x)
-        // contextX = contextX + x
-        setCurrentPositionY(currentPositionY + y)
-        // contextY = contextY + y
+        setCurrentPositionX((prevState) => prevState + x)
+        setCurrentPositionY((prevState) => prevState + y)
     }
 
     const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
@@ -154,10 +136,10 @@ const MapContextProvider = ({children}) => {
         centerViewAuto
     }
 
-    useEffect(() => {
-        // initGestures()
-        initKeyboard()
-    }, [])
+    // useEffect(() => {
+    //     // initGestures()
+    //     // initKeyboard()
+    // }, [])
 
     // console.log('context')
 

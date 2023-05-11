@@ -40,10 +40,14 @@ const Welcome = (props) => {
             <div className={'block'}>
                 <div className={'text'}>{texts[welcomeTextIterator][0]}</div>
                 <div className={'text'}>{texts[welcomeTextIterator][1]}</div>
-                <div className={'text button'} onClick={() => {
-                    if (welcomeTextIterator < texts.length - 1)
-                        setWelcomeTextIterator(welcomeTextIterator + 1)
-                }}>{welcomeTextIterator + 1} / 4</div>
+                <div className={'text row'}>
+                    <div></div>
+                    <div className={'button'} onClick={() => {
+                        if (welcomeTextIterator < texts.length - 1)
+                            setWelcomeTextIterator(welcomeTextIterator + 1)
+                    }}>{welcomeTextIterator + 1} / 4</div>
+                </div>
+
 
             </div>
             <div className={'block'}>
