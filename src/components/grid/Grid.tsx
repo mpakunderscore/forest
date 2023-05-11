@@ -25,6 +25,8 @@ const Grid = (props) => {
 
     let renderGrid = (map) => {
 
+        console.log('render grid')
+
         let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
         let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
         setGridCSS(ratioWidth, ratioHeight)
@@ -59,7 +61,8 @@ const Grid = (props) => {
                     level: map[x] && map[x][y] && map[x][y].level ? map[x][y].level : false,
                     user: map[x] && map[x][y] && map[x][y].user ? map[x][y].user : false,
 
-                    soil: map[x] ? Math.floor(Math.random() * ((i + j) % 4) + Math.random() * ((i * j) % 2)) : 1
+                    // soil: map[x] ? Math.floor(Math.random() * ((i + j) % 4) + Math.random() * ((i * j) % 2)) : 1
+                    soil: 7
                 }
 
                 // if (map[x] && map[x][y] && map[x][y].id === selectedItem.id)
@@ -72,8 +75,6 @@ const Grid = (props) => {
             }
         }
 
-        setUserItems(userItems)
-        setUserItemsIds(userItemsIds)
         setGrid(grid)
     }
 

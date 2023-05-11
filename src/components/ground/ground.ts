@@ -15,5 +15,6 @@ export const grass = [
     {id: 3, type: 'sand_grass', color: '#9DC7AF'},
     {id: 4, type: 'peat_grass', color: '#5B7E3F'},
     {id: 5, type: 'chalk_grass', color: '#A5E5A5'},
-    {id: 6, type: 'gravel_grass', color: '#83A383'}
+    {id: 6, type: 'gravel_grass', color: '#83A383'},
+    {id: 7, type: 'future_grass', color: '#304954FF'}
 ]

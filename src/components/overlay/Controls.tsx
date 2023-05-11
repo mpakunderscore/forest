@@ -69,6 +69,7 @@ const Controls = (props) => {
 
             <div className={('')}
                  onClick={() => {
+                     console.log(userItems)
                      centerView(userItems[0])
                  }}>Home
             </div>

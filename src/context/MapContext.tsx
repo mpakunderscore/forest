@@ -1,9 +1,9 @@
 import React, {createContext, useEffect, useState} from 'react';
 import {createGesture} from "@ionic/react";
 
-const CELL_SIZE_DEFAULT = 30
+const CELL_SIZE_DEFAULT = 40
 
-const POSITION_X_DEFAULT = -10
+const POSITION_X_DEFAULT = -15
 const POSITION_Y_DEFAULT = -10
 
 export type MapContextType = {

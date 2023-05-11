@@ -6,6 +6,9 @@
 
     --color-buttons-background-hover: gray;
     --color-buttons-background-selected: dimgray;
+
+    /*--border-radius: 5px;*/
+    --border-radius: 0;
 }
 
 /*.description {*/
@@ -38,7 +41,7 @@
     width: 140px;
     height: 140px;
 
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     overflow: hidden;
 
     background-color: whitesmoke;
@@ -59,7 +62,7 @@
 
     /*margin: 5px;*/
 
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 }
 
 .inventory > div:hover {
@@ -96,7 +99,7 @@
 
     background-color: ghostwhite;
 
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 
     overflow: hidden;
 }
@@ -123,10 +126,10 @@
     right: var(--main-padding);
     top: var(--main-padding);
     /*bottom: var(--main-padding);*/
-    width: 200px;
+    width: 300px;
     /*height: 200px;*/
 
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 
     font-size: 12px;
 
@@ -148,7 +151,7 @@
     padding: 5px;
     margin: 5px;
     background-color: lightgray;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 }
 
 .item .text {
@@ -190,14 +193,14 @@
     /*height: 200px;*/
 
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 
     background-color: ghostwhite;
 }
 
 .welcome > div.block {
     margin: 5px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     background-color: lightgray;
     overflow: hidden;
 }
@@ -213,8 +216,8 @@
     display: block;
     /*margin: 5px;*/
     /*margin-bottom: 0;*/
-    /*border-radius: 5px;*/
-    /*height: 100px;*/
+    /*border-radius: 5pvar(--border-radius
+;    /*height: 100px;*/
 }
 
 .welcome .title {
@@ -234,9 +237,14 @@
 .welcome input {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    margin: 0 10px;
     padding: 5px 5px 5px 10px;
-    width: calc(100% - 20px);
+    width: 50%;
+    /*margin: 0 0 0 10px;*/
+}
+
+.welcome .button.active {
+    opacity: .9;
+    /*margin: 10px;*/
 }
 
 

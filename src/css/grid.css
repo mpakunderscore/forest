@@ -14,6 +14,8 @@
     grid-template-rows: repeat(var(--y-count), var(--cell-width));
 
     justify-content: center;
+
+    /*filter: brightness(70%);*/
 }
 
 .grid.debug {

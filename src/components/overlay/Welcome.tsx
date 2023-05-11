@@ -8,6 +8,8 @@ const Welcome = (props) => {
     // let [inventory, setInventory] = useState(['seed', '', '', '', '', '', '', '', ''])
     // let [selectedInventory, setSelectedInventory] = useState(-1)
 
+    const [username, setUsername] = useState('')
+
     return (
         <div className={'welcome'}>
             <div className={'block'}>
@@ -20,14 +22,15 @@ const Welcome = (props) => {
                 <div className={'text button'}>1 / 4</div>
             </div>
             <div className={'block'}>
-                <div className={'text'}>Please, select a name:</div>
-                <input spellCheck={false}/>
                 <div className={'row'}>
-                    <div className={'text button'}
-                         onClick={() => props.setWelcome(false)}>Start</div>
-                    {/*<div className={'text button'} onClick={() => props.setWelcome(false)}>Login</div>*/}
-                    <div className={'text button'}
-                         onClick={() => props.setWelcome(false)}>Skip</div>
+                    <div className={'text'}>Please, select a name:</div>
+                    <input value={username} onChange={e => setUsername(e.target.value)} spellCheck={false} placeholder={'Username'}/>
+                </div>
+            </div>
+            <div className={'block'}>
+                <div className={'row'}>
+                    <div className={'text button ' + (username.length > 0 ? 'active' : '')} onClick={() => props.setWelcome(false)}>START</div>
+                    <div className={'text button ' + 'active'} onClick={() => props.setWelcome(false)}>SKIP</div>
                 </div>
             </div>
         </div>

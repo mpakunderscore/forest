@@ -20,8 +20,10 @@ const Forest = (props) => {
     }
 
     useEffect(() => {
-
-    }, [])
+        // console.log('forest')
+        // if (userItems.length > 0)
+        //     centerView(userItems[0])
+    }, [userItems])
 
 
     // log('ground forest')
