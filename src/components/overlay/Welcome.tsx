@@ -34,7 +34,7 @@ const Welcome = (props) => {
     return (
         <div className={'welcome'}>
             <div className={'block'}>
-                <img src={'./images/welcome.png'}/>
+                <img src={'./images/welcome/welcome.png'}/>
                 <div className={'title'}>FOREST</div>
             </div>
             <div className={'block'}>
