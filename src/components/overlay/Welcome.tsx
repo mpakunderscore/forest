@@ -3,7 +3,7 @@ import {MapContext} from "../../context/MapContext";
 
 const Welcome = (props) => {
 
-    // const {cellSize, setCellSize, isCoordinates, showCoordinates} = useContext(MapContext)
+    const {cellSize, setCellSize, isCoordinates, showCoordinates} = useContext(MapContext)
 
     // let [inventory, setInventory] = useState(['seed', '', '', '', '', '', '', '', ''])
     // let [selectedInventory, setSelectedInventory] = useState(-1)
@@ -12,11 +12,11 @@ const Welcome = (props) => {
 
     const texts = [
         [
-            'Shards of sentient matter rained down from the sky. Something larger was destroyed to sow the seedlings.',
+            'Shards of sentient matter rained down from the sky. Something big was destroyed to get growth of new sprouts.',
             'You will start with a few "sentient" points on trees and animals. These trees and other units can evolve over time and acquire different skills that depend on sentient points. You must build a network of trees, roots, units and other things that you can find in the forest. And create a way to return to the global connected universe, your digital home.'
         ],
         [
-            'Seasons, storms, fires, and other events can drastically impact your plans. Always be ready to adapt and make the most out of every situation.',
+            'Seasons, storms, fires and other events can drastically impact your plans. Always be ready to adapt and make the most out of every situation.',
             'Just like the interconnected web of a real ecosystem, your forest thrives on connections. Trees, animals, roots, robots, everything plays a part. For example, roots can connect trees and help to share resources, while animals can spread seeds or control pests. Understand the role each unit plays.'
         ],
         [
@@ -28,6 +28,13 @@ const Welcome = (props) => {
             'Good luck, and enjoy your journey through the game.'
         ]
     ]
+
+    const start = () => {
+        props.setWelcome(false)
+        console.log(username)
+        setUsername(username)
+        localStorage.setItem('username', username)
+    }
 
     const [username, setUsername] = useState('')
 
@@ -58,7 +65,7 @@ const Welcome = (props) => {
             </div>
             <div className={'block'}>
                 <div className={'row'}>
-                    <div className={'text button ' + (username.length > 0 ? 'active' : '')} onClick={() => props.setWelcome(false)}>START</div>
+                    <div className={'text button ' + (username.length > 0 ? 'active' : '')} onClick={() => start()}>START</div>
                     <div className={'text button ' + 'active'} onClick={() => props.setWelcome(false)}>SKIP</div>
                 </div>
             </div>

@@ -4,23 +4,23 @@ import ItemView from "./ItemView";
 
 import {UserContext} from "../../context/UserContext";
 import Welcome from "./Welcome";
-import Username from "./Username";
+import User from "./User";
 import {useChangePosition} from "./Keyboard";
 
 const Overlay = (props) => {
 
     useChangePosition()
-    const {selectedItem} = useContext(UserContext)
+    const {username, selectedItem} = useContext(UserContext)
     const [isWelcome, setWelcome] = useState(true)
 
     return (
         <div className={'overlay'}>
 
-            {isWelcome && <Welcome setWelcome={setWelcome}/>}
+            {isWelcome && !username && <Welcome setWelcome={setWelcome}/>}
 
             {/*<Inventory/>*/}
 
-            <Username/>
+            <User/>
 
             {selectedItem && <ItemView map={props.map}/>}
 

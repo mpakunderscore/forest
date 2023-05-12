@@ -1,14 +1,22 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import {MapContext} from "../../context/MapContext";
+import {UserContext} from "../../context/UserContext";
 
-const Username = (props) => {
+const User = (props) => {
+
+    const {username} = useContext(UserContext)
+
+    useEffect(() => {
+
+    }, [username])
 
     return (
-        <div className={'username'}>
+        <div className={'user'}>
             <div>
                 <div className={'text'}>
                     <div className={'row'}>
                         <div>Name</div>
-                        <div>{''}</div>
+                        <div>{username}</div>
                     </div>
                     <div className={'row'}>
                         <div>Sentient</div>
@@ -28,4 +36,4 @@ const Username = (props) => {
     )
 }
 
-export default Username
+export default User

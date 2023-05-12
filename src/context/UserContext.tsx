@@ -8,6 +8,8 @@ import {MapContext} from "./MapContext";
 // const POSITION_Y_DEFAULT = -10
 
 export type UserContextType = {
+    username,
+    setUsername,
     userItemsIds,
     setUserItemsIds,
     userItems,
@@ -23,6 +25,8 @@ const UserContext = createContext<UserContextType>({} as UserContextType)
 
 const UserContextProvider = ({children}) => {
 
+    const [username, setUsername] = useState(localStorage.getItem('username'))
+
     const [userItemsIds, setUserItemsIds] = useState([])
 
     const [userItems, setUserItems] = useState([])
@@ -34,6 +38,8 @@ const UserContextProvider = ({children}) => {
     const [user, setUser] = useState(localStorage.getItem(('user')))
 
     const context = {
+        username,
+        setUsername,
         userItemsIds,
         setUserItemsIds,
         userItems,

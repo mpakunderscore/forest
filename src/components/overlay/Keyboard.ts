@@ -1,9 +1,9 @@
-import {useCallback, useContext, useEffect} from "react";
-import {MapContext} from "../../context/MapContext";
+import {useCallback, useContext, useEffect, useState} from "react"
+import {MapContext} from "../../context/MapContext"
 
 export const useChangePosition = () => {
 
-    let {changePosition} = useContext(MapContext)
+    let {cellSize, changePosition} = useContext(MapContext)
 
     const updatePosition = useCallback((event) => {
         if (event.which === 39) {
@@ -20,10 +20,74 @@ export const useChangePosition = () => {
         }
     }, [changePosition])
 
+    const [currentTouchX, setCurrentTouchX] = useState(0)
+    const [currentTouchY, setCurrentTouchY] = useState(0)
+
+    // const changePosition = (x, y) => {
+    //     setCurrentTouchX(x)
+    //     setCurrentTouchY(y)
+    // }
+
+    const updateTouchMove = useCallback((event) => {
+
+        const touch = event.touches[0] || event.changedTouches[0]
+        const realTarget = document.elementFromPoint(touch.clientX, touch.clientY)
+        // console.log(Math.floor(touch.clientX / cellSize) + ':' + Math.floor(touch.clientY / cellSize))
+        let moveX = Math.floor(touch.clientX / cellSize)
+        let moveY = Math.floor(touch.clientY / cellSize)
+
+
+
+        setCurrentTouchX((currentTouchX) => {
+            if (currentTouchX !== 0) {
+                if (currentTouchX !== moveX) {
+                    changePosition(currentTouchX - moveX, 0)
+                    return moveX
+                }
+                return currentTouchX
+            }
+            return moveX
+        })
+
+        setCurrentTouchY((currentTouchY) => {
+            if (currentTouchY !== 0) {
+                if (currentTouchY !== moveY) {
+                    changePosition(0, currentTouchY - moveY)
+                    return moveY
+                }
+                return currentTouchY
+            }
+            return moveY
+        })
+
+    }, [setCurrentTouchX, setCurrentTouchY])
+
+    const updateTouchEnd = useCallback((event) => {
+        console.log('end')
+        const touch = event.touches[0] || event.changedTouches[0]
+        const realTarget = document.elementFromPoint(touch.clientX, touch.clientY)
+        // console.log(Math.floor(touch.clientX / cellSize) + ':' + Math.floor(touch.clientY / cellSize))
+        let moveX = Math.floor(touch.clientX / cellSize)
+        let moveY = Math.floor(touch.clientY / cellSize)
+
+        setCurrentTouchX(0)
+        setCurrentTouchY(0)
+
+        // console.log('currentTouchX:' + currentTouchX)
+        // console.log('currentTouchY' + currentTouchY)
+        // console.log('moveX - currentTouchX' + (moveX - currentTouchX))
+        // console.log('moveY - currentTouchY' + (moveY - currentTouchY))
+
+    }, [changePosition, currentTouchX, currentTouchY])
+
     useEffect(() => {
         document.addEventListener('keydown', updatePosition)
+        document.addEventListener('touchmove', updateTouchMove)
+        document.addEventListener('touchend', updateTouchEnd)
         return () => {
             document.removeEventListener('keydown', updatePosition)
+            document.removeEventListener('touchmove', updateTouchMove)
+            document.removeEventListener('touchend', updateTouchEnd)
         }
-    }, [])
+    }, [updatePosition, updateTouchMove, updateTouchEnd])
 }

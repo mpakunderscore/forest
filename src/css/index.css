@@ -65,6 +65,7 @@ input {
     border: none;
     outline: none;
     margin: 0;
+    border-radius: 0;
 }
 
 @supports (-webkit-touch-callout: none) {

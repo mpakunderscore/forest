@@ -206,6 +206,8 @@
     border-radius: var(--border-radius);
 
     background-color: var(--color-background-window);
+
+    z-index: 3;
 }
 
 .welcome > div.block {
@@ -268,7 +270,7 @@
     /*margin: 10px;*/
 }
 
-.username {
+.user {
     position: fixed;
     left: var(--main-padding);
     top: var(--main-padding);
@@ -283,7 +285,7 @@
     background-color: var(--color-background-window);
 }
 
-.username > div {
+.user > div {
     padding: 5px;
     margin: 5px;
     background-color: lightgray;
