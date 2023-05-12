@@ -20,7 +20,7 @@ const Overlay = (props) => {
 
             {/*<Inventory/>*/}
 
-            <User/>
+            {username && <User/>}
 
             {selectedItem && <ItemView map={props.map}/>}
 

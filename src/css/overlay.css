@@ -265,12 +265,12 @@
     /*margin: 0 0 0 10px;*/
 }
 
-.welcome .button.active {
-    opacity: .9;
-    /*margin: 10px;*/
+.welcome .button.disabled {
+    margin: 10px;
+    color: gray;
 }
 
-.user {
+.overlay .user {
     position: fixed;
     left: var(--main-padding);
     top: var(--main-padding);
@@ -285,7 +285,7 @@
     background-color: var(--color-background-window);
 }
 
-.user > div {
+.overlay .user > div {
     padding: 5px;
     margin: 5px;
     background-color: lightgray;

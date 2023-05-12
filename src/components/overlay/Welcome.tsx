@@ -30,10 +30,12 @@ const Welcome = (props) => {
     ]
 
     const start = () => {
-        props.setWelcome(false)
-        console.log(username)
-        setUsername(username)
-        localStorage.setItem('username', username)
+        if (username.length > 0) {
+            props.setWelcome(false)
+            console.log(username)
+            setUsername(username)
+            localStorage.setItem('username', username)
+        }
     }
 
     const [username, setUsername] = useState('')
@@ -54,18 +56,25 @@ const Welcome = (props) => {
                             setWelcomeTextIterator(welcomeTextIterator + 1)
                     }}>{welcomeTextIterator + 1} / 4</div>
                 </div>
-
-
             </div>
             <div className={'block'}>
                 <div className={'row'}>
                     {/*<div className={'text'}>Please, select username:</div>*/}
-                    <input value={username} onChange={e => setUsername(e.target.value)} spellCheck={false} placeholder={'Please select username'}/>
+                    <input value={username}
+                           onChange={e => setUsername(e.target.value)}
+                           spellCheck={false}
+                           placeholder={'Please select username'}
+                           onKeyDown={(event) => {
+                               if (event.key === 'Enter') {
+                                   start()
+                               }
+                           }}
+                    />
                 </div>
             </div>
             <div className={'block'}>
                 <div className={'row'}>
-                    <div className={'text button ' + (username.length > 0 ? 'active' : '')} onClick={() => start()}>START</div>
+                    <div className={'text button ' + (username.length === 0 ? 'disabled' : '')} onClick={() => start()}>START</div>
                     <div className={'text button ' + 'active'} onClick={() => props.setWelcome(false)}>SKIP</div>
                 </div>
             </div>
