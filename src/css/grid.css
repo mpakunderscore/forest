@@ -66,7 +66,7 @@
 }
 
 .cell.selected {
-    background-color: rgba(49, 140, 255, 0.9);
+    background-color: rgba(49, 140, 255, 0.9) !important;
     border-radius: var(--cell-border-radius);
 }
 

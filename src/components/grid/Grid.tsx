@@ -108,7 +108,7 @@ const Grid = (props) => {
                                 'cell' +
                                 // (item.center ? ' center' : '') +
                                 (item.id === selectedItem.id ? ' selected' : '') +
-                                (item.user === 'mpakunderscore' ? ' user' : '') +
+                                (item.user === 'test' ? ' user' : '') +
                                 (isCoordinates ? ' debug' : '') +
 
                                 // (' ' + soil[item.soil].type) +

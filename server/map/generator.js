@@ -47,10 +47,10 @@ const generateMap = () => {
 
     generatedMap[1][1] = getTree(treesCount++, 1, 1)
     generatedMap[1][1].user = 'test'
-    generatedMap[1][1].level = 10
+    generatedMap[1][1].level = 7
     generatedMap[3][3] = getTree(treesCount++, 3, 3)
     generatedMap[3][3].user = 'test'
-    generatedMap[3][3].level = 10
+    generatedMap[3][3].level = 3
 
     console.log('Load map')
     return generatedMap
