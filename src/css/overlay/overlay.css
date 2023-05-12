@@ -115,7 +115,7 @@
     text-align: center;
     font-size: 12px;
     font-weight: 700;
-    padding: 5px;
+    padding: 5px 10px;
     cursor: pointer;
 }
 
@@ -307,5 +307,13 @@
         top: 20px;
         width: calc(100% - 40px);
         height: auto;
+    }
+    .controls {
+        justify-content: space-between;
+        left: var(--main-padding);
+        bottom: calc(var(--main-padding) * 2);
+    }
+    .controls > div {
+        min-width: 30px;
     }
 }

@@ -84,7 +84,8 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #b2b2b2;
+    /*background-color: #b2b2b2;*/
+    background-color: rgb(91, 126, 63)
 }
 
 #app {

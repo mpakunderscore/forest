@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from "react";
 import '../css/grid.css'
-import '../css/overlay.css'
+import '../css/overlay/overlay.css'
 import Grid from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
 import {UserContext} from "../context/UserContext";
@@ -8,7 +8,7 @@ import {MapContext} from "../context/MapContext";
 
 const Forest = (props) => {
 
-    const {selectedItem, setSelectedItem, userItems} = useContext(UserContext)
+    const {selectedItem, setSelectedItem} = useContext(UserContext)
     const {centerView} = useContext(MapContext)
 
     const clickTile = (x, y) => {
@@ -23,7 +23,7 @@ const Forest = (props) => {
         // console.log('forest')
         // if (userItems.length > 0)
         //     centerView(userItems[0])
-    }, [userItems])
+    }, [])
 
 
     // log('ground forest')
@@ -31,7 +31,7 @@ const Forest = (props) => {
     return (
         <div>
             <Grid clickTile={clickTile} map={props.map}/>
-            <Overlay time={props.time} map={props.map}/>
+            <Overlay time={props.time} map={props.map} user={props.user}/>
 
             {/*<iframe width="0" height="0" src="https://www.youtube.com/embed/XxEhuSJF780?controls=0"*/}
             {/*        title="YouTube video player"*/}

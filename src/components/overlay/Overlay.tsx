@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import Controls from "./Controls";
-import ItemView from "./ItemView";
+import Item from "./Item";
 
 import {UserContext} from "../../context/UserContext";
 import Welcome from "./Welcome";
@@ -22,9 +22,9 @@ const Overlay = (props) => {
 
             {username && <User/>}
 
-            {selectedItem && <ItemView map={props.map}/>}
+            {selectedItem && <Item map={props.map} user={props.user}/>}
 
-            <Controls time={props.time}/>
+            <Controls time={props.time} user={props.user}/>
 
         </div>)
 }

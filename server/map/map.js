@@ -2,13 +2,8 @@ const {updateGround} = require("./ground");
 const {updateAgents} = require("./agents/agents");
 const {generateMap} = require("./generator");
 
-// let possibleGreen = 'ABC';
-// let possibleTrees = 'XYZ';
-
 module.exports.updateMap = () => {
-
     updatedMap = JSON.parse(JSON.stringify(map))
-
     updatedMap = updateGround(updatedMap)
     updatedMap = updateAgents(updatedMap)
     return updatedMap

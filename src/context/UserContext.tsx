@@ -10,10 +10,10 @@ import {MapContext} from "./MapContext";
 export type UserContextType = {
     username,
     setUsername,
-    userItemsIds,
-    setUserItemsIds,
-    userItems,
-    setUserItems,
+    // userItemsIds,
+    // setUserItemsIds,
+    // userItems,
+    // setUserItems,
     selectedItem,
     setSelectedItem,
     isSound,
@@ -27,9 +27,9 @@ const UserContextProvider = ({children}) => {
 
     const [username, setUsername] = useState(localStorage.getItem('username'))
 
-    const [userItemsIds, setUserItemsIds] = useState([])
+    // const [userItemsIds, setUserItemsIds] = useState([])
 
-    const [userItems, setUserItems] = useState([])
+    // const [userItems, setUserItems] = useState([])
 
     const [selectedItem, setSelectedItem] = useState(false)
 
@@ -40,10 +40,6 @@ const UserContextProvider = ({children}) => {
     const context = {
         username,
         setUsername,
-        userItemsIds,
-        setUserItemsIds,
-        userItems,
-        setUserItems,
         selectedItem,
         setSelectedItem,
         isSound,

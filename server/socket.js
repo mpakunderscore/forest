@@ -8,10 +8,14 @@ const initSocket = (server) => {
 
     io.on('connection', (socket) => {
 
-        console.log('Connected: ' + socket.id);
+        console.log('Connected: ' + socket.id)
 
-        const map = getMap()
-        socket.emit('map', {time: 0, map})
+        socket.on('username', (username) => {
+
+            const map = getMap()
+            socket.emit('map', {time: 0, map})
+            socket.emit('user', {username, userItems: [map[1][1], map[3][3]]})
+        })
 
         socket.on('seed', (seed) => {
             setSeed(seed)

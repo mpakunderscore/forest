@@ -2,9 +2,12 @@ import React, {useContext, useEffect} from "react";
 import {MapContext} from "../../context/MapContext";
 import {UserContext} from "../../context/UserContext";
 
-const ItemView = (props) => {
+const Item = (props) => {
 
-    const {userItems, selectedItem, setSelectedItem, userItemsIds, setUserItemsIds} = useContext(UserContext)
+    const userItems = props.user.userItems
+    const userItemsIds = userItems.map(item => item.id)
+
+    const {selectedItem, setSelectedItem} = useContext(UserContext)
     const {centerView, centerViewAuto, currentPositionX, currentPositionY} = useContext(MapContext)
 
     const item = selectedItem
@@ -48,40 +51,40 @@ const ItemView = (props) => {
                 <div>User: {item.user}</div>
             </div>
 
-            <div className={'text item-items'}>
-                <div>
-                    <div>Sentient</div>
-                    <div>{item.user ? 4 : 0}</div>
-                </div>
-            </div>
+            {/*<div className={'text item-items'}>*/}
+            {/*    <div>*/}
+            {/*        <div>Sentient</div>*/}
+            {/*        <div>{item.user ? 4 : 0}</div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
-            <div className={'text item-items'}>
+            {/*<div className={'text item-items'}>*/}
 
-                <div>
-                    <div className={'button'} onClick={() => {}}>Water</div>
-                    <div onClick={() => {}}>{84 + ' / ' + 340}</div>
-                </div>
+            {/*    <div>*/}
+            {/*        <div className={'button'} onClick={() => {}}>Water</div>*/}
+            {/*        <div onClick={() => {}}>{84 + ' / ' + 340}</div>*/}
+            {/*    </div>*/}
 
-                <div>
-                    <div>CO2</div>
-                    <div onClick={() => {}}>{2 + ' / ' + 4}</div>
-                </div>
+            {/*    <div>*/}
+            {/*        <div>CO2</div>*/}
+            {/*        <div onClick={() => {}}>{2 + ' / ' + 4}</div>*/}
+            {/*    </div>*/}
 
-                <div>
-                    <div>Nitrogen</div>
-                    <div onClick={() => {}}>{.1 + ' / ' + 1}</div>
-                </div>
+            {/*    <div>*/}
+            {/*        <div>Nitrogen</div>*/}
+            {/*        <div onClick={() => {}}>{.1 + ' / ' + 1}</div>*/}
+            {/*    </div>*/}
 
-                <div>
-                    <div>Phosphorus</div>
-                    <div onClick={() => {}}>{.03 + ' / ' + .2}</div>
-                </div>
+            {/*    <div>*/}
+            {/*        <div>Phosphorus</div>*/}
+            {/*        <div onClick={() => {}}>{.03 + ' / ' + .2}</div>*/}
+            {/*    </div>*/}
 
-            </div>
+            {/*</div>*/}
 
-            <div className={'text item-controls'}>
-                <div>Network inventory</div>
-            </div>
+            {/*<div className={'text item-controls'}>*/}
+            {/*    <div>Network inventory</div>*/}
+            {/*</div>*/}
 
             {/*<div className={'text item-controls'}>*/}
             {/*    <div className={'button'} onClick={() => {*/}
@@ -117,4 +120,4 @@ const ItemView = (props) => {
     )
 }
 
-export default ItemView
+export default Item

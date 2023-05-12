@@ -8,8 +8,7 @@ import {UserContext, UserContextProvider} from "./context/UserContext";
 
 function App() {
 
-    const {userItems, setUserItems} = useContext(UserContext)
-
+    const [user, setUser] = useState({})
     const [time, setTime] = useState(0)
     const [map, setMap] = useState([])
 
@@ -19,7 +18,9 @@ function App() {
     }
 
     const onUser = (userObject) => {
-        setUserItems(userItems)
+        setUser(userObject)
+        // console.log(userObject)
+        // setUserItems([])
         // setUserItemsIds(userItemsIds)
     }
 
@@ -32,7 +33,7 @@ function App() {
         <div id={'app'}>
             <MapContextProvider>
                 <UserContextProvider>
-                    <Forest map={map} time={time}/>
+                    <Forest map={map} time={time} user={user}/>
                 </UserContextProvider>
             </MapContextProvider>
         </div>

@@ -21,7 +21,7 @@ const Grid = (props) => {
         centerView
     } = useContext(MapContext)
 
-    let {userItems, setUserItems, selectedItem, setSelectedItem, userItemsIds, setUserItemsIds} = useContext(UserContext)
+    let {selectedItem, setSelectedItem} = useContext(UserContext)
 
     let renderGrid = (map) => {
 
@@ -32,8 +32,8 @@ const Grid = (props) => {
         setGridCSS(ratioWidth, ratioHeight)
 
         grid = []
-        userItems = []
-        userItemsIds = []
+        // userItems = []
+        // userItemsIds = []
 
         for (let j = 0; j < ratioHeight; j++) {
 
@@ -42,9 +42,9 @@ const Grid = (props) => {
                 const x = i + currentPositionX
                 const y = j + currentPositionY
 
-                if (map[x] && map[x][y] && map[x][y].user && map[x][y].user === 'mpakunderscore') {
-                    userItems.push(map[x][y])
-                    userItemsIds.push(map[x][y].id)
+                if (map[x] && map[x][y] && map[x][y].user && map[x][y].user === 'test') {
+                    // userItems.push(map[x][y])
+                    // userItemsIds.push(map[x][y].id)
                     // if (userItems.length === 1)
                     //     centerView(map[x][y])
                 }
@@ -115,7 +115,7 @@ const Grid = (props) => {
 
                                 ('')
                             }
-                            style={{background: grass[item.soil] ? grass[item.soil].color : ''}}
+                            style={{backgroundColor: grass[item.soil] ? grass[item.soil].color : ''}}
                             onClick={() => props.clickTile(item.x, item.y)}>
 
                     {item.type && <CellImage item={item}/>}

@@ -13,6 +13,8 @@ export const initSocket = (onMap, onUser) => {
 
 const onConnect = () => {
     log('Connect')
+    let username = localStorage.getItem('username')
+    socket.emit('username', username)
 }
 const onDisconnect = () => {
     log('Disconnect')

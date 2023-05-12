@@ -6,7 +6,7 @@ const song = new Audio('./ambient.mp3');
 const Controls = (props) => {
 
     const {cellSize, setCellSize, isCoordinates, showCoordinates, centerView} = useContext(MapContext)
-    const {userItems, isSound, setSound, selectedItem} = useContext(UserContext)
+    const {isSound, setSound, selectedItem} = useContext(UserContext)
 
     // console.log(cellSize)
 
@@ -51,26 +51,27 @@ const Controls = (props) => {
                  }}>FS
             </div>
 
-            <div className={(isCoordinates ? 'active' : '')}
-                 onClick={() => {
-                     showCoordinates(!isCoordinates)
-                 }}>Debug
-            </div>
-
             <div className={(isSound ? 'active' : '')}
                  onClick={() => {
                      setSound(!isSound)
                      if (!isSound)
-                        song.play()
+                         song.play()
                      else
                          song.pause()
-                 }}>Sound
+                 }}>🎵
+            </div>
+
+            <div className={(isCoordinates ? 'active' : '')}
+                 onClick={() => {
+                     showCoordinates(!isCoordinates)
+                 }}>DG
             </div>
 
             <div className={('')}
                  onClick={() => {
-                     console.log(userItems)
-                     centerView(userItems[0])
+                     // console.log(userItems)
+                     if (props.user.userItems.length > 0)
+                        centerView(props.user.userItems[0])
                  }}>Home
             </div>
 
