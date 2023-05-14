@@ -323,4 +323,7 @@
     .controls > div {
         min-width: 30px;
     }
+    .text {
+        font-size: 14px;
+    }
 }

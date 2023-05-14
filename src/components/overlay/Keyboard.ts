@@ -1,7 +1,8 @@
 import {useCallback, useContext, useEffect, useState} from "react"
 import {MapContext} from "../../context/MapContext"
+import welcome from "./Welcome";
 
-export const useChangePosition = () => {
+export const useChangePosition = (props) => {
 
     let {cellSize, changePosition} = useContext(MapContext)
 
@@ -17,6 +18,9 @@ export const useChangePosition = () => {
         }
         if (event.which === 38) {
             changePosition(0, -1)
+        }
+        if (event.which === 27) {
+            props.setWelcome()
         }
     }, [changePosition])
 

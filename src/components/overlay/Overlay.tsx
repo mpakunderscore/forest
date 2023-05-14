@@ -9,7 +9,7 @@ import {useChangePosition} from "./Keyboard";
 
 const Overlay = (props) => {
 
-    useChangePosition()
+    useChangePosition({setWelcome: () => setWelcome(false)})
     const {username, selectedItem} = useContext(UserContext)
     const [isWelcome, setWelcome] = useState(true)
 

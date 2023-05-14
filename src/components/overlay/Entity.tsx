@@ -37,7 +37,8 @@ const Entity = (props) => {
     }
 
     return (
-        <div className={'entity'} onClick={() => {}}>
+        <div className={'entity'} onClick={() => {
+        }}>
 
             <div className={'center button'} onClick={() => centerView(item)}>[center]</div>
             <div className={'close button'} onClick={() => setSelectedItem(false)}>[x]</div>
@@ -49,11 +50,13 @@ const Entity = (props) => {
                 {item.user && <div>User: {item.user}</div>}
             </div>
 
-            {selectedItem.user !== '' && <div className={'text item-controls'}>
+            {selectedItem.user !== '' && <div className={'text'}>
 
                 <div className={'text row'}>
-                    <div className={'button'} onClick={() => {}}>Upgrade {item.level} → {(item.level + 1)}</div>
-                    <div onClick={() => {}}>{'300 Water'}</div>
+                    <div className={'button'} onClick={() => {
+                    }}>Upgrade {item.level} → {(item.level + 1)}</div>
+                    <div onClick={() => {
+                    }}>{'300 Water'}</div>
                 </div>
 
                 <div className={'text row'}>
@@ -65,13 +68,13 @@ const Entity = (props) => {
                     <div className={'button'}>Root</div>
                     <div>100 Water</div>
                 </div>
-
-                <div className={'text row'}>
-                    <div className={'button'} onClick={() => prev()}>Prev</div>
-                    <div>{userItemsIds.indexOf(selectedItem.id) + 1} / {userItems.length}</div>
-                    <div className={'button'} onClick={() => next()}>Next</div>
-                </div>
             </div>}
+
+            <div className={'text row'}>
+                <div className={'button'} onClick={() => prev()}>Prev</div>
+                <div>{userItemsIds.indexOf(selectedItem.id) + 1} / {userItems.length}</div>
+                <div className={'button'} onClick={() => next()}>Next</div>
+            </div>
 
         </div>
     )
