@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'space.mpak.animal',
-  appName: 'Animal',
+  appId: 'space.mpak.forest',
+  appName: 'Forest',
   webDir: 'dist',
   bundledWebRuntime: false,
   backgroundColor: '#000',
