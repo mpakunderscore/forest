@@ -10,6 +10,7 @@
     /*--color-buttons-background-selected: dimgray;*/
 
     --color-background-window: rgba(0, 0, 0, 0.8);
+    --color-red: red;
 
     /*--border-radius: 5px;*/
     --border-radius: 0;
@@ -110,6 +111,10 @@
     overflow: hidden;
 }
 
+.controls .time {
+    min-width: 70px;
+}
+
 .controls > div {
     min-width: 20px;
     text-align: center;
@@ -124,7 +129,8 @@
 }
 
 .controls > div.active {
-    background-color: var(--color-buttons-background-selected);
+    /*background-color: var(--color-buttons-background-selected);*/
+    color: var(--color-red);
 }
 
 .entity {
@@ -153,11 +159,6 @@
     top: 0;
     right: 22px;
 }
-
-/*.entity .center:hover {*/
-/*    color: red;*/
-/*    cursor: pointer;*/
-/*}*/
 
 .entity > div {
     padding: 5px;
@@ -195,7 +196,7 @@
 }
 
 .button:hover {
-    color: red;
+    color: var(--color-red);
     cursor: pointer;
 }
 

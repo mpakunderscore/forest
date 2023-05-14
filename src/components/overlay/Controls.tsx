@@ -21,7 +21,7 @@ const Controls = (props) => {
     return (
         <div className={'controls'}>
 
-            <div onClick={() => {
+            <div className={'time'} onClick={() => {
             }}>{props.time}</div>
 
             <div onClick={() => {

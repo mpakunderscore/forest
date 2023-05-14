@@ -102,6 +102,9 @@ const Grid = (props) => {
     return (
         <div className={'grid' + (isCoordinates ? ' debug' : '')}>
             {grid.map((item, i) => {
+                const x = item.x
+                const y = item.y
+                let radius = Math.sqrt(x * x + y * y - 3)
                 return <div key={i}
                             id={'cell' + i}
                             className={
@@ -115,7 +118,14 @@ const Grid = (props) => {
 
                                 ('')
                             }
-                            style={{backgroundColor: grass[item.soil] ? grass[item.soil].color : ''}}
+                            style={{
+                                backgroundColor: grass[item.soil] ? grass[item.soil].color : '',
+                                opacity:
+                                    radius > 10 ?
+                                    (radius > 15 ? .05 : .2) :
+                                    1
+
+                            }}
                             onClick={() => props.clickTile(item.x, item.y)}>
 
                     {item.type && <CellImage item={item}/>}
