@@ -43,12 +43,12 @@ const updateAgent = (map, agent) => {
     map[agent.x][agent.y] = {...agent}
 }
 
-const checkExistY = (map, agent, paramY) => {
-    return (!map[agent.x] || !map[agent.x][agent.y + paramY])
+const checkExistX = (map, agent, paramX) => {
+    return (map[agent.x + paramX] && !map[agent.x + paramX][agent.y])
 }
 
-const checkExistX = (map, agent, paramX) => {
-    return (!map[agent.x + paramX] || !map[agent.x + paramX][agent.y])
+const checkExistY = (map, agent, paramY) => {
+    return (!map[agent.x] || !map[agent.x][agent.y + paramY])
 }
 
 const moveAgents = (updatedMap) => {

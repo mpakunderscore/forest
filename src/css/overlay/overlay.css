@@ -127,7 +127,7 @@
     background-color: var(--color-buttons-background-selected);
 }
 
-.item {
+.entity {
     position: fixed;
     right: var(--main-padding);
     top: var(--main-padding);
@@ -142,25 +142,31 @@
     background-color: var(--color-background-window);
 }
 
-.item .center {
+.entity .close {
     position: absolute;
     top: 0;
     right: 0;
 }
 
-.item .center:hover {
-    color: red;
-    cursor: pointer;
+.entity .center {
+    position: absolute;
+    top: 0;
+    right: 22px;
 }
 
-.item > div {
+/*.entity .center:hover {*/
+/*    color: red;*/
+/*    cursor: pointer;*/
+/*}*/
+
+.entity > div {
     padding: 5px;
     margin: 5px;
     background-color: lightgray;
     border-radius: var(--border-radius);
 }
 
-.item .text {
+.entity .text {
     /*margin: 0 10px 10px;*/
 }
 
@@ -170,19 +176,19 @@
     justify-content: space-between;
 }
 
-.item-controls {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10px;
-}
+/*.item-controls {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-between;*/
+/*    margin-top: 10px;*/
+/*}*/
 
-.item-items > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /*margin-top: 10px;*/
-}
+/*.item-items > div {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-between;*/
+/*    !*margin-top: 10px;*!*/
+/*}*/
 
 .button {
     font-weight: 700;
@@ -294,7 +300,7 @@
 
 
 @media only screen and (max-width: 600px) {
-    .item {
+    .entity {
         width: auto;
         height: auto;
         /*top: unset;*/

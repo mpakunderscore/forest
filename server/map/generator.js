@@ -1,7 +1,7 @@
 const {mapItemDefault, getTree} = require("./types");
 
-const DEFAULT_MAP_WIDTH = 200
-const DEFAULT_MAP_HEIGHT = 200
+const DEFAULT_MAP_WIDTH = 20
+const DEFAULT_MAP_HEIGHT = 20
 
 let treesCount = 0
 

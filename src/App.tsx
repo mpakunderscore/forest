@@ -19,9 +19,6 @@ function App() {
 
     const onUser = (userObject) => {
         setUser(userObject)
-        // console.log(userObject)
-        // setUserItems([])
-        // setUserItemsIds(userItemsIds)
     }
 
     useEffect(() => {

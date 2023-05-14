@@ -1,9 +1,8 @@
 import React, {createContext, useEffect, useState} from 'react';
-import {createGesture} from "@ionic/react";
 
-const CELL_SIZE_DEFAULT = 40
+const CELL_SIZE_DEFAULT = 40 // px
 
-const POSITION_X_DEFAULT = -15
+const POSITION_X_DEFAULT = -15 // redo
 const POSITION_Y_DEFAULT = -10
 
 export type MapContextType = {
@@ -25,60 +24,22 @@ export type MapContextType = {
 
 const MapContext = createContext<MapContextType>({} as MapContextType)
 
-let setCellCSS = (size) => {
+const setCellCSS = (size) => {
     document.documentElement.style.setProperty('--cell-width', size + 'px');
 }
 
 setCellCSS(CELL_SIZE_DEFAULT)
 
-let setGridCSS = (x, y) => {
+const setGridCSS = (x, y) => {
     document.documentElement.style.setProperty('--x-count', x);
     document.documentElement.style.setProperty('--y-count', y);
 }
 
-// let contextX = POSITION_X_DEFAULT
-// let contextY = POSITION_Y_DEFAULT
-
 const MapContextProvider = ({children}) => {
 
-    // const initGestures = () => {
     //
-    //     const gesture = createGesture({
-    //         el: document.getElementById('app'),
-    //         threshold: 15,
-    //         gestureName: 'my-gesture',
-    //         onMove: ev => onMove(ev),
-    //     });
-    //
-    //     gesture.enable();
-    //
-    //     const onMove = (detail) => {
-    //         const type = detail.type;
-    //         // console.log(type)
-    //         const currentX = detail.currentX;
-    //         const deltaX = detail.deltaX;
-    //         const velocityX = detail.velocityX;
-    //         const velocityY = detail.velocityY;
-    //
-    //         // console.log(velocityX + ':' + velocityY)
-    //
-    //         if (velocityX > .5) {
-    //             changePosition(-1, 0)
-    //         }
-    //
-    //         if (velocityX < -.5) {
-    //             changePosition(1, 0)
-    //         }
-    //
-    //         if (velocityY > .5) {
-    //             changePosition(0, -1)
-    //         }
-    //
-    //         if (velocityY < -.5) {
-    //             changePosition(0, 1)
-    //         }
-    //     }
-    // }
+    const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
+    const [isCoordinates, showCoordinates] = useState(true)
 
     const [currentPositionX, setCurrentPositionX] = useState(POSITION_X_DEFAULT)
     const [currentPositionY, setCurrentPositionY] = useState(POSITION_Y_DEFAULT)
@@ -88,14 +49,11 @@ const MapContextProvider = ({children}) => {
         setCurrentPositionY((prevState) => prevState + y)
     }
 
-    const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
-    const [isCoordinates, showCoordinates] = useState(true)
-
     const centerView = (item) => {
-        let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
-        let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
-        let centerX = Math.floor(ratioWidth / 2)
-        let centerY = Math.floor(ratioHeight / 2)
+        const ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
+        const ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
+        const centerX = Math.floor(ratioWidth / 2)
+        const centerY = Math.floor(ratioHeight / 2)
 
         // let centerX = 0
         // let centerY = 0

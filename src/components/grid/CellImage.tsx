@@ -27,7 +27,7 @@ const CellImage = (props) => {
 
         if (type === 'tree') {
 
-            let typeIndex = (id % 10) // 0..9
+            let typeIndex = (id % 12) // 0..9
             let treeHeight = 50 + level * 20
 
             let treeImage = {
