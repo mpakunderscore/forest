@@ -70,11 +70,11 @@ const Entity = (props) => {
                 </div>
             </div>}
 
-            <div className={'text row'}>
+            {selectedItem.user !== '' && <div className={'text row'}>
                 <div className={'button'} onClick={() => prev()}>Prev</div>
                 <div>{userItemsIds.indexOf(selectedItem.id) + 1} / {userItems.length}</div>
                 <div className={'button'} onClick={() => next()}>Next</div>
-            </div>
+            </div>}
 
         </div>
     )

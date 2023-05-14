@@ -58,7 +58,7 @@ const Controls = (props) => {
                          song.play()
                      else
                          song.pause()
-                 }}>🎵
+                 }}>{isSound ? '+' : ''}🎵
             </div>
 
             <div className={(isCoordinates ? 'active' : '')}

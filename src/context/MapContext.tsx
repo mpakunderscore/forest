@@ -39,7 +39,7 @@ const MapContextProvider = ({children}) => {
 
     //
     const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
-    const [isCoordinates, showCoordinates] = useState(true)
+    const [isCoordinates, showCoordinates] = useState(false)
 
     const [currentPositionX, setCurrentPositionX] = useState(POSITION_X_DEFAULT)
     const [currentPositionY, setCurrentPositionY] = useState(POSITION_Y_DEFAULT)

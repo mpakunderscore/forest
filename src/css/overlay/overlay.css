@@ -306,7 +306,7 @@
         height: auto;
         /*top: unset;*/
         left: var(--main-padding);
-        top: 40%;
+        top: 20px;
         /*bottom: var(--main-padding);*/
         /*left: var(--main-padding);*/
     }

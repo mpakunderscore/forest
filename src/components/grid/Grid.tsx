@@ -125,18 +125,16 @@ const Grid = (props) => {
                                 ('')
                             }
                             style={{
-                                backgroundColor: grass[item.soil] ? grass[item.soil].color : '',
+                                backgroundColor: item.type && !item.user ? grass[2].color : (grass[item.soil] ? grass[item.soil].color : ''),
                                 opacity
 
                             }}
                             onClick={() => props.clickTile(item.x, item.y)}>
 
-                    {item.type && <CellImage item={item}/>}
+                    {!isCoordinates && item.type && <CellImage item={item}/>}
 
-                    {isCoordinates && <div className={'coordinates'}>
-                        <div>{item.x}</div>
-                        :
-                        <div>{item.y}</div>
+                    {isCoordinates && <div className={'coordinates'} style={{fontSize: '5px'}}>
+                        <div>{item.x}</div>:<div>{item.y}</div>
                     </div>}
 
                     {/*<img src={getGround().src} style={getGround().style}/>*/}
