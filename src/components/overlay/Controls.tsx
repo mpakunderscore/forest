@@ -21,6 +21,16 @@ const Controls = (props) => {
     return (
         <div className={'controls'}>
 
+            <div className={(isSound ? 'active' : '')}
+                 onClick={() => {
+                     setSound(!isSound)
+                     if (!isSound)
+                         song.play()
+                     else
+                         song.pause()
+                 }}>{isSound ? '+' : ''}🎵
+            </div>
+
             <div className={'time'} onClick={() => {
             }}>{props.time}</div>
 
@@ -51,20 +61,16 @@ const Controls = (props) => {
                  }}>FS
             </div>
 
-            <div className={(isSound ? 'active' : '')}
-                 onClick={() => {
-                     setSound(!isSound)
-                     if (!isSound)
-                         song.play()
-                     else
-                         song.pause()
-                 }}>{isSound ? '+' : ''}🎵
-            </div>
-
             <div className={(isCoordinates ? 'active' : '')}
                  onClick={() => {
                      showCoordinates(!isCoordinates)
-                 }}>DG
+                 }}>D
+            </div>
+
+            <div className={(props.isWelcome ? 'active' : '')}
+                 onClick={() => {
+                     props.setWelcome(!props.isWelcome)
+                 }}>W
             </div>
 
             <div className={('')}

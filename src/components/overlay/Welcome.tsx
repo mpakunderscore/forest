@@ -75,7 +75,14 @@ const Welcome = (props) => {
             <div className={'block'}>
                 <div className={'row'}>
                     <div className={'text button ' + (username.length === 0 ? 'disabled' : '')} onClick={() => start()}>START</div>
-                    <div className={'text button ' + 'active'} onClick={() => props.setWelcome(false)}>SKIP</div>
+                    <div className={'text button ' + 'active'} onClick={() => {
+                        if (welcomeTextIterator < 3) {
+                            setWelcomeTextIterator(welcomeTextIterator + 1)
+                        } else {
+                            props.setWelcome(false)
+                        }
+                    }}
+                    >{welcomeTextIterator === 3 ? 'SKIP' : 'NEXT'}</div>
                 </div>
             </div>
         </div>

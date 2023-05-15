@@ -16,7 +16,7 @@ const Overlay = (props) => {
     return (
         <div className={'overlay'}>
 
-            {isWelcome && !username && <Welcome setWelcome={setWelcome}/>}
+            {isWelcome && <Welcome setWelcome={setWelcome}/>}
 
             {/*<Inventory/>*/}
 
@@ -24,7 +24,7 @@ const Overlay = (props) => {
 
             {selectedItem && <Entity map={props.map} user={props.user}/>}
 
-            <Controls time={props.time} user={props.user}/>
+            <Controls time={props.time} user={props.user} isWelcome={isWelcome} setWelcome={setWelcome}/>
 
         </div>)
 }

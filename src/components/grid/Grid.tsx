@@ -107,9 +107,9 @@ const Grid = (props) => {
                 const y = item.y
 
                 const radius = Math.sqrt(x * x + y * y + 3)
-                const opacity = radius > 10 ?
-                    (radius > 15 ? .05 : .2) :
-                    1
+                const isFog = false
+                let opacity = radius < 10 ? 1 : isCoordinates ? 1 : (radius < 15 ? .2 : .05)
+
 
                 return <div key={i}
                             id={'cell' + i}
@@ -118,14 +118,14 @@ const Grid = (props) => {
                                 // (item.center ? ' center' : '') +
                                 (item.id === selectedItem.id ? ' selected' : '') +
                                 (item.user === 'test' ? ' user' : '') +
-                                (isCoordinates ? ' debug' : '') +
+                                (item.type ? ' ' + item.type : '') +
 
-                                // (' ' + soil[item.soil].type) +
-
-                                ('')
+                                (isCoordinates ? ' debug' : '')
                             }
                             style={{
-                                backgroundColor: item.type && !item.user ? grass[2].color : (grass[item.soil] ? grass[item.soil].color : ''),
+                                backgroundColor: item.type && !item.user ?
+                                    (item.type === 'tree' ? grass[2].color : grass[3].color) :
+                                    (grass[item.soil] ? grass[item.soil].color : ''),
                                 opacity
 
                             }}
@@ -134,7 +134,7 @@ const Grid = (props) => {
                     {!isCoordinates && item.type && <CellImage item={item}/>}
 
                     {isCoordinates && <div className={'coordinates'} style={{fontSize: '5px'}}>
-                        <div>{item.x}</div>:<div>{item.y}</div>
+                        {/*<div>{item.x}</div>:<div>{item.y}</div>*/}
                     </div>}
 
                     {/*<img src={getGround().src} style={getGround().style}/>*/}

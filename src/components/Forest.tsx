@@ -1,10 +1,11 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import '../css/grid.css'
 import '../css/overlay/overlay.css'
 import Grid from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
 import {UserContext} from "../context/UserContext";
 import {MapContext} from "../context/MapContext";
+import Canvas from "../canvas/Canvas";
 
 const Forest = (props) => {
 
@@ -19,12 +20,20 @@ const Forest = (props) => {
             setSelectedItem(false)
     }
 
-    useEffect(() => {
-        // console.log('forest')
-        // if (userItems.length > 0)
-        //     centerView(userItems[0])
-    }, [])
+    const draw = (ctx, frameCount) => {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
+
+        ctx.beginPath()
+        ctx.moveTo(300, 300)
+        ctx.lineTo(700, 700)
+        ctx.strokeStyle = '#ffffff'
+        ctx.stroke()
+
+        // ctx.beginPath()
+        // ctx.arc(50, 100, 20*Math.sin(frameCount*0.05)**2, 0, 2*Math.PI)
+        // ctx.fill()
+    }
 
     // log('ground forest')
 
@@ -32,12 +41,7 @@ const Forest = (props) => {
         <div>
             <Grid clickTile={clickTile} map={props.map}/>
             <Overlay time={props.time} map={props.map} user={props.user}/>
-
-            {/*<iframe width="0" height="0" src="https://www.youtube.com/embed/XxEhuSJF780?controls=0"*/}
-            {/*        title="YouTube video player"*/}
-            {/*        frameBorder="0"*/}
-            {/*        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"*/}
-            {/*        allowFullScreen></iframe>*/}
+            <Canvas draw={draw}/>
         </div>
     )
 }

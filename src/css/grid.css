@@ -39,7 +39,7 @@
     justify-content: center;
 
     z-index: 1;
-    cursor: pointer;
+    /*cursor: default;*/
 
     /*background-color: #b2b2b2;*/
     color: whitesmoke;
@@ -54,9 +54,9 @@
 }
 
 .cell:hover {
-    filter: brightness(140%);
-    background-color: rgba(178, 178, 178, 0.35);
-    border-radius: var(--cell-border-radius);
+    /*filter: brightness(140%);*/
+    /*background-color: rgba(178, 178, 178, 0.35);*/
+    /*border-radius: var(--cell-border-radius);*/
 }
 
 .cell.selected.user {
@@ -73,9 +73,14 @@
 
 .cell.user {
     /*background-color: rgba(49, 140, 255, 0.9);*/
-    background-color: rgba(87, 255, 49, 0.9);
+    /*background-color: rgba(49, 255, 162, 0.9);*/
     filter: brightness(140%);
     border-radius: var(--cell-border-radius);
+    cursor: pointer;
+}
+
+.cell.tree, .cell.deer, .cell.raccoon {
+    cursor: pointer;
 }
 
 .cell img {
@@ -86,7 +91,7 @@
 
     transition: 1s filter;
 
-    /*pointer-events: none;*/
+    pointer-events: none;
 }
 
 .cell img:hover {

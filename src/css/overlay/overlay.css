@@ -1,6 +1,6 @@
 .overlay {
     position: relative;
-    z-index: 3;
+    z-index: 20;
 
     --main-padding: 20px;
 
