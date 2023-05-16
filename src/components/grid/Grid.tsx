@@ -48,6 +48,10 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
 
     }, [cellSize])
 
+    useEffect(() => {
+
+    },[])
+
     const renderGrid = () => {
 
         let arrayCell = []

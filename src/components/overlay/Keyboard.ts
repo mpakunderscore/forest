@@ -66,13 +66,13 @@ export const useChangePosition = (props) => {
     const [mouseDown, setMouseDown] = useState(null)
 
     const updateMouseDown = useCallback((event) => {
-        console.log('down')
+        // console.log('down')
         // console.log(event.x + ':' + event.y)
         setMouseDown({x: event.x, y: event.y})
     }, [mouseDown, setMouseDown])
 
     const updateMouseUp = useCallback((event) => {
-        console.log('up')
+        // console.log('up')
         if (mouseDown) {
             const xChange = Math.floor((mouseDown.x - event.x) / cellSize)
             const yChange = Math.floor((mouseDown.y - event.y) / cellSize)

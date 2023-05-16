@@ -10,10 +10,10 @@ const noNear = () => {
 }
 const generateMap = () => {
 
-    let generatedMap = []
+    let generatedMap = {}
 
     for (let i = -DEFAULT_MAP_WIDTH; i < DEFAULT_MAP_WIDTH; i++) {
-        generatedMap[i] = []
+        generatedMap[i] = {}
         for (let j = -DEFAULT_MAP_HEIGHT; j < DEFAULT_MAP_HEIGHT; j++) {
 
             let random = Math.random() * 1000;

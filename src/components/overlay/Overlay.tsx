@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import Controls from "./Controls";
+import Controls from "./controls/Controls";
 import Entity from "./Entity";
 
 import {UserContext} from "../../context/UserContext";

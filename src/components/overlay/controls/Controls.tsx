@@ -1,6 +1,6 @@
-import React, {useContext} from "react";
-import {MapContext} from "../../context/MapContext";
-import {UserContext} from "../../context/UserContext";
+import React, {useContext, useEffect} from "react";
+import {MapContext} from "../../../context/MapContext";
+import {UserContext} from "../../../context/UserContext";
 const song = new Audio('./ambient.mp3');
 
 const Controls = (props) => {
@@ -17,6 +17,11 @@ const Controls = (props) => {
             document.exitFullscreen();
         }
     }
+
+    useEffect(() => {
+        if (props.user.userItems.length > 0)
+            centerView(props.user.userItems[0])
+    }, [props.user])
 
     return (
         <div className={'controls'}>
@@ -37,6 +42,7 @@ const Controls = (props) => {
             <div onClick={() => {
                 if (cellSize > 10) {
                     setCellSize(cellSize - 10)
+                    // TODO change position
                     if (selectedItem)
                         centerView(selectedItem)
                 }
@@ -49,6 +55,7 @@ const Controls = (props) => {
             <div onClick={() => {
                 if (cellSize < 80) {
                     setCellSize(cellSize + 10)
+                    // TODO change position
                     if (selectedItem)
                         centerView(selectedItem)
                 }
