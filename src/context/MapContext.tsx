@@ -25,7 +25,7 @@ export type MapContextType = {
     // contextX: number,
     // contextY: number,
     centerView: (item, number?) => void
-    centerViewAuto: () => void
+    updateCenter: (cellSize, value) => void
 }
 
 const MapContext = createContext<MapContextType>({} as MapContextType)
@@ -44,7 +44,7 @@ const setGridCSS = (x, y) => {
 const MapContextProvider = ({children}) => {
 
     const [cellSize, setCellSize] = useState(Number(localStorage.getItem(CELL_SIZE)) || CELL_SIZE_DEFAULT)
-    const [isCoordinates, showCoordinates] = useState(true)
+    const [isCoordinates, showCoordinates] = useState(false)
 
     // console.log(localStorage.getItem(POSITION_X))
     // console.log(localStorage.getItem(POSITION_Y))
@@ -58,19 +58,17 @@ const MapContextProvider = ({children}) => {
 
     const changeCellSize = (value) => {
 
-        // console.log(cellSize)
-
-        const centerX = (Math.floor(getRatioWidth(cellSize) / 2)) + currentPositionX
-        const centerY = (Math.floor(getRatioHeight(cellSize) / 2)) + currentPositionY
-
-        // console.log(centerX + ':' + centerY)
-
         setCellSize(cellSize - value)
         localStorage.setItem(CELL_SIZE, String(cellSize - value))
 
-
-        // TODO change position
+        const centerX = (Math.floor(getRatioWidth(cellSize) / 2)) + currentPositionX
+        const centerY = (Math.floor(getRatioHeight(cellSize) / 2)) + currentPositionY
         centerView({x: centerX, y: centerY}, cellSize - value)
+    }
+
+    const updateCenter = (cellSize, value) => {
+        // TODO change position
+
     }
 
     const changePosition = (x, y) => {
@@ -130,7 +128,7 @@ const MapContextProvider = ({children}) => {
         // contextX,
         // contextY,
         centerView,
-        centerViewAuto
+        updateCenter
     }
 
     // useEffect(() => {

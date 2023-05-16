@@ -1,4 +1,7 @@
-export type EntityTypes = 'tree' | 'deer' | 'raccoon'
+export type EntityTypes =
+    'tree' | 'shrubs' | 'grass' |
+    'stone' | 'head' |
+    'deer' | 'raccoon'
 
 export interface Entity {
     id: number,
