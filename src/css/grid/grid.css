@@ -3,7 +3,7 @@
     --x-count: '';
     --y-count: '';
 
-    /*--cell-border-radius: 5px;*/
+    /*--cells-border-radius: 5px;*/
     --cell-border-radius: 0;
 }
 
@@ -56,7 +56,7 @@
 .cell:hover {
     /*filter: brightness(140%);*/
     /*background-color: rgba(178, 178, 178, 0.35);*/
-    /*border-radius: var(--cell-border-radius);*/
+    /*border-radius: var(--cells-border-radius);*/
 }
 
 .cell.selected.user {
@@ -102,7 +102,17 @@
     filter: brightness(150%);
 }
 
-.center {
-    background-color: lightgreen;
-    border-radius: 2px;
+.cell img.small {
+    width: 50px;
+    height: 50px;
+}
+
+.cell img.medium {
+    width: 80px;
+    height: 80px;
+}
+
+.cell img.big {
+    width: 120px;
+    height: 120px;
 }

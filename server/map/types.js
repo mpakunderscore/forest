@@ -1,3 +1,5 @@
+
+
 const mapItemDefault = {
     id: 0,
     x: 0,

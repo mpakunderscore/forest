@@ -1,43 +1,9 @@
-import React, {useContext, useEffect, useState} from "react";
-import {grass} from "../ground/ground";
+import React, {FC, useContext, useEffect, useState} from "react";
+import {Map} from '../../types'
 import {MapContext} from "../../context/MapContext";
-import CellImage from "./CellImage";
-import {UserContext} from "../../context/UserContext";
+import {Cell} from "./Cell";
+import entity from "../overlay/Entity";
 
-const Grid = (props) => {
-
-    let [grid, setGrid] = useState([])
-
-    const {
-        cellSize,
-        CELL_SIZE_DEFAULT,
-        isCoordinates,
-        setCellCSS,
-        setGridCSS,
-        currentPositionX,
-        currentPositionY,
-        // contextX,
-        // contextY
-        centerView
-    } = useContext(MapContext)
-
-    let {selectedItem, setSelectedItem} = useContext(UserContext)
-
-    let renderGrid = (map) => {
-
-        console.log('render grid')
-
-        let ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
-        let ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
-        setGridCSS(ratioWidth, ratioHeight)
-
-        grid = []
-        // userItems = []
-        // userItemsIds = []
-
-        for (let j = 0; j < ratioHeight; j++) {
-
-            for (let i = 0; i < ratioWidth; i++) {
 
                 const x = i + currentPositionX
                 const y = j + currentPositionY
@@ -69,22 +35,17 @@ const Grid = (props) => {
                 //     centerView(map[x][y])
 
 
-                // console.log(cell.type)
+    return <div className={'grid'}>
+        {
+            renderGrid()
 
-                grid.push(cell);
-            }
-        }
-
-        setGrid(grid)
-    }
-
-    let debounce = (func) => {
-
-        let timer;
-        return (event) => {
-            if (timer)
-                clearTimeout(timer)
-            timer = setTimeout(func, 30, event)
+            // map.map((row, x) =>
+            //     <React.Fragment key={`row - ${x}`}>
+            //         {row.map((entity, y) =>
+            //             <Cell entity={entity} x={x} y={y} key={x + ':' + y}/>
+            //         )}
+            //     </React.Fragment>
+            // )
         }
     }
 

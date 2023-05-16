@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {MapContext} from "../../context/MapContext";
-import {UserContext} from "../../context/UserContext";
+import {MapContext} from "../../../context/MapContext";
 
 const debugBorder = '1px solid rgba(255, 0, 0, 0.5)'
 
@@ -46,10 +45,6 @@ const CellImage = (props) => {
     useEffect(() => {
         setImage(getImage(props.item.type, props.item.level, props.item.id))
     }, [props.item])
-
-    // console.log(props.item)
-
-    // console.log(image)
 
     return <img src={image.src}
                 style={{...image.style, border: isCoordinates ? debugBorder : ''}}
