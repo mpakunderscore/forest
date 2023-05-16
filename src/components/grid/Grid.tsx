@@ -3,6 +3,7 @@ import {Map} from '../../types'
 import {MapContext} from "../../context/MapContext";
 import {Cell} from "./Cell";
 import entity from "../overlay/Entity";
+import {getRatioWidth, getRatioHeight} from "./cells/helpers/getRatio";
 
 
                 const x = i + currentPositionX
@@ -35,7 +36,7 @@ import entity from "../overlay/Entity";
                 //     centerView(map[x][y])
 
 
-    return <div className={'grid'}>
+    return <div className={`grid ${isCoordinates ? 'debug' : ''}`}>
         {
             renderGrid()
 

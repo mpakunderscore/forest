@@ -19,8 +19,13 @@
 }
 
 .grid.debug {
-    /*border-left: 1px solid rgba(0, 0, 0, 0.3);*/
-    /*border-top: 1px solid rgba(0, 0, 0, 0.3);*/
+    border-top: 1px solid red;
+    border-left: 1px solid red;
+}
+
+.grid.debug .cell {
+    border-bottom: 1px solid red;
+    border-right: 1px solid red;
 }
 
 .cell {
@@ -41,7 +46,7 @@
     z-index: 1;
     /*cursor: default;*/
 
-    /*background-color: #b2b2b2;*/
+    background-color: #b2b2b2;
     color: whitesmoke;
     /*opacity: .5;*/
 
