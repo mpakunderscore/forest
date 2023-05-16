@@ -18,10 +18,10 @@ const Controls = (props) => {
         }
     }
 
-    useEffect(() => {
-        if (props.user.userItems.length > 0)
-            centerView(props.user.userItems[0])
-    }, [props.user])
+    // useEffect(() => {
+    //     if (props.user.userItems.length > 0)
+    //         centerView(props.user.userItems[0])
+    // }, [props.user])
 
     return (
         <div className={'controls'}>
