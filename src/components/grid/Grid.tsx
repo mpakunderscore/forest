@@ -14,7 +14,7 @@ interface GridProps {
 
 export const Grid: FC<GridProps> = ({map, clickTile}) => {
 
-    const {setGridCSS, cellSize, setCellCSS, currentPositionX, currentPositionY, isCoordinates} = useContext(MapContext)
+    const {setGridCSS, cellSize, setCellCSS, currentPositionX, currentPositionY, isCoordinates, centerView} = useContext(MapContext)
     const {selectedItem} = useContext(UserContext)
     const [ratioWidth, setRatioWidth] = useState(getRatioWidth(cellSize))
     const [ratioHeight, setRatioHeight] = useState(getRatioHeight(cellSize))
@@ -49,7 +49,8 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
     }, [cellSize])
 
     useEffect(() => {
-
+        if (selectedItem)
+            centerView(selectedItem)
     },[])
 
     const renderGrid = () => {
@@ -72,6 +73,7 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
                                      y={y}
                                      entity={exist ? map[x][y] : null}
                                      clickTile={clickTile}
+                                     isCoordinates={isCoordinates}
                                      />)
             }
         }

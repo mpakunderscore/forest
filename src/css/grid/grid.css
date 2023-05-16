@@ -84,9 +84,19 @@
 .cell.user {
     /*background-color: rgba(49, 140, 255, 0.9);*/
     /*background-color: rgba(49, 255, 162, 0.9);*/
-    filter: brightness(140%);
-    border-radius: var(--cell-border-radius);
+    /*filter: brightness(140%);*/
+    /*border-radius: var(--cell-border-radius);*/
+    background-color: rgba(49, 140, 255, 0.7) !important;
     cursor: pointer;
+}
+
+.cell.unit {
+    background-color: #ff7600;
+    cursor: pointer;
+}
+
+.cell.tree {
+    background-color: #5B7E3F;
 }
 
 .cell.tree, .cell.deer, .cell.raccoon {

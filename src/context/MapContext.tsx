@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useCallback, useEffect, useState} from 'react';
 import {getRatioHeight, getRatioWidth} from "../components/grid/cells/helpers/getRatio";
 
 const CELL_SIZE_DEFAULT = 40 // px
@@ -10,16 +10,17 @@ export type MapContextType = {
     CELL_SIZE_DEFAULT: number,
     cellSize: number,
     setCellSize: (number) => void
+    changeCellSize: (number) => void
     setCellCSS: (size) => void,
     setGridCSS: (x, y) => void,
     isCoordinates: boolean,
-    showCoordinates: (value) => void,
+    showCoordinates: (number) => void,
     currentPositionX: number,
     currentPositionY: number,
     changePosition: (x, y) => void,
     // contextX: number,
     // contextY: number,
-    centerView: (item) => void
+    centerView: (item, number?) => void
     centerViewAuto: () => void
 }
 
@@ -38,19 +39,33 @@ const setGridCSS = (x, y) => {
 
 const MapContextProvider = ({children}) => {
 
-    //
     const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
     const [isCoordinates, showCoordinates] = useState(true)
 
     const [currentPositionX, setCurrentPositionX] = useState(POSITION_X_DEFAULT)
     const [currentPositionY, setCurrentPositionY] = useState(POSITION_Y_DEFAULT)
 
+    const changeCellSize = (value) => {
+
+        console.log(cellSize)
+
+        const centerX = (Math.floor(getRatioWidth(cellSize) / 2)) + currentPositionX
+        const centerY = (Math.floor(getRatioHeight(cellSize) / 2)) + currentPositionY
+
+        console.log(centerX + ':' + centerY)
+
+        setCellSize(cellSize - value)
+        // TODO change position
+        centerView({x: centerX, y: centerY}, cellSize - value)
+
+    }
+
     const changePosition = (x, y) => {
         setCurrentPositionX((prevState) => prevState + x)
         setCurrentPositionY((prevState) => prevState + y)
     }
 
-    const centerView = (item) => {
+    const centerView = (item, cellSize = 30) => {
         const centerX = Math.floor(getRatioWidth(cellSize) / 2)
         const centerY = Math.floor(getRatioHeight(cellSize) / 2)
 
@@ -80,6 +95,7 @@ const MapContextProvider = ({children}) => {
         CELL_SIZE_DEFAULT,
         cellSize,
         setCellSize,
+        changeCellSize,
         setCellCSS,
         setGridCSS,
         isCoordinates,

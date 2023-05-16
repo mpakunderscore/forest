@@ -5,7 +5,7 @@ const song = new Audio('./ambient.mp3');
 
 const Controls = (props) => {
 
-    const {cellSize, setCellSize, isCoordinates, showCoordinates, centerView} = useContext(MapContext)
+    const {cellSize, setCellSize, changeCellSize, isCoordinates, showCoordinates, centerView} = useContext(MapContext)
     const {isSound, setSound, selectedItem, setSelectedItem} = useContext(UserContext)
 
     // console.log(cellSize)
@@ -41,10 +41,11 @@ const Controls = (props) => {
 
             <div onClick={() => {
                 if (cellSize > 10) {
-                    setCellSize(cellSize - 10)
+                    // setCellSize(cellSize - 10)
+                    changeCellSize(10)
                     // TODO change position
-                    if (selectedItem)
-                        centerView(selectedItem)
+                    // if (selectedItem)
+                    //     centerView(selectedItem)
                 }
             }}>-
             </div>
@@ -54,10 +55,11 @@ const Controls = (props) => {
 
             <div onClick={() => {
                 if (cellSize < 80) {
-                    setCellSize(cellSize + 10)
+                    // setCellSize(cellSize + 10)
+                    changeCellSize(-10)
                     // TODO change position
-                    if (selectedItem)
-                        centerView(selectedItem)
+                    // if (selectedItem)
+                    //     centerView(selectedItem)
                 }
             }}>+
             </div>
@@ -84,7 +86,7 @@ const Controls = (props) => {
                  onClick={() => {
                      // console.log(userItems)
                      if (props.user.userItems.length > 0) {
-                         centerView(props.user.userItems[0])
+                         centerView(props.user.userItems[0], cellSize)
                          setSelectedItem(props.user.userItems[0])
                      }
 

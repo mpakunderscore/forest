@@ -40,11 +40,14 @@ const updateAgent = (map, agent) => {
         }
     }
 
+    if (!map[agent.x])
+        map[agent.x] = {}
+
     map[agent.x][agent.y] = {...agent}
 }
 
 const checkExistX = (map, agent, paramX) => {
-    return (map[agent.x + paramX] && !map[agent.x + paramX][agent.y])
+    return (!map[agent.x + paramX] || !map[agent.x + paramX][agent.y])
 }
 
 const checkExistY = (map, agent, paramY) => {

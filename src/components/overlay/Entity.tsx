@@ -8,7 +8,7 @@ const Entity = (props) => {
     const userItemsIds = userItems.map(item => item.id)
 
     const {selectedItem, setSelectedItem} = useContext(UserContext)
-    const {centerView, centerViewAuto, currentPositionX, currentPositionY} = useContext(MapContext)
+    const {cellSize, centerView, centerViewAuto, currentPositionX, currentPositionY} = useContext(MapContext)
 
     const item = selectedItem
 
@@ -40,17 +40,24 @@ const Entity = (props) => {
         <div className={'entity'} onClick={() => {
         }}>
 
-            <div className={'center button'} onClick={() => centerView(item)}>[center]</div>
-            <div className={'close button'} onClick={() => setSelectedItem(false)}>[x]</div>
 
-            <div className={'text'}>
-                <div>{item.type.toUpperCase() + ' #' + item.id + ' (' + item.x + ':' + item.y + ')'}</div>
-                <div>Level: {item.level}</div>
-                <div>Seed: {item.items.length}</div>
-                {item.user && <div>User: {item.user}</div>}
+            <div className={'text row'}>
+                <div>{item.type.toUpperCase() + ' #' + item.id + ' (' + item.level + ') (' + item.x + ':' + item.y + ')'}</div>
+                <div className={'button'} onClick={() => centerView(item, cellSize)}>[center]</div>
+                <div className={'button'} onClick={() => setSelectedItem(false)}>[x]</div>
             </div>
 
             {selectedItem.user !== '' && <div className={'text'}>
+
+                <div className={'text row'}>
+                    <div className={'button'}>Level</div>
+                    <div>{item.level}</div>
+                </div>
+
+                <div className={'text row'}>
+                    <div className={'button'}>Sentient</div>
+                    <div>5</div>
+                </div>
 
                 <div className={'text row'}>
                     <div className={'button'}>Water</div>
@@ -59,7 +66,7 @@ const Entity = (props) => {
 
                 <div className={'text row'}>
                     <div className={'button'}>Seed</div>
-                    <div>0</div>
+                    <div>{item.items.length}</div>
                 </div>
             </div>}
 
