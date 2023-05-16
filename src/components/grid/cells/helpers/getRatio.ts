@@ -1,5 +1,5 @@
 export const getRatioWidth = (cellSize) => {
-    return Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
+    return Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize) + 1
 }
 
 export const getRatioHeight = (cellSize) => {

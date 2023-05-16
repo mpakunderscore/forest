@@ -23,15 +23,15 @@ const Canvas = props => {
                 if (nextItem) {
 
                     const startLineX = (item.x - currentPositionX + .5) * cellSize
-                    const startLineY = (item.y - currentPositionY + 10) * cellSize
+                    const startLineY = (item.y - currentPositionY + .5) * cellSize
 
                     const endLineX = (nextItem.x - currentPositionX + .5) * cellSize
-                    const endLineY = (nextItem.y - currentPositionY + 10) * cellSize
+                    const endLineY = (nextItem.y - currentPositionY + .5) * cellSize
 
                     ctx.beginPath()
                     ctx.moveTo(startLineX, startLineY)
                     ctx.lineTo(endLineX, endLineY)
-                    ctx.strokeStyle = '#0d1810'
+                    ctx.strokeStyle = '#ffffff'
                     ctx.stroke()
                 }
             }
