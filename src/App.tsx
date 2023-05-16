@@ -5,12 +5,13 @@ import {initSocket} from "./utils/socket";
 import {MapContextProvider} from "./context/MapContext";
 import './css/index.css'
 import {UserContext, UserContextProvider} from "./context/UserContext";
+import {User, Map} from "./types";
 
 function App() {
 
-    const [user, setUser] = useState({})
-    const [time, setTime] = useState(0)
-    const [map, setMap] = useState([])
+    const [user, setUser] = useState<User>({userItems: []})
+    const [time, setTime] = useState<number>(0)
+    const [map, setMap] = useState<Map>([])
 
     const onMap = (mapObject) => {
         setTime(mapObject.time)
