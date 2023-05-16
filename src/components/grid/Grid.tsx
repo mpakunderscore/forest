@@ -4,6 +4,7 @@ import {MapContext} from "../../context/MapContext";
 import {Cell} from "./Cell";
 import entity from "../overlay/Entity";
 import {getRatioWidth, getRatioHeight} from "./cells/helpers/getRatio";
+import {UserContext} from "../../context/UserContext";
 
 
 interface GridProps {
@@ -14,6 +15,7 @@ interface GridProps {
 export const Grid: FC<GridProps> = ({map, clickTile}) => {
 
     const {setGridCSS, cellSize, setCellCSS, currentPositionX, currentPositionY, isCoordinates} = useContext(MapContext)
+    const {selectedItem} = useContext(UserContext)
     const [ratioWidth, setRatioWidth] = useState(getRatioWidth(cellSize))
     const [ratioHeight, setRatioHeight] = useState(getRatioHeight(cellSize))
 
@@ -44,10 +46,13 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
                 const x = i + currentPositionX
                 const y = j + currentPositionY
 
+                const exist = map[x] && map[x][y]
+
                 arrayCell.push(<Cell key={i + ':' + j}
+                                     selected={exist && map[x][y].id === selectedItem.id}
                                      x={x}
                                      y={y}
-                                     entity={map[x] && map[x][y] ? map[x][y] : null}
+                                     entity={exist ? map[x][y] : null}
                                      clickTile={clickTile}
                                      />)
             }

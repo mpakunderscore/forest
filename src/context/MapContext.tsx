@@ -2,7 +2,7 @@ import React, {createContext, useEffect, useState} from 'react';
 
 const CELL_SIZE_DEFAULT = 40 // px
 
-const POSITION_X_DEFAULT = -15 // redo
+const POSITION_X_DEFAULT = -5 // redo
 const POSITION_Y_DEFAULT = -10
 
 export type MapContextType = {
@@ -39,7 +39,7 @@ const MapContextProvider = ({children}) => {
 
     //
     const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
-    const [isCoordinates, showCoordinates] = useState(false)
+    const [isCoordinates, showCoordinates] = useState(true)
 
     const [currentPositionX, setCurrentPositionX] = useState(POSITION_X_DEFAULT)
     const [currentPositionY, setCurrentPositionY] = useState(POSITION_Y_DEFAULT)
