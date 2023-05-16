@@ -49,8 +49,8 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
     }, [cellSize])
 
     useEffect(() => {
-        if (selectedItem)
-            centerView(selectedItem)
+        // if (selectedItem)
+        //     centerView(selectedItem)
     },[])
 
     const renderGrid = () => {

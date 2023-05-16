@@ -54,10 +54,10 @@ const Entity = (props) => {
                     <div>{item.level}</div>
                 </div>
 
-                <div className={'text row'}>
-                    <div className={'button'}>Sentient</div>
-                    <div>5</div>
-                </div>
+                {/*<div className={'text row'}>*/}
+                {/*    <div className={'button'}>Sentient</div>*/}
+                {/*    <div>5</div>*/}
+                {/*</div>*/}
 
                 <div className={'text row'}>
                     <div className={'button'}>Water</div>

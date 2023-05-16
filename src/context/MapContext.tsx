@@ -3,8 +3,11 @@ import {getRatioHeight, getRatioWidth} from "../components/grid/cells/helpers/ge
 
 const CELL_SIZE_DEFAULT = 40 // px
 
-const POSITION_X_DEFAULT = -5 // redo
-const POSITION_Y_DEFAULT = -10
+// const POSITION_X_DEFAULT = -5 // redo
+// const POSITION_Y_DEFAULT = -10
+
+const POSITION_X = 'POSITION_X'
+const POSITION_Y = 'POSITION_Y'
 
 export type MapContextType = {
     CELL_SIZE_DEFAULT: number,
@@ -42,12 +45,18 @@ const MapContextProvider = ({children}) => {
     const [cellSize, setCellSize] = useState(CELL_SIZE_DEFAULT)
     const [isCoordinates, showCoordinates] = useState(true)
 
-    const [currentPositionX, setCurrentPositionX] = useState(POSITION_X_DEFAULT)
-    const [currentPositionY, setCurrentPositionY] = useState(POSITION_Y_DEFAULT)
+    console.log(localStorage.getItem(POSITION_X))
+    console.log(localStorage.getItem(POSITION_Y))
+
+    const positionX: number = Number(localStorage.getItem(POSITION_X))
+    const positionY: number = Number(localStorage.getItem(POSITION_Y))
+
+    const [currentPositionX, setCurrentPositionX] = useState(positionX)
+    const [currentPositionY, setCurrentPositionY] = useState(positionY)
 
     const changeCellSize = (value) => {
 
-        console.log(cellSize)
+        // console.log(cellSize)
 
         const centerX = (Math.floor(getRatioWidth(cellSize) / 2)) + currentPositionX
         const centerY = (Math.floor(getRatioHeight(cellSize) / 2)) + currentPositionY
@@ -63,6 +72,9 @@ const MapContextProvider = ({children}) => {
     const changePosition = (x, y) => {
         setCurrentPositionX((prevState) => prevState + x)
         setCurrentPositionY((prevState) => prevState + y)
+
+        localStorage.setItem(POSITION_X, String(currentPositionX))
+        localStorage.setItem(POSITION_Y, String(currentPositionY))
     }
 
     const centerView = (item, cellSize = 30) => {
