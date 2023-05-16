@@ -21,17 +21,31 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
 
     useEffect(() => {
         setCellCSS(cellSize)
-        setGridCSS(ratioWidth, ratioHeight)
-    }, [cellSize, ratioWidth, ratioHeight])
 
-    useEffect(() => {
-        // TODO REDO
+        // setGridCSS(ratioWidth, ratioHeight)
+
         let rw = getRatioWidth(cellSize)
         let rh = getRatioHeight(cellSize)
+
+        setGridCSS(rw, rh)
+
         setRatioWidth(rw)
         setRatioHeight(rh)
 
-        setGridCSS(rw, rh)
+        console.log(cellSize + ' ' + rw + ' ' + rh)
+
+        window.addEventListener('resize', (() => {
+            setRatioWidth(getRatioWidth(cellSize))
+            setRatioHeight(getRatioHeight(cellSize))
+        }))
+
+
+    }, [cellSize, ratioWidth, ratioHeight])
+
+    useEffect(() => {
+        console.log('update grid ratio')
+        // TODO REDO
+
     }, [cellSize])
 
     const renderGrid = () => {

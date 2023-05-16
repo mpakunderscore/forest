@@ -53,20 +53,33 @@ const Entity = (props) => {
             {selectedItem.user !== '' && <div className={'text'}>
 
                 <div className={'text row'}>
-                    <div className={'button'} onClick={() => {
-                    }}>Upgrade {item.level} → {(item.level + 1)}</div>
-                    <div onClick={() => {
-                    }}>{'300 Water'}</div>
+                    <div className={'button'}>Water</div>
+                    <div>131</div>
                 </div>
 
                 <div className={'text row'}>
                     <div className={'button'}>Seed</div>
-                    <div>30:33</div>
+                    <div>0</div>
+                </div>
+            </div>}
+
+            {selectedItem.user !== '' && <div className={'text'}>
+
+                <div className={'text row'}>
+                    <div className={'button'} onClick={() => {
+                    }}>Upgrade {item.level} → {(item.level + 1)}</div>
+                    <div onClick={() => {
+                    }}>{'Water 300'}</div>
+                </div>
+
+                <div className={'text row'}>
+                    <div className={'button'}>Seed</div>
+                    <div>Water 100</div>
                 </div>
 
                 <div className={'text row'}>
                     <div className={'button'}>Root</div>
-                    <div>100 Water</div>
+                    <div>Water 100</div>
                 </div>
             </div>}
 

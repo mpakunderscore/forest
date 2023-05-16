@@ -6,7 +6,7 @@ const song = new Audio('./ambient.mp3');
 const Controls = (props) => {
 
     const {cellSize, setCellSize, isCoordinates, showCoordinates, centerView} = useContext(MapContext)
-    const {isSound, setSound, selectedItem} = useContext(UserContext)
+    const {isSound, setSound, selectedItem, setSelectedItem} = useContext(UserContext)
 
     // console.log(cellSize)
 
@@ -76,8 +76,11 @@ const Controls = (props) => {
             <div className={('')}
                  onClick={() => {
                      // console.log(userItems)
-                     if (props.user.userItems.length > 0)
-                        centerView(props.user.userItems[0])
+                     if (props.user.userItems.length > 0) {
+                         centerView(props.user.userItems[0])
+                         setSelectedItem(props.user.userItems[0])
+                     }
+
                  }}>Home
             </div>
 

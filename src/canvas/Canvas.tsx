@@ -1,5 +1,6 @@
 import React, {useRef, useEffect, useContext} from 'react'
 import {MapContext} from "../context/MapContext";
+import {getRatioHeight, getRatioWidth} from "../components/grid/cells/helpers/getRatio";
 
 const Canvas = props => {
 
@@ -57,8 +58,8 @@ const Canvas = props => {
         }
     }, [draw])
 
-    return <canvas width={(window.innerWidth || document.documentElement.offsetWidth)}
-                   height={(window.innerHeight || document.documentElement.offsetHeight)}
+    return <canvas width={getRatioWidth(cellSize) * cellSize}
+                   height={getRatioHeight(cellSize) * cellSize}
                    ref={canvasRef}
                    {...rest}/>
 }

@@ -1,4 +1,5 @@
 import React, {createContext, useEffect, useState} from 'react';
+import {getRatioHeight, getRatioWidth} from "../components/grid/cells/helpers/getRatio";
 
 const CELL_SIZE_DEFAULT = 40 // px
 
@@ -50,10 +51,8 @@ const MapContextProvider = ({children}) => {
     }
 
     const centerView = (item) => {
-        const ratioWidth = Math.floor((window.innerWidth || document.documentElement.offsetWidth) / cellSize)
-        const ratioHeight = Math.floor((window.innerHeight || document.documentElement.offsetHeight) / cellSize)
-        const centerX = Math.floor(ratioWidth / 2)
-        const centerY = Math.floor(ratioHeight / 2)
+        const centerX = Math.floor(getRatioWidth(cellSize) / 2)
+        const centerY = Math.floor(getRatioHeight(cellSize) / 2)
 
         // let centerX = 0
         // let centerY = 0

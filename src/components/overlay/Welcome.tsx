@@ -5,9 +5,6 @@ const Welcome = (props) => {
 
     const {cellSize, setCellSize, isCoordinates, showCoordinates} = useContext(MapContext)
 
-    // let [inventory, setInventory] = useState(['seed', '', '', '', '', '', '', '', ''])
-    // let [selectedInventory, setSelectedInventory] = useState(-1)
-
     const [welcomeTextIterator, setWelcomeTextIterator] = useState(0)
 
     const texts = [
@@ -80,6 +77,9 @@ const Welcome = (props) => {
                             setWelcomeTextIterator(welcomeTextIterator + 1)
                         } else {
                             props.setWelcome(false)
+
+                            // centerView(props.user.userItems[0])
+                            // setSelectedItem(props.user.userItems[0])
                         }
                     }}
                     >{welcomeTextIterator === 3 ? 'SKIP' : 'NEXT'}</div>

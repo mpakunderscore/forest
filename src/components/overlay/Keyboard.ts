@@ -63,14 +63,54 @@ export const useChangePosition = (props) => {
         setCurrentTouchY(0)
     }, [])
 
+    const [mouseDown, setMouseDown] = useState(null)
+
+    const updateMouseDown = useCallback((event) => {
+        console.log('down')
+        // console.log(event.x + ':' + event.y)
+        setMouseDown({x: event.x, y: event.y})
+    }, [mouseDown, setMouseDown])
+
+    const updateMouseUp = useCallback((event) => {
+        console.log('up')
+        if (mouseDown) {
+            const xChange = Math.floor((mouseDown.x - event.x) / cellSize)
+            const yChange = Math.floor((mouseDown.y - event.y) / cellSize)
+            changePosition(xChange, yChange)
+        }
+        setMouseDown(null)
+    }, [mouseDown, setMouseDown])
+
+    const updateMouseMove = useCallback((event) => {
+        // console.log('mousemove ' + mouseDown)
+        if (mouseDown) {
+            // const xChange = Math.floor((mouseDown.x - event.x) / cellSize)
+            // const yChange = Math.floor((mouseDown.y - event.y) / cellSize)
+            // setMouseDown({x: event.x, y: event.y})
+            // console.log(xChange + ';' + yChange)
+            // changePosition(xChange, yChange)
+        }
+    }, [mouseDown, setMouseDown])
+
     useEffect(() => {
         document.addEventListener('keydown', updatePosition)
+
         document.addEventListener('touchmove', updateTouchMove)
         document.addEventListener('touchend', updateTouchEnd)
+
+        document.addEventListener('mousedown', updateMouseDown)
+        document.addEventListener('mouseup', updateMouseUp)
+        document.addEventListener('mousemove', updateMouseMove)
+
         return () => {
             document.removeEventListener('keydown', updatePosition)
+
             document.removeEventListener('touchmove', updateTouchMove)
             document.removeEventListener('touchend', updateTouchEnd)
+
+            document.removeEventListener('mousedown', updateMouseDown)
+            document.removeEventListener('mouseup', updateMouseUp)
+            document.removeEventListener('mousemove', updateMouseMove)
         }
     }, [updatePosition, updateTouchMove, updateTouchEnd])
 }
