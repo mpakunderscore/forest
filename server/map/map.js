@@ -1,11 +1,11 @@
 const {updateGround} = require("./ground");
-const {updateAgents} = require("./agents/agents");
+const {updateAgents, generateUnits} = require("./agents/agents");
 const {generateMap} = require("./generator");
 
 module.exports.updateMap = () => {
     updatedMap = JSON.parse(JSON.stringify(map))
     updatedMap = updateGround(updatedMap)
-    updatedMap = updateAgents(updatedMap)
+    updatedMap = updateAgents(updatedMap, units)
     return updatedMap
 }
 
@@ -14,5 +14,6 @@ module.exports.getMap = () => {
 }
 
 let map = generateMap()
+let units = generateUnits()
 let updatedMap = JSON.parse(JSON.stringify(map))
 

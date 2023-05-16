@@ -90,19 +90,6 @@
     cursor: pointer;
 }
 
-.cell.unit {
-    background-color: #ff7600;
-    cursor: pointer;
-}
-
-.cell.tree {
-    background-color: #5B7E3F;
-}
-
-.cell.tree, .cell.deer, .cell.raccoon {
-    cursor: pointer;
-}
-
 .cell img {
     position: absolute;
     width: var(--cell-width);
@@ -123,16 +110,46 @@
 }
 
 .cell img.small {
-    width: 50px;
-    height: 50px;
+    width: calc(50px + var(--cell-width));
+    height: calc(50px + var(--cell-width))
 }
 
 .cell img.medium {
-    width: 80px;
-    height: 80px;
+    width: calc(80px + var(--cell-width));
+    height: calc(80px + var(--cell-width));
 }
 
 .cell img.big {
-    width: 120px;
-    height: 120px;
+    width: calc(120px + var(--cell-width));
+    height: calc(120px + var(--cell-width));
+}
+
+.cell.tree, .cell.deer, .cell.raccoon {
+    cursor: pointer;
+}
+
+.cell.tree {
+    background-color: #5B7E3F;
+}
+
+.cell.raccoon, .cell.deer {
+    background-color: #ff7600;
+}
+.cell.head {
+    background-color: #00bbff;
+}
+
+.cell.raccoon img {
+    width: calc(var(--cell-width) * .7);
+    height: calc(var(--cell-width) * .7);
+}
+
+.cell.deer img {
+    width: calc(var(--cell-width) * 1.4);
+    height: calc(var(--cell-width) * 1.4);
+}
+
+.cell.head img {
+    width: calc(var(--cell-width) * 3) !important;
+    height: calc(var(--cell-width) * 3) !important;
 }

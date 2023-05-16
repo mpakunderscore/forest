@@ -1,14 +1,15 @@
 const {mapItemDefault} = require("../types")
 
-let units = []
+module.exports.generateUnits = () => {
 
-const createUnits = () => {
+    let units = []
 
     for (let i = 0; i < 10; i++) {
 
         let agent = {...mapItemDefault}
         agent.id = 'deer' + i
         agent.type = 'deer'
+        agent.level = 1
         units.push(agent)
     }
 
@@ -17,11 +18,12 @@ const createUnits = () => {
         let agent = {...mapItemDefault}
         agent.id = 'raccoon' + i
         agent.type = 'raccoon'
+        agent.level = 2
         units.push(agent)
     }
-}
 
-createUnits()
+    return units
+}
 
 const updateAgent = (map, agent) => {
 
@@ -54,7 +56,7 @@ const checkExistY = (map, agent, paramY) => {
     return (!map[agent.x] || !map[agent.x][agent.y + paramY])
 }
 
-const moveAgents = (updatedMap) => {
+const moveAgents = (updatedMap, units) => {
     for (let i = 0; i < units.length; i++) {
         updateAgent(updatedMap, units[i])
     }
@@ -62,7 +64,7 @@ const moveAgents = (updatedMap) => {
 }
 
 
-module.exports.updateAgents = (map) => {
-    map = moveAgents(map)
+module.exports.updateAgents = (map, units) => {
+    map = moveAgents(map, units)
     return map
 }

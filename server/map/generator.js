@@ -3,11 +3,8 @@ const {mapItemDefault, getTree} = require("./types");
 const DEFAULT_MAP_WIDTH = 10
 const DEFAULT_MAP_HEIGHT = 10
 
-let treesCount = 0
+let entityCount = 0
 
-const noNear = () => {
-
-}
 const generateMap = () => {
 
     let generatedMap = {}
@@ -26,7 +23,7 @@ const generateMap = () => {
             }
 
             if (random >= 900 && noNear()) {
-                generatedMap[i][j] = getTree(treesCount++, i, j)
+                generatedMap[i][j] = getTree(entityCount++, i, j, 1)
                 generatedMap[i][j].x = i
                 generatedMap[i][j].y = j
                 if (random > 950) {
@@ -45,15 +42,23 @@ const generateMap = () => {
         }
     }
 
-    generatedMap[1][1] = getTree(treesCount++, 1, 1)
-    generatedMap[1][1].user = 'test'
-    generatedMap[1][1].level = 7
-    generatedMap[3][3] = getTree(treesCount++, 3, 3)
-    generatedMap[3][3].user = 'test'
-    generatedMap[3][3].level = 3
+    generatedMap[1][1] = getTree(entityCount++, 1, 1, 7, 'test')
+    generatedMap[3][3] = getTree(entityCount++, 3, 3, 3, 'test')
+
+    generatedMap[-10][7] = getEntity(entityCount++, -20, 7, 106, 'test', 'head')
 
     console.log('Load map')
     return generatedMap
+}
+
+const getEntity = (id, x, y, level, user, type) => {
+    let entity = {...mapItemDefault}
+    entity.id = id
+    entity.level = level
+    entity.x = x
+    entity.y = y
+    entity.type = type
+    return entity
 }
 
 module.exports = {generateMap}

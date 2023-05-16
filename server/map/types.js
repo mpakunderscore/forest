@@ -10,12 +10,13 @@ const mapItemDefault = {
     user: '',
 }
 
-const getTree = (id, i, j) => {
+const getTree = (id, i, j, level, user = '') => {
     console.log(id)
     let item = {...mapItemDefault}
     item.id = id
     item.type = 'tree'
-    item.level = 1
+    item.level = level
+    item.user = user
     item.x = i
     item.y = j
 

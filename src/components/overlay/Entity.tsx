@@ -8,7 +8,7 @@ const Entity = (props) => {
     const userItemsIds = userItems.map(item => item.id)
 
     const {selectedItem, setSelectedItem} = useContext(UserContext)
-    const {cellSize, centerView, centerViewAuto, currentPositionX, currentPositionY} = useContext(MapContext)
+    const {cellSize, centerView, currentPositionX, currentPositionY} = useContext(MapContext)
 
     const item = selectedItem
 
