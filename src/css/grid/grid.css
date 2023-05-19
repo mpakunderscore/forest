@@ -139,6 +139,10 @@
     background-color: #00bbff;
 }
 
+.cell.water {
+    background-color: #0033ff;
+}
+
 .cell.raccoon img {
     width: calc(var(--cell-width) * .7);
     height: calc(var(--cell-width) * .7);

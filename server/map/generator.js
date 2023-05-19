@@ -1,7 +1,9 @@
-const {mapItemDefault, getTree} = require("./types");
+const {mapItemDefault} = require("./types");
 
-const DEFAULT_MAP_WIDTH = 10
-const DEFAULT_MAP_HEIGHT = 10
+const limit = 5
+
+const DEFAULT_MAP_WIDTH = limit
+const DEFAULT_MAP_HEIGHT = limit
 
 let entityCount = 0
 
@@ -19,7 +21,7 @@ const generateMap = () => {
             // generatedMap[i][j] = {empty: true}
 
             const noNear = () => {
-                return !generatedMap[i-1] || (!generatedMap[i][j-1] && !generatedMap[i-1][j])
+                return !generatedMap[i-1] || (!generatedMap[i][j-1] && !generatedMap[i-1][j] && !generatedMap[i-1][j-1])
             }
 
             if (random >= 900 && noNear()) {
@@ -44,15 +46,51 @@ const generateMap = () => {
 
     generatedMap[1][1] = getTree(entityCount++, 1, 1, 7, 'test')
     generatedMap[3][3] = getTree(entityCount++, 3, 3, 3, 'test')
+    // generatedMap[7][3] = getTree(entityCount++, 7, 3, 3, 'test')
 
-    generatedMap[-10][7] = getEntity(entityCount++, -20, 7, 106, 'test', 'head')
+    // generatedMap[-15][7] = getEntity(entityCount++, -15, 7, 106, 'test', 'head')
+
+    // generatedMap[-9][-9] = getWater(-9, -9)
 
     console.log('Load map')
     return generatedMap
 }
 
+const getTree = (id, i, j, level, user = '') => {
+    console.log(id)
+    let item = {...mapItemDefault}
+    item.id = id
+    item.type = 'tree'
+    item.level = level
+    item.user = user
+    item.x = i
+    item.y = j
+
+    // if (i < 5 && i > 0 && j < 5 && j > 0) {
+    //     item.user = 'mpakunderscore'
+    // }
+
+    item.action = () => {}
+    return item
+}
+
+const getWater = (x, y) => {
+    let item = {...mapUnitDefault}
+    // entity.id = id
+    // entity.level = level
+    item.x = x
+    item.y = y
+    item.type = 'water'
+    return item
+}
+
+const mapUnitDefault = {
+    ...mapItemDefault,
+    memory: [], // remember last friend unit, tree and water
+}
+
 const getEntity = (id, x, y, level, user, type) => {
-    let entity = {...mapItemDefault}
+    let entity = {...mapUnitDefault}
     entity.id = id
     entity.level = level
     entity.x = x
@@ -60,5 +98,7 @@ const getEntity = (id, x, y, level, user, type) => {
     entity.type = type
     return entity
 }
+
+
 
 module.exports = {generateMap}

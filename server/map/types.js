@@ -1,4 +1,8 @@
-
+const EntityTypes =
+    'tree' | 'shrubs' | 'grass' |
+    'stone' | 'water' |
+    'deer' | 'raccoon' |
+    'head'
 
 const mapItemDefault = {
     id: 0,
@@ -10,28 +14,10 @@ const mapItemDefault = {
     user: '',
 }
 
-const getTree = (id, i, j, level, user = '') => {
-    console.log(id)
-    let item = {...mapItemDefault}
-    item.id = id
-    item.type = 'tree'
-    item.level = level
-    item.user = user
-    item.x = i
-    item.y = j
-
-    // if (i < 5 && i > 0 && j < 5 && j > 0) {
-    //     item.user = 'mpakunderscore'
-    // }
-
-    item.action = () => {}
-    return item
-}
-
 const itemTypes = {
     tree: {},
     deer: {},
     raccoon: {},
 }
 
-module.exports = {getTree, mapItemDefault}
+module.exports = {mapItemDefault}
