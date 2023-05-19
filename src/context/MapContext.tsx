@@ -51,7 +51,7 @@ const MapContextProvider = ({children}) => {
 
     const positionX: number = Number(localStorage.getItem(POSITION_X)) || POSITION_X_DEFAULT
     const positionY: number = Number(localStorage.getItem(POSITION_Y)) || POSITION_Y_DEFAULT
-    console.log(positionX + ':' + positionY)
+    // console.log(positionX + ':' + positionY)
 
     const [currentPositionX, setCurrentPositionX] = useState(positionX)
     const [currentPositionY, setCurrentPositionY] = useState(positionY)
@@ -92,8 +92,8 @@ const MapContextProvider = ({children}) => {
         // let centerX = 0
         // let centerY = 0
 
-        console.log(item)
-        console.log(centerX + ':' + centerY)
+        // console.log(item)
+        // console.log(centerX + ':' + centerY)
 
         // changePosition(0, 1)
 

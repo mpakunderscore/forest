@@ -5,7 +5,7 @@ import Entity from "./Entity";
 import {UserContext} from "../../context/UserContext";
 import Welcome from "./Welcome";
 import User from "./User";
-import {useChangePosition} from "./Keyboard";
+import {useChangePosition} from "./useChangePosition";
 
 const Overlay = (props) => {
 

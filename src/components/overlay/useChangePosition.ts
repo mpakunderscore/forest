@@ -81,16 +81,27 @@ export const useChangePosition = (props) => {
         setMouseDown(null)
     }, [mouseDown, setMouseDown])
 
+    let xChangeGlobal = 0
+    let yChangeGlobal = 0
+
     const updateMouseMove = useCallback((event) => {
-        // console.log('mousemove ' + mouseDown)
         if (mouseDown) {
-            // const xChange = Math.floor((mouseDown.x - event.x) / cellSize)
-            // const yChange = Math.floor((mouseDown.y - event.y) / cellSize)
-            // setMouseDown({x: event.x, y: event.y})
-            // console.log(xChange + ';' + yChange)
-            // changePosition(xChange, yChange)
+            // console.log('mouseDown.x:' + mouseDown.x + ' ' + event.x)
+            const xChange = Math.round((mouseDown.x - event.x) / cellSize)
+            const yChange = Math.round((mouseDown.y - event.y) / cellSize)
+
+            if (xChangeGlobal !== xChange || yChangeGlobal !== yChange) {
+                setMouseDown({x: event.x, y: event.y})
+                changePosition(xChange, yChange)
+                xChangeGlobal = 0
+                yChangeGlobal = 0
+            }
         }
     }, [mouseDown, setMouseDown])
+
+    const onScroll = useCallback((event) => {
+        console.log(event)
+    }, [])
 
     useEffect(() => {
         document.addEventListener('keydown', updatePosition)
@@ -102,6 +113,13 @@ export const useChangePosition = (props) => {
         document.addEventListener('mouseup', updateMouseUp)
         document.addEventListener('mousemove', updateMouseMove)
 
+        // document.addEventListener('onwheel', onScroll)
+
+        window.onscroll = (event) => {
+            console.log('scroll')
+        }
+
+
         return () => {
             document.removeEventListener('keydown', updatePosition)
 
@@ -111,6 +129,8 @@ export const useChangePosition = (props) => {
             document.removeEventListener('mousedown', updateMouseDown)
             document.removeEventListener('mouseup', updateMouseUp)
             document.removeEventListener('mousemove', updateMouseMove)
+
+            // document.removeEventListener('onwheel', onScroll)
         }
-    }, [updatePosition, updateTouchMove, updateTouchEnd])
+    }, [updatePosition, updateTouchMove, updateTouchEnd, updateMouseDown, updateMouseUp, updateMouseMove])
 }
