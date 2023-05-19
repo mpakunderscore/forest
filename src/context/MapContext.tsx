@@ -73,7 +73,7 @@ const MapContextProvider = ({children}) => {
 
     const changePosition = (x, y) => {
 
-        console.log('changePosition')
+        // console.log('changePosition')
 
         setCurrentPositionX((prevState) => {
             localStorage.setItem(POSITION_X, String(prevState + x))

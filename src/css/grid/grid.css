@@ -23,9 +23,12 @@
     /*border-left: 1px solid red;*/
 }
 
+.grid .cell {
+    border: 1px solid transparent;
+}
+
 .grid.debug .cell {
-    border-bottom: 1px solid lightgray;
-    border-right: 1px solid lightgray;
+    border: 1px solid lightgray;
 }
 
 .cell {
@@ -51,22 +54,8 @@
     /*opacity: .5;*/
 
     transition: .1s background-color;
-}
 
-.cell {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.0);
-    border-right: 1px solid rgba(0, 0, 0, 0.0);
-}
-
-.cell.debug {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    border-right: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.cell:hover {
-    /*filter: brightness(140%);*/
-    /*background-color: rgba(178, 178, 178, 0.35);*/
-    /*border-radius: var(--cells-border-radius);*/
+    cursor: grab;
 }
 
 .cell.selected.user {
@@ -78,8 +67,12 @@
 .cell.selected {
     background-color: rgba(49, 140, 255, 0.9) !important;
     border-radius: var(--cell-border-radius);
+    border: 1px solid whitesmoke;
 }
 
+.grid.debug .cell.selected {
+    border: 1px solid whitesmoke;
+}
 
 .cell.user {
     /*background-color: rgba(49, 140, 255, 0.9);*/

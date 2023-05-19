@@ -31,8 +31,8 @@ export const useChangePosition = (props) => {
 
         const touch = event.touches[0] || event.changedTouches[0]
         const realTarget = document.elementFromPoint(touch.clientX, touch.clientY)
-        let moveX = Math.floor(touch.clientX / cellSize)
-        let moveY = Math.floor(touch.clientY / cellSize)
+        let moveX = Math.trunc(touch.clientX / cellSize)
+        let moveY = Math.trunc(touch.clientY / cellSize)
 
         setCurrentTouchX((currentTouchX) => {
             if (currentTouchX !== 0) {
@@ -74,8 +74,8 @@ export const useChangePosition = (props) => {
     const updateMouseUp = useCallback((event) => {
         // console.log('up')
         if (mouseDown) {
-            const xChange = Math.floor((mouseDown.x - event.x) / cellSize)
-            const yChange = Math.floor((mouseDown.y - event.y) / cellSize)
+            const xChange = Math.trunc((mouseDown.x - event.x) / cellSize)
+            const yChange = Math.trunc((mouseDown.y - event.y) / cellSize)
             changePosition(xChange, yChange)
         }
         setMouseDown(null)
@@ -87,13 +87,19 @@ export const useChangePosition = (props) => {
     const updateMouseMove = useCallback((event) => {
         if (mouseDown) {
             // console.log('mouseDown.x:' + mouseDown.x + ' ' + event.x)
-            const xChange = Math.round((mouseDown.x - event.x) / cellSize)
-            const yChange = Math.round((mouseDown.y - event.y) / cellSize)
+            const xChange = Math.trunc((mouseDown.x - event.x) / cellSize)
+            const yChange = Math.trunc((mouseDown.y - event.y) / cellSize)
 
-            if (xChangeGlobal !== xChange || yChangeGlobal !== yChange) {
-                setMouseDown({x: event.x, y: event.y})
-                changePosition(xChange, yChange)
+            if (xChangeGlobal !== xChange) {
+                setMouseDown({x: event.x, y: mouseDown.y})
+                changePosition(xChange, 0)
                 xChangeGlobal = 0
+                // yChangeGlobal = 0
+            }
+            if (yChangeGlobal !== yChange) {
+                setMouseDown({x: mouseDown.x, y: event.y})
+                changePosition(0, yChange)
+                // xChangeGlobal = 0
                 yChangeGlobal = 0
             }
         }
