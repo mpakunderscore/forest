@@ -10,6 +10,7 @@ module.exports.updateMap = () => {
 }
 
 module.exports.getMap = () => {
+    // console.log(map)
     return map
 }
 

@@ -12,6 +12,8 @@ const initSocket = (server) => {
 
         socket.on('username', (username) => {
 
+            // console.log(map)
+
             const map = getMap()
             socket.emit('map', {time: 0, map})
             socket.emit('user', {username, userItems: [map[1][1], map[3][3]]})

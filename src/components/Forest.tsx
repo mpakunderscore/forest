@@ -1,5 +1,6 @@
 import React, {FC, useContext, useEffect} from "react";
 import '../css/grid/grid.css'
+import '../css/grid/types.css'
 import '../css/overlay/overlay.css'
 import {Grid} from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
@@ -21,10 +22,10 @@ const Forest: FC<ForestProps> = ({user, time, map}) => {
 
     const clickTile = (x, y) => {
 
-        if (map[x][y] && map[x][y].type) {
-            setSelectedItem(map[x][y])
-        } else
-            setSelectedItem(false)
+        // if (map[x][y] && map[x][y].type && map[x][y].type.length > 1) {
+        //     setSelectedItem(map[x][y])
+        // } else
+        //     setSelectedItem(false)
     }
 
     return (

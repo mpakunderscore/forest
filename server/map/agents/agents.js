@@ -4,12 +4,22 @@ const mapTreeDefault = {
     ...mapItemDefault,
 
     experience: 0,
-    grass: [{id: '', type: 'grass'}],
+    leaves: 0,
+    growGrass: () => { // 1 leave
 
-    // Each tree produce grass (1 for 1 level) and 1 xp
-    // Grass production lead to gain experience 2:10 3:20 4:40 5:80 6:160 7:320
-    // Once it reach level 5, it starts to produce seeds
+        if (this.growGrassPossible()) {
+            this.plantGrass()
+            this.leaves--
+        }
 
+        // somewhere around grass
+    },
+    growGrassPossible: () => {
+        // if there is empty cell around
+    },
+    plantGrass: () => {
+        // plant grass somewhere
+    }
 }
 
 const mapUnitDefault = {

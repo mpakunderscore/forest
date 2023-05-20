@@ -1,7 +1,7 @@
 import {Entity} from "../../types";
 import {FC} from "react";
 import {getSizeByLevel} from "./cells/helpers/getSizeByLevel";
-import {getEntityImage} from "./cells/helpers/getEntityImage";
+import {getEntityImage, getGrassImage} from "./cells/helpers/getEntityImage";
 
 
 interface CellProps {
@@ -14,8 +14,10 @@ interface CellProps {
 }
 
 export const Cell: FC<CellProps> = ({entity, x, y, clickTile, selected, isCoordinates}) => {
+    // if (entity)
+    //     console.log(entity)
     return <div
-        className={`cell ${entity && entity.type ? entity.type : ''} ${entity && entity.user ? 'user' : ''} ${selected ? 'selected' : ''}`}
+        className={`cell ${entity && entity.type ? entity.type : ''} ${entity && entity.name ? entity.name : ''} ${entity && entity.user ? 'user' : ''} ${selected ? 'selected' : ''}`}
         onClick={() => {
             entity ? clickTile(x, y) : () => {
             }
@@ -24,6 +26,8 @@ export const Cell: FC<CellProps> = ({entity, x, y, clickTile, selected, isCoordi
         {entity && !isCoordinates &&
             <img className={`${getSizeByLevel(entity.level, entity.type)} ${entity.type}`}
                  src={getEntityImage(entity)}/>}
+
+        {/*{!isCoordinates && <img className={`grass`} src={getGrassImage((x % 4 + 1))}/>}*/}
 
     </div>
 }

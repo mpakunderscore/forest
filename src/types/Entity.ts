@@ -9,6 +9,7 @@ export interface Entity {
     x: number,
     y: number,
     type: EntityTypes,
+    name: string,
     level: number,
     items: Array<string>,
     user: string,

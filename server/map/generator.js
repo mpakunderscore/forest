@@ -1,11 +1,70 @@
-const {mapItemDefault} = require("./types");
+const {mapItemDefault} = require("./types")
+// const {createNoise2D} = require('simplex-noise')
+// const noise2D = createNoise2D();
 
-const limit = 5
+
+const limit = 100
 
 const DEFAULT_MAP_WIDTH = limit
 const DEFAULT_MAP_HEIGHT = limit
 
 let entityCount = 0
+
+const MapGenerator = require('worldmap-generator');
+
+
+const generateMap2 = (width = DEFAULT_MAP_WIDTH, height = DEFAULT_MAP_HEIGHT) => {
+
+    const world = new MapGenerator({
+        size: {
+            width,
+            height
+        },
+        tileTypes: [
+            {
+                name: 'grass',  // tile name
+                connections: {'grass': 500, 'forest': 1, 'mountain': 1, 'sand': 1}  // connections to surrounding tiles with its frequencies
+                // frequency is used for calculating probabillity of appearence next to this tile
+            },
+            {
+                name: 'forest',
+                connections: {'grass': 1, 'forest': 300}
+            },
+            {
+                name: 'mountain',
+                connections: {'grass': 1, 'mountain': 150}
+            },
+            {
+                name: 'water',
+                connections: {'water': 500, 'sand': 1}
+            },
+            {
+                name: 'sand',
+                connections: {'grass': 1, 'water': 1, 'sand': 50}
+            }
+        ]
+    });
+
+    world.generate();
+
+    // console.log(world)
+
+    let map = []
+
+    for (let i = 0; i < DEFAULT_MAP_WIDTH; i++) {
+        map[i] = {}
+        for (let j = 0; j < DEFAULT_MAP_HEIGHT; j++) {
+            map[i][j] = {type: world.map[i][j].name}
+        }
+    }
+
+    map[1][1] = getTree(entityCount++, 1, 1, 7, 'test')
+    map[3][3] = getTree(entityCount++, 3, 3, 3, 'test')
+
+    return map;
+}
+
+// generateMap2()
 
 const generateMap = () => {
 
@@ -21,7 +80,7 @@ const generateMap = () => {
             // generatedMap[i][j] = {empty: true}
 
             const noNear = () => {
-                return !generatedMap[i-1] || (!generatedMap[i][j-1] && !generatedMap[i-1][j] && !generatedMap[i-1][j-1])
+                return !generatedMap[i - 1] || (!generatedMap[i][j - 1] && !generatedMap[i - 1][j] && !generatedMap[i - 1][j - 1])
             }
 
             if (random >= 900 && noNear()) {
@@ -61,6 +120,7 @@ const getTree = (id, i, j, level, user = '') => {
     let item = {...mapItemDefault}
     item.id = id
     item.type = 'tree'
+    item.name = 'tree'
     item.level = level
     item.user = user
     item.x = i
@@ -70,7 +130,8 @@ const getTree = (id, i, j, level, user = '') => {
     //     item.user = 'mpakunderscore'
     // }
 
-    item.action = () => {}
+    item.action = () => {
+    }
     return item
 }
 
@@ -100,5 +161,4 @@ const getEntity = (id, x, y, level, user, type) => {
 }
 
 
-
-module.exports = {generateMap}
+module.exports = {generateMap: generateMap2}

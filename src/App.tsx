@@ -14,8 +14,10 @@ function App() {
     const [map, setMap] = useState<Map>([])
 
     const onMap = (mapObject) => {
+        // console.log(mapObject.map.map)
         setTime(mapObject.time)
-        setMap(mapObject.map)
+        if (map.length === 0)
+            setMap(mapObject.map)
     }
 
     const onUser = (userObject) => {

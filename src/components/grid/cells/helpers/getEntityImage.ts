@@ -12,3 +12,7 @@ export const getEntityImage = (entity: Entity) => {
             return './images/forest/entity/head.png'
     }
 }
+
+export const getGrassImage = (id) => {
+    return './images/forest/grass/grass' + id + '.png'
+}

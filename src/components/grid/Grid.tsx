@@ -22,6 +22,8 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
     useLayoutEffect(() => {
         setCellCSS(cellSize)
 
+        // console.log(map)
+
         // setGridCSS(ratioWidth, ratioHeight)
 
         let rw = getRatioWidth(cellSize)
@@ -42,7 +44,7 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
         }))
 
 
-    }, [cellSize, ratioWidth, ratioHeight])
+    }, [cellSize, ratioWidth, ratioHeight, map])
 
     // useEffect(() => {
     //
@@ -70,10 +72,16 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
                 const x = i + currentPositionX
                 const y = j + currentPositionY
 
+                // console.log(map[x])
+
                 const exist = map[x] && map[x][y]
 
+                // if (map.length)
+                //     console.log('exist')
+                // console.log(x + ': ' + map[x])
+
                 arrayCell.push(<Cell key={i + ':' + j}
-                                     selected={exist && map[x][y].id === selectedItem.id}
+                                     // selected={exist && map[x][y].id === selectedItem.id && map[x][y].type && map[x][y].type.length > 1}
                                      x={x}
                                      y={y}
                                      entity={exist ? map[x][y] : null}
