@@ -2,7 +2,7 @@ const {getChat} = require("./openai/openai");
 const {getMap} = require("./map/map");
 let prefix = '/api'
 
-let initAPI = async (app) => {
+let initAPI = (app) => {
 
     app.get(prefix + '/map', async (request, response) => {
         let map = getMap()
