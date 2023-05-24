@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {App as AppCapacitor} from '@capacitor/app';
 import Forest from "./components/Forest";
 import {initSocket} from "./utils/socket";
@@ -14,11 +14,28 @@ function App() {
     const [map, setMap] = useState<Map>([])
 
     const onMap = (mapObject) => {
-        // console.log(mapObject.map.map)
+
         setTime(mapObject.time)
-        if (map.length === 0)
-            setMap(mapObject.map)
+        setMap(mapObject.map)
     }
+
+    const onUpdate = useCallback((mapObject) => {
+
+        let newMap = {}
+
+        for (const [i, valueArray] of Object.entries(mapObject.map)) {
+            for (const [j, value] of Object.entries(mapObject.map[i])) {
+
+                if (!newMap[i])
+                    newMap[i] = {}
+
+                newMap[i][j] = mapObject.map[i][j]
+            }
+        }
+
+
+
+    }, [map])
 
     const onUser = (userObject) => {
         setUser(userObject)
@@ -26,7 +43,7 @@ function App() {
 
     useEffect(() => {
         AppCapacitor.addListener('backButton', () => {})
-        initSocket(onMap, onUser)
+        initSocket(onMap, onUpdate, onUser)
     }, [])
 
     return (

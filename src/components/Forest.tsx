@@ -22,10 +22,10 @@ const Forest: FC<ForestProps> = ({user, time, map}) => {
 
     const clickTile = (x, y) => {
 
-        // if (map[x][y] && map[x][y].type && map[x][y].type.length > 1) {
-        //     setSelectedItem(map[x][y])
-        // } else
-        //     setSelectedItem(false)
+        if (map[x][y] && map[x][y].type && map[x][y].id) {
+            setSelectedItem(map[x][y])
+        } else
+            setSelectedItem(false)
     }
 
     return (

@@ -14,10 +14,21 @@ interface CellProps {
 }
 
 export const Cell: FC<CellProps> = ({entity, x, y, clickTile, selected, isCoordinates}) => {
-    // if (entity)
-    //     console.log(entity)
+    let classes = ['cell']
+    if (entity) {
+        // let randomValue = Math.random() * 10
+        let randomValue = 1
+
+        entity.type ?
+            randomValue < 9.99 ? classes.push(entity.type + '-' + 1) : classes.push(entity.type + '-' + (Math.floor(Math.random() * 5 + 1)))
+            : null
+
+        entity.user ? classes.push(entity.user) : null
+        selected ? classes.push('selected') : null
+    }
+
     return <div
-        className={`cell ${entity && entity.type ? entity.type : ''} ${entity && entity.name ? entity.name : ''} ${entity && entity.user ? 'user' : ''} ${selected ? 'selected' : ''}`}
+        className={classes.join(' ')}
         onClick={() => {
             entity ? clickTile(x, y) : () => {
             }

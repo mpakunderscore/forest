@@ -1,19 +1,85 @@
+/* Grass */
+.grass-1 { background-color: #507d2a; }
+.grass-2 { background-color: #6e8f39; }
+.grass-3 { background-color: #8ca84b; }
+.grass-4 { background-color: #abb563; }
+.grass-5 { background-color: #cbe27a; }
+
+/* Sand */
+.sand-1 { background-color: #c2b280; }
+.sand-2 { background-color: #d5c294; }
+.sand-3 { background-color: #e7d2a8; }
+.sand-4 { background-color: #f9e2bc; }
+.sand-5 { background-color: #fbf1d0; }
+
+/* Mountain */
+.mountain-1 { background-color: #5b605f; }
+.mountain-2 { background-color: #6e7373; }
+.mountain-3 { background-color: #808787; }
+.mountain-4 { background-color: #93a0a0; }
+.mountain-5 { background-color: #a6b8b8; }
+
+/* Forest */
+.forest-1 { background-color: #0b4a2f; }
+.forest-2 { background-color: #296545; }
+.forest-3 { background-color: #46805b; }
+.forest-4 { background-color: #639b70; }
+.forest-5 { background-color: #7fb686; }
+
+/* Water */
+.water-1 { background-color: #134567; }
+.water-2 { background-color: #266d88; }
+.water-3 { background-color: #3984a9; }
+.water-4 { background-color: #4c9bca; }
+.water-5 { background-color: #5fb2eb; }
+
+
 .grass {
-    background-color: green;
+    background-color: #0ab00a;
 }
 
 .sand {
-    background-color: yellow;
+    background-color: #e0e03c;
 }
 
 .mountain {
-    background-color: black;
+    background-color: #1f1d1d;
 }
 
 .forest {
-    background-color: #5B7E3F;
+    background-color: #5e8c32;
 }
 
 .water {
-    background-color: blue;
+    background-color: #00bbff;
+}
+
+.cell.tree-1, .cell.deer-1, .cell.raccoon-1 {
+    cursor: pointer;
+}
+
+.cell.tree-1 {
+    background-color: #5B7E3F;
+}
+
+.cell.raccoon, .cell.deer {
+    background-color: #ff7600;
+}
+.cell.head {
+    background-color: #00bbff;
+}
+
+.cell.raccoon img:not(.grass) {
+    width: calc(var(--cell-width) * .7);
+    height: calc(var(--cell-width) * .7);
+}
+
+.cell.deer img {
+    width: calc(var(--cell-width) * 1.4);
+    height: calc(var(--cell-width) * 1.4);
+}
+
+.cell.head img {
+    width: calc(var(--cell-width) * 3) !important;
+    height: calc(var(--cell-width) * 3) !important;
 }

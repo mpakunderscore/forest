@@ -3,12 +3,12 @@ const {mapItemDefault} = require("./types")
 // const noise2D = createNoise2D();
 
 
-const limit = 100
+const limit = 10
 
 const DEFAULT_MAP_WIDTH = limit
 const DEFAULT_MAP_HEIGHT = limit
 
-let entityCount = 0
+let entityCount = 1
 
 const MapGenerator = require('worldmap-generator');
 
@@ -54,7 +54,8 @@ const generateMap2 = (width = DEFAULT_MAP_WIDTH, height = DEFAULT_MAP_HEIGHT) =>
     for (let i = 0; i < DEFAULT_MAP_WIDTH; i++) {
         map[i] = {}
         for (let j = 0; j < DEFAULT_MAP_HEIGHT; j++) {
-            map[i][j] = {type: world.map[i][j].name}
+            let type = world.map[i][j].name
+            map[i][j] = {type}
         }
     }
 

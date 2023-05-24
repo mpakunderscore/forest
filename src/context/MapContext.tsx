@@ -1,4 +1,4 @@
-import React, {createContext, useCallback, useEffect, useState} from 'react';
+import React, {createContext, useState} from 'react';
 import {getRatioHeight, getRatioWidth} from "../components/grid/cells/helpers/getRatio";
 
 const CELL_SIZE_DEFAULT = 40 // px
@@ -44,7 +44,7 @@ const setGridCSS = (x, y) => {
 const MapContextProvider = ({children}) => {
 
     const [cellSize, setCellSize] = useState(Number(localStorage.getItem(CELL_SIZE)) || CELL_SIZE_DEFAULT)
-    const [isCoordinates, showCoordinates] = useState(true)
+    const [isCoordinates, showCoordinates] = useState(false)
 
     // console.log(localStorage.getItem(POSITION_X))
     // console.log(localStorage.getItem(POSITION_Y))

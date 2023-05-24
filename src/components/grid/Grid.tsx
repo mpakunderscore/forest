@@ -81,7 +81,7 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
                 // console.log(x + ': ' + map[x])
 
                 arrayCell.push(<Cell key={i + ':' + j}
-                                     // selected={exist && map[x][y].id === selectedItem.id && map[x][y].type && map[x][y].type.length > 1}
+                                     selected={exist && map[x][y].id && map[x][y].id === selectedItem.id}
                                      x={x}
                                      y={y}
                                      entity={exist ? map[x][y] : null}

@@ -1,4 +1,4 @@
-const {updateMap} = require("./server/map/map");
+const {mapDiff} = require("./server/map/map");
 const {broadcast} = require("./server/socket");
 
 const {initAPI} = require("./server/api");
@@ -25,13 +25,14 @@ server.listen(port)
 
 require('dotenv').config()
 
-initAPI(app).then()
+initAPI(app)
 initSocket(io)
 initDatabase()
 
 initTimer((time) => {
-    const map = updateMap()
-    broadcast('map', {time, map})
+    const mapUpdate = mapDiff()
+    // TODO here we need only update over map, not the whole object
+    broadcast('update', {time, map: mapUpdate})
 })
 
 // google.readGoogleTable().then(r => {})

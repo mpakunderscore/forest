@@ -3,11 +3,12 @@ import {log} from "./log";
 
 let socket
 
-export const initSocket = (onMap, onUser) => {
+export const initSocket = (onMap, onUpdate, onUser) => {
     socket = io()
     socket.on('connect', onConnect)
     socket.on('disconnect', onDisconnect)
     socket.on('map', map => onMap(map))
+    socket.on('update', map => onUpdate(map))
     socket.on('user', user => onUser(user))
 }
 
