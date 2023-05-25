@@ -11,7 +11,7 @@ const Canvas = props => {
 
     const {currentPositionX, currentPositionY, cellSize} = useContext(MapContext)
 
-    const draw = (ctx, frameCount) => {
+    const draw = (canvas, ctx) => {
 
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
 
@@ -26,17 +26,33 @@ const Canvas = props => {
                     const startLineX = (item.x - currentPositionX + .5) * cellSize
                     const startLineY = (item.y - currentPositionY + .5) * cellSize
 
+                    drawCircle(canvas, ctx, startLineX, startLineY)
+
                     const endLineX = (nextItem.x - currentPositionX + .5) * cellSize
                     const endLineY = (nextItem.y - currentPositionY + .5) * cellSize
+
+                    drawCircle(canvas, ctx, endLineX, endLineY)
 
                     ctx.beginPath()
                     ctx.moveTo(startLineX, startLineY)
                     ctx.lineTo(endLineX, endLineY)
+                    ctx.lineWidth = 3
                     ctx.strokeStyle = '#ffffff'
                     ctx.stroke()
                 }
             }
         }
+    }
+
+    function drawCircle(canvas, context, x, y, ) {
+        const rect = canvas.getBoundingClientRect();
+        const positionX = x - rect.left;
+        const positionY = y - rect.top;
+
+        context.fillStyle = "#ffffff";
+        context.beginPath();
+        context.arc(positionX, positionY, 7, 0, 2 * Math.PI);
+        context.fill();
     }
 
     useEffect(() => {
@@ -48,7 +64,7 @@ const Canvas = props => {
 
         const render = () => {
             frameCount++
-            draw(context, frameCount)
+            draw(canvas, context)
             animationFrameId = window.requestAnimationFrame(render)
         }
         render()

@@ -23,8 +23,9 @@ const generateMap2 = (width = DEFAULT_MAP_WIDTH, height = DEFAULT_MAP_HEIGHT) =>
         tileTypes: [
             {
                 name: 'grass',  // tile name
-                connections: {'grass': 500, 'forest': 1, 'mountain': 1, 'sand': 1}  // connections to surrounding tiles with its frequencies
-                // frequency is used for calculating probabillity of appearence next to this tile
+                connections: {'grass': 500, 'forest': 1, 'mountain': 1, 'sand': 1}
+                // connections to surrounding tiles with its frequencies
+                // frequency is used for calculating probability of appearance next to this tile
             },
             {
                 name: 'forest',

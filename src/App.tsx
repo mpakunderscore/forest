@@ -17,23 +17,25 @@ function App() {
 
         setTime(mapObject.time)
         setMap(mapObject.map)
+
+        // console.log(mapObject.time)
     }
 
     const onUpdate = useCallback((mapObject) => {
 
-        let newMap = {}
-
-        for (const [i, valueArray] of Object.entries(mapObject.map)) {
-            for (const [j, value] of Object.entries(mapObject.map[i])) {
-
-                if (!newMap[i])
-                    newMap[i] = {}
-
-                newMap[i][j] = mapObject.map[i][j]
-            }
-        }
-
-
+        // let newMap = {}
+        //
+        // for (const [i, valueArray] of Object.entries(mapObject.map)) {
+        //     for (const [j, value] of Object.entries(mapObject.map[i])) {
+        //
+        //         if (!newMap[i])
+        //             newMap[i] = {}
+        //
+        //         newMap[i][j] = mapObject.map[i][j]
+        //     }
+        // }
+        setTime(mapObject.time)
+        setMap(mapObject.map)
 
     }, [map])
 

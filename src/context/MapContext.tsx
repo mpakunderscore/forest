@@ -43,6 +43,8 @@ const setGridCSS = (x, y) => {
 
 const MapContextProvider = ({children}) => {
 
+    // console.log('MapContextProvider')
+
     const [cellSize, setCellSize] = useState(Number(localStorage.getItem(CELL_SIZE)) || CELL_SIZE_DEFAULT)
     const [isCoordinates, showCoordinates] = useState(false)
 

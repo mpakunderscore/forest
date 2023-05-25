@@ -27,13 +27,13 @@ function arrayDifference(oldMap, map) {
 }
 
 module.exports.mapDiff = () => {
-    const oldMap = JSON.parse(JSON.stringify(map))
-    map = updateMap()
+    // const oldMap = JSON.parse(JSON.stringify(map))
+    const newMap = updateMap()
 
     // console.log(map)
 
     // return arrayDifference(oldMap, map)
-    return map
+    return newMap
 }
 
 module.exports.getMap = () => {

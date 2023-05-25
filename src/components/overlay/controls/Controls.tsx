@@ -18,10 +18,11 @@ const Controls = (props) => {
         }
     }
 
+    // console.log(props.time)
+    //
     // useEffect(() => {
-    //     if (props.user.userItems.length > 0)
-    //         centerView(props.user.userItems[0])
-    // }, [props.user])
+    //
+    // }, [props.time])
 
     return (
         <div className={'controls'}>
@@ -40,7 +41,7 @@ const Controls = (props) => {
             }}>{props.time}</div>
 
             <div onClick={() => {
-                if (cellSize > 10) {
+                if (cellSize > 40) {
                     changeCellSize(10)
                 }
             }}>-

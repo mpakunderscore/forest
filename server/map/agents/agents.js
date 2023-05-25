@@ -3,6 +3,8 @@ const {mapItemDefault} = require("../types")
 const mapTreeDefault = {
     ...mapItemDefault,
 
+    water: 0,
+    seeds: [],
     experience: 0,
     leaves: 0,
     growGrass: () => { // 1 leave
@@ -66,28 +68,27 @@ const mapUnitDefault = {
 
 }
 
+const generateUnit = (index, type) => {
+    let agent = {...mapUnitDefault}
+    agent.x = 5
+    agent.y = 5
+    agent.id = type + index
+    agent.type = type
+    agent.level = 1
+    return agent
+}
+
 module.exports.generateUnits = () => {
 
     let units = []
 
     for (let i = 0; i < 1; i++) {
-
-        let agent = {...mapUnitDefault}
-        agent.id = 'deer' + i
-        agent.type = 'deer'
-        agent.level = 1
-
-
-
+        const agent = generateUnit(i, 'deer')
         units.push(agent)
     }
 
     for (let i = 0; i < 1; i++) {
-
-        let agent = {...mapUnitDefault}
-        agent.id = 'raccoon' + i
-        agent.type = 'raccoon'
-        agent.level = 2
+        const agent = generateUnit(i, 'raccoon')
         units.push(agent)
     }
 
@@ -118,11 +119,17 @@ const updateAgent = (map, agent) => {
 }
 
 const checkExistX = (map, agent, paramX) => {
-    return (!map[agent.x + paramX] || !map[agent.x + paramX][agent.y])
+    // console.log('exist')
+    return (!map[agent.x + paramX] || !map[agent.x + paramX].id || !map[agent.x + paramX][agent.y].id)
+        && (agent.x + paramX < 10)
+        && (agent.x + paramX > 0)
 }
 
 const checkExistY = (map, agent, paramY) => {
-    return (!map[agent.x] || !map[agent.x][agent.y + paramY])
+    // console.log('exist')
+    return (!map[agent.x] || !map[agent.x].id || !map[agent.x][agent.y + paramY].id)
+        && (agent.y + paramY < 10)
+        && (agent.y + paramY > 0)
 }
 
 const moveAgents = (updatedMap, units) => {

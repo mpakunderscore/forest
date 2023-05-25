@@ -4,6 +4,8 @@ import welcome from "./overlay/Welcome";
 
 export const useChangePosition = (props) => {
 
+    // console.log('useChangePosition')
+
     let {cellSize, changePosition} = useContext(MapContext)
 
     const updatePosition = useCallback((event) => {
@@ -122,7 +124,7 @@ export const useChangePosition = (props) => {
         // document.addEventListener('onwheel', onScroll)
 
         window.onscroll = (event) => {
-            console.log('scroll')
+            // console.log('scroll')
         }
 
 

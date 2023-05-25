@@ -18,17 +18,12 @@
     /*filter: brightness(70%);*/
 }
 
-.grid.debug {
-    /*border-top: 1px solid red;*/
-    /*border-left: 1px solid red;*/
+.grid > div {
+    border: 1px solid rgba(255, 255, 255, 0);
 }
 
-.grid .cell {
-    /*border: 1px solid transparent;*/
-}
-
-.grid.debug .cell {
-    border: 1px solid lightgray;
+.grid.debug > div {
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .cell {
@@ -37,7 +32,6 @@
     width: var(--cell-width);
     height: var(--cell-width);
     line-height: var(--cell-width);
-    /*border: 1px solid transparent;*/
 
     text-align: center;
     user-select: none;

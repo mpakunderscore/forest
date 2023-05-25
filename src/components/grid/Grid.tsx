@@ -20,6 +20,7 @@ export const Grid: FC<GridProps> = ({map, clickTile}) => {
     const [ratioHeight, setRatioHeight] = useState(getRatioHeight(cellSize))
 
     useLayoutEffect(() => {
+
         setCellCSS(cellSize)
 
         // console.log(map)
