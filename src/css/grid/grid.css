@@ -19,11 +19,15 @@
 }
 
 .grid > div {
-    border: 1px solid rgba(255, 255, 255, 0);
+    /*border: 1px solid rgba(255, 255, 255, 0);*/
 }
 
 .grid.debug > div {
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.grid > div.selected {
+    /*border: 1px solid whitesmoke;*/
 }
 
 .cell {
@@ -40,7 +44,7 @@
     flex-direction: row;
     justify-content: center;
 
-    z-index: 1;
+    /*z-index: 1;*/
     /*cursor: default;*/
 
     background-color: #b2b2b2;
@@ -52,32 +56,7 @@
     cursor: grab;
 }
 
-.cell.selected.user {
-    background-color: rgba(49, 255, 255, 0.9);
-    border-radius: var(--cell-border-radius);
-    filter: brightness(140%);
-}
-
-.cell.selected {
-    /*background-color: rgba(49, 140, 255, 0.9) !important;*/
-    border-radius: var(--cell-border-radius);
-    border: 1px solid whitesmoke;
-}
-
-.grid.debug .cell.selected {
-    border: 1px solid whitesmoke;
-}
-
-.cell.user {
-    background-color: rgba(0, 255, 224, 0.7) !important;
-    cursor: pointer;
-}
-
-.cell .grass {
-    z-index: 1;
-}
-
-.cell img:not(.grass) {
+.cell img {
     position: absolute;
     width: var(--cell-width);
     bottom: 0;
@@ -92,7 +71,7 @@
     filter: brightness(150%);
 }
 
-.cell.selected img {
+.grid > div.selected > img {
     filter: brightness(150%);
 }
 

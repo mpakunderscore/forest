@@ -32,7 +32,7 @@ const Forest: FC<ForestProps> = ({user, time, map}) => {
         <div>
             <Grid clickTile={clickTile} map={map}/>
             <Overlay time={time} map={map} user={user}/>
-            <Canvas user={user}/>
+            {/*<Canvas user={user}/>*/}
         </div>
     )
 }

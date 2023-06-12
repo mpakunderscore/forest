@@ -12,6 +12,7 @@ function App() {
     const [user, setUser] = useState<User>({userItems: []})
     const [time, setTime] = useState<number>(0)
     const [map, setMap] = useState<Map>([])
+    const [mapItems, setMapItems] = useState<Map>([])
 
     const onMap = (mapObject) => {
 
@@ -34,8 +35,9 @@ function App() {
         //         newMap[i][j] = mapObject.map[i][j]
         //     }
         // }
+
         setTime(mapObject.time)
-        setMap(mapObject.map)
+        setMapItems(mapObject.map)
 
     }, [map])
 

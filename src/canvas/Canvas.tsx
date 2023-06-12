@@ -23,6 +23,8 @@ const Canvas = props => {
 
                 if (nextItem) {
 
+                    let width = getRatioWidth(cellSize)
+
                     const startLineX = (item.x - currentPositionX + .5) * cellSize
                     const startLineY = (item.y - currentPositionY + .5) * cellSize
 
@@ -36,7 +38,7 @@ const Canvas = props => {
                     ctx.beginPath()
                     ctx.moveTo(startLineX, startLineY)
                     ctx.lineTo(endLineX, endLineY)
-                    ctx.lineWidth = 3
+                    ctx.lineWidth = 1
                     ctx.strokeStyle = '#ffffff'
                     ctx.stroke()
                 }
@@ -51,7 +53,7 @@ const Canvas = props => {
 
         context.fillStyle = "#ffffff";
         context.beginPath();
-        context.arc(positionX, positionY, 7, 0, 2 * Math.PI);
+        context.arc(positionX, positionY, 2.5, 0, 2 * Math.PI);
         context.fill();
     }
 

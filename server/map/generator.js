@@ -5,8 +5,8 @@ const {mapItemDefault} = require("./types")
 
 const limit = 10
 
-const DEFAULT_MAP_WIDTH = limit
-const DEFAULT_MAP_HEIGHT = limit
+const DEFAULT_MAP_WIDTH = 7
+const DEFAULT_MAP_HEIGHT = 15
 
 let entityCount = 1
 
@@ -60,8 +60,10 @@ const generateMap2 = (width = DEFAULT_MAP_WIDTH, height = DEFAULT_MAP_HEIGHT) =>
         }
     }
 
-    map[1][1] = getTree(entityCount++, 1, 1, 7, 'test')
-    map[3][3] = getTree(entityCount++, 3, 3, 3, 'test')
+    entityCount = entityCount + 5
+
+    map[2][7] = getTree(entityCount++, 2, 7, 3, 'test')
+    map[5][5] = getTree(entityCount++, 5, 5, 7, 'test')
 
     return map;
 }

@@ -1,10 +1,10 @@
 import React, {createContext, useState} from 'react';
 import {getRatioHeight, getRatioWidth} from "../components/grid/cells/helpers/getRatio";
 
-const CELL_SIZE_DEFAULT = 40 // px
+const CELL_SIZE_DEFAULT = 60 // px
 
-const POSITION_X_DEFAULT = -5 // redo
-const POSITION_Y_DEFAULT = -10
+const POSITION_X_DEFAULT = 0 // redo
+const POSITION_Y_DEFAULT = 0
 
 const POSITION_X = 'POSITION_X'
 const POSITION_Y = 'POSITION_Y'

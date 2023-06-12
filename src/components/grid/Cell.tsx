@@ -19,9 +19,11 @@ export const Cell: FC<CellProps> = ({entity, x, y, clickTile, selected, isCoordi
         // let randomValue = Math.random() * 10
         let randomValue = 1
 
-        entity.type ?
-            randomValue < 9.99 ? classes.push(entity.type + '-' + 1) : classes.push(entity.type + '-' + (Math.floor(Math.random() * 5 + 1)))
-            : null
+        classes.push(entity.type + '-' + 1)
+
+        // entity.type ?
+        //     randomValue < 9.99 ? classes.push(entity.type + '-' + 1) : classes.push(entity.type + '-' + (Math.floor(Math.random() * 5 + 1)))
+        //     : null
 
         entity.user ? classes.push(entity.user) : null
         selected ? classes.push('selected') : null

@@ -41,11 +41,11 @@ const Welcome = (props) => {
         <div className={'welcome'}>
             <div className={'block'}>
                 <img src={'./images/welcome/welcome.png'}/>
-                <div className={'title'}>FOREST</div>
+                <div className={'title'}>RED FOREST</div>
             </div>
             <div className={'block'}>
-                <div className={'text'}>{texts[welcomeTextIterator][0]}</div>
-                <div className={'text'}>{texts[welcomeTextIterator][1]}</div>
+                {/*<div className={'text'}>{texts[welcomeTextIterator][0]}</div>*/}
+                {/*<div className={'text'}>{texts[welcomeTextIterator][1]}</div>*/}
                 <div className={'text row'}>
                     <div></div>
                     <div className={'button'} onClick={() => {
