@@ -1,0 +1,111 @@
+.welcome {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 600px;
+    /*height: 200px;*/
+
+    overflow: hidden;
+    /*border-radius: var(--border-radius);*/
+
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: var(--color-background-window);
+    z-index: 3;
+}
+
+.welcome > div.block {
+    /*margin: 5px;*/
+    /*border-radius: var(--border-radius);*/
+    /*background-color: #e8e8e8;*/
+    /*color: #e8e8e8;*/
+    overflow: hidden;
+}
+
+.welcome img {
+    /*width: calc(100% - 10px);*/
+    /*height: calc(100% - 10px);*/
+    /*width: calc(100% - 20px);*/
+    width: 100%;
+    /*width: 100%;*/
+    /*margin: 10px;*/
+    /*margin-bottom: 0;*/
+
+    object-fit: cover;
+    height: 100px;
+    display: block;
+    /*margin: 5px;*/
+    /*margin-bottom: 0;*/
+    /*border-radius: 5pvar(--border-radius
+;    /*height: 100px;*/
+}
+
+.welcome .title {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    right: 20px;
+    color: whitesmoke;
+    font-size: 30px;
+    font-weight: 700;
+    padding-bottom: 0;
+
+    line-height: 100px;
+    /*padding-left: 20px;*/
+    letter-spacing: 5px;
+
+    /*filter: invert(1);*/
+    text-align: center;
+}
+
+.welcome .title span.red {
+    color: red;
+    font-weight: 300;
+}
+
+.welcome .text {
+    margin: 20px;
+    font-weight: 300;
+    color: whitesmoke;
+    line-height: 160%;
+}
+
+.welcome input {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    /*padding: 5px 5px 5px 10px;*/
+    padding-left: 20px;
+    width: 100%;
+    height: 42px;
+
+    /*margin: 20px 0 0;*/
+    filter: invert(1);
+    /*margin: 0 0 0 10px;*/
+}
+
+.welcome input::placeholder {
+    font-weight: 300;
+}
+
+.welcome .button.disabled {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.welcome .button {
+    width: 20%;
+    text-align: center;
+}
+
+.welcome .button:hover {
+
+}
+
+@media only screen and (max-width: 600px) {
+    .welcome {
+        top: 20px;
+        width: calc(100% - 40px);
+        height: auto;
+    }
+}

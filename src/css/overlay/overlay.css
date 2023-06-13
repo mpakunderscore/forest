@@ -78,13 +78,6 @@
     background-color: var(--color-buttons-background-selected);
 }
 
-.title {
-    /*position: relative;*/
-    /*padding: 24px;*/
-
-
-}
-
 .cell .coordinates {
     position: relative;
     display: flex;
@@ -133,46 +126,6 @@
     color: var(--color-red);
 }
 
-.entity {
-    position: fixed;
-    right: var(--main-padding);
-    top: var(--main-padding);
-    /*bottom: var(--main-padding);*/
-    width: 300px;
-    /*height: 200px;*/
-
-    border-radius: var(--border-radius);
-
-    font-size: 16px;
-
-    background-color: var(--color-background-window);
-}
-
-.entity .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0;
-}
-
-.entity .center {
-    position: absolute;
-    top: 0;
-    right: 26px;
-    padding: 0;
-}
-
-.entity > div {
-    padding: 5px;
-    margin: 5px;
-    background-color: lightgray;
-    border-radius: var(--border-radius);
-}
-
-.entity .text {
-    /*margin: 0 10px 10px;*/
-}
-
 .row {
     display: flex;
     flex-direction: row;
@@ -194,93 +147,12 @@
 /*}*/
 
 .button {
-    font-weight: 700;
+    /*font-weight: 700;*/
 }
 
 .button:hover {
-    color: var(--color-red);
-    cursor: pointer;
-}
-
-.welcome {
-    position: fixed;
-    top: 20%;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 600px;
-    /*height: 200px;*/
-
-    overflow: hidden;
-    border-radius: var(--border-radius);
-
-    background-color: var(--color-background-window);
-
-    z-index: 3;
-}
-
-.welcome > div.block {
-    /*margin: 5px;*/
-    border-radius: var(--border-radius);
-    /*background-color: #e8e8e8;*/
-    color: #e8e8e8;
-    overflow: hidden;
-}
-
-.welcome img {
-    /*width: calc(100% - 10px);*/
-    /*height: calc(100% - 10px);*/
-    width: calc(100% - 20px);
-    /*width: 100%;*/
-    margin: 10px;
-    margin-bottom: 0;
-
-    object-fit: cover;
-    height: 100px;
-    display: block;
-    /*margin: 5px;*/
-    /*margin-bottom: 0;*/
-    /*border-radius: 5pvar(--border-radius
-;    /*height: 100px;*/
-}
-
-.welcome .title {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    right: 20px;
-    color: whitesmoke;
-    font-size: 30px;
-    font-weight: 700;
-    padding-bottom: 0;
-
-    line-height: 100px;
-    /*padding-left: 20px;*/
-    letter-spacing: 5px;
-
-    filter: invert(1);
-    text-align: center;
-}
-
-.welcome .text {
-    margin: 10px;
-}
-
-.welcome input {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    padding: 5px 5px 5px 10px;
-    width: 100%;
-    height: 42px;
-
-    margin: 10px 10px 0;
-    filter: invert(1);
-    /*margin: 0 0 0 10px;*/
-}
-
-.welcome .button.disabled {
-    margin: 10px;
-    color: gray;
+    /*color: var(--color-red);*/
+    /*cursor: pointer;*/
 }
 
 .overlay .user {
@@ -307,15 +179,6 @@
 
 
 @media only screen and (max-width: 600px) {
-    .entity {
-        width: auto;
-        height: auto;
-        /*top: unset;*/
-        left: var(--main-padding);
-        top: 20px;
-        /*bottom: var(--main-padding);*/
-        /*left: var(--main-padding);*/
-    }
     .welcome {
         top: 20px;
         width: calc(100% - 40px);
@@ -324,12 +187,9 @@
     .controls {
         justify-content: space-between;
         left: var(--main-padding);
-        bottom: calc(var(--main-padding) * 2);
+        bottom: calc(var(--main-padding) * 5);
     }
     .controls > div {
         min-width: 30px;
-    }
-    .text {
-        font-size: 14px;
     }
 }

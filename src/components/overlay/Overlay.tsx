@@ -3,9 +3,10 @@ import Controls from "./controls/Controls";
 import Entity from "./Entity";
 
 import {UserContext} from "../../context/UserContext";
-import Welcome from "./Welcome";
+import Welcome from "./welcome/Welcome";
 import User from "./User";
 import {useChangePosition} from "../useChangePosition";
+import Navigation from "./controls/Navigation";
 
 const Overlay = (props) => {
 
@@ -25,6 +26,8 @@ const Overlay = (props) => {
             {selectedItem && <Entity map={props.map} user={props.user}/>}
 
             <Controls time={props.time} user={props.user} isWelcome={isWelcome} setWelcome={setWelcome}/>
+
+            {selectedItem && <Navigation user={props.user}/>}
 
         </div>)
 }

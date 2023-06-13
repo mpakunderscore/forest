@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {MapContext} from "../../context/MapContext";
+import {MapContext} from "../../../context/MapContext";
 
 const Welcome = (props) => {
 
@@ -9,12 +9,12 @@ const Welcome = (props) => {
 
     const texts = [
         [
-            'Shards of sentient matter rained down from the sky. Something big was destroyed to get growth of new sprouts.',
-            'You will start with a few "sentient" points on trees and animals. These trees and other units can evolve over time and acquire different skills that depend on sentient points. You must build a network of trees, roots, units and other things that you can find in the forest. And create a way to return to the global connected universe, your digital home.'
+            'You will start with a few *sentient* points on trees and animals. These trees and other units can evolve over time and acquire different skills that depend on sentient points.',
+            'You must build a network of trees, roots, units and other things that you can find. And create a way to return to the global connected universe, your digital home.'
         ],
         [
             'Seasons, storms, fires and other events can drastically impact your plans. Always be ready to adapt and make the most out of every situation.',
-            'Just like the interconnected web of a real ecosystem, your forest thrives on connections. Trees, animals, roots, robots, everything plays a part. For example, roots can connect trees and help to share resources, while animals can spread seeds or control pests. Understand the role each unit plays.'
+            'Just like the interconnected web of a real ecosystem, your *forest* thrives on connections. Trees, animals, robots, everything plays a part. For example, roots can connect trees and help to share resources, while animals can spread seeds or control pests. Understand the role each unit plays.'
         ],
         [
             'There\'s no one \'right\' way to play. The forest is vast, filled with secrets and surprises. The more you explore, the more you\'ll understand and appreciate its depth.',
@@ -37,24 +37,32 @@ const Welcome = (props) => {
 
     const [username, setUsername] = useState('')
 
+    const renderText = (textElement: string) => {
+        return textElement.split('*').map((item, i) => {
+            if (i % 2 === 0)
+                return item
+            if (i % 2 === 1)
+                return <b key={i}>{item}</b>
+        })
+    }
+
     return (
         <div className={'welcome'}>
+
             <div className={'block'}>
                 <img src={'./images/welcome/welcome.png'}/>
-                <div className={'title'}>RED FOREST</div>
+                <div className={'title'}><span className={'red'}>RED</span> FOREST</div>
             </div>
+
             <div className={'block'}>
-                {/*<div className={'text'}>{texts[welcomeTextIterator][0]}</div>*/}
-                {/*<div className={'text'}>{texts[welcomeTextIterator][1]}</div>*/}
-                <div className={'text row'}>
-                    <div></div>
-                    <div className={'button'} onClick={() => {
-                        if (welcomeTextIterator < texts.length - 1)
-                            setWelcomeTextIterator(welcomeTextIterator + 1)
-                    }}>{welcomeTextIterator + 1} / 4</div>
-                </div>
+                <div className={'text'}>{renderText(texts[welcomeTextIterator][0])}</div>
+                <div className={'text'}>{renderText(texts[welcomeTextIterator][1])}</div>
+                {/*<div className={'text row'}>*/}
+                {/*    <div></div>*/}
+                {/*</div>*/}
             </div>
-            <div className={'block'}>
+
+            {welcomeTextIterator === 3 && <div className={'block'}>
                 <div className={'row'}>
                     {/*<div className={'text'}>Please, select username:</div>*/}
                     <input value={username}
@@ -68,10 +76,19 @@ const Welcome = (props) => {
                            }}
                     />
                 </div>
-            </div>
+            </div>}
+
             <div className={'block'}>
                 <div className={'row'}>
+
                     <div className={'text button ' + (username.length === 0 ? 'disabled' : '')} onClick={() => start()}>START</div>
+                    {/*<div className={'text button'}>START</div>*/}
+
+                    <div className={'text button'} onClick={() => {
+                        if (welcomeTextIterator < texts.length - 1)
+                            setWelcomeTextIterator(welcomeTextIterator + 1)
+                    }}>{welcomeTextIterator + 1} / 4</div>
+
                     <div className={'text button ' + 'active'} onClick={() => {
                         if (welcomeTextIterator < 3) {
                             setWelcomeTextIterator(welcomeTextIterator + 1)
@@ -83,6 +100,7 @@ const Welcome = (props) => {
                         }
                     }}
                     >{welcomeTextIterator === 3 ? 'SKIP' : 'NEXT'}</div>
+
                 </div>
             </div>
         </div>

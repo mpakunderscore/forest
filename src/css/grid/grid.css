@@ -47,7 +47,8 @@
     /*z-index: 1;*/
     /*cursor: default;*/
 
-    background-color: #b2b2b2;
+    /*background-color: #b2b2b2;*/
+    background-color: rgba(255, 255, 255, 0.2);
     color: whitesmoke;
     /*opacity: .5;*/
 

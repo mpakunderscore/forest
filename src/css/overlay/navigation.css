@@ -1,0 +1,35 @@
+.navigation {
+    position: fixed;
+    left: var(--main-padding);
+    bottom: var(--main-padding);
+    right: var(--main-padding);
+    width: 100%;
+    max-width: 350px;
+    /*height: 200px;*/
+
+    /*border-radius: var(--border-radius);*/
+    font-size: 16px;
+    overflow: hidden;
+
+    color: whitesmoke;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background-color: var(--color-background-window);
+    z-index: 3;
+}
+
+.navigation .button {
+    width: 20%;
+    text-align: center;
+}
+
+.navigation .text {
+    padding: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .navigation {
+        width: calc(100% - 40px);
+        max-width: none;
+    }
+}

@@ -37,63 +37,70 @@ const Entity = (props) => {
     }
 
     return (
-        <div className={'entity'} onClick={() => {
-        }}>
+        <div className={'entity'} onClick={() => {}}>
 
-
-            <div className={'text row'}>
-                <div>{item.type.toUpperCase() + ' #' + item.id + ' (' + item.level + ') (' + item.x + ':' + item.y + ')'}</div>
-                <div className={'button'} onClick={() => centerView(item, cellSize)}>[center]</div>
-                <div className={'button'} onClick={() => setSelectedItem(false)}>[x]</div>
+            <div className={'block'}>
+                <img src={'./images/entity/tree.png'}/>
+                <div className={'title'}>TREE</div>
             </div>
 
-            {selectedItem.user !== '' && <div className={'text'}>
+            {/*<div className={'text row'}>*/}
+            {/*    <div>{item.type.toUpperCase() + ' #' + item.id + ' (' + item.level + ') (' + item.x + ':' + item.y + ')'}</div>*/}
+            {/*    <div className={'button'} onClick={() => centerView(item, cellSize)}>[center]</div>*/}
+            {/*    <div className={'button'} onClick={() => setSelectedItem(false)}>[x]</div>*/}
+            {/*</div>*/}
 
-                <div className={'text row'}>
-                    <div className={'button'}>Level</div>
-                    <div>{item.level}</div>
+            {selectedItem.user !== '' && <div className={'block'}>
+
+                <div className={'text'}>
+
+                    <div className={'row'}>
+                        <div className={''}>Level</div>
+                        <div>{item.level}</div>
+                    </div>
+
+                    {/*<div className={'text row'}>*/}
+                    {/*    <div className={'button'}>Sentient</div>*/}
+                    {/*    <div>5</div>*/}
+                    {/*</div>*/}
+
+                    {/*<div className={'row'}>*/}
+                    {/*    <div className={'button'}>Water</div>*/}
+                    {/*    <div>131</div>*/}
+                    {/*</div>*/}
+
+                    {/*<div className={'text row'}>*/}
+                    {/*    <div className={'button'}>Seed</div>*/}
+                    {/*    <div>{item.items.length}</div>*/}
+                    {/*</div>*/}
+
                 </div>
+            </div>}
 
-                {/*<div className={'text row'}>*/}
-                {/*    <div className={'button'}>Sentient</div>*/}
-                {/*    <div>5</div>*/}
+            {selectedItem.user !== '' && <div className={'block'}>
+
+                {/*<div className={'row'}>*/}
+                {/*    <div className={'button'} onClick={() => {*/}
+                {/*    }}>Upgrade {item.level} → {(item.level + 1)}</div>*/}
+                {/*    <div onClick={() => {*/}
+                {/*    }}>{'Water 300'}</div>*/}
                 {/*</div>*/}
 
-                <div className={'text row'}>
-                    <div className={'button'}>Water</div>
-                    <div>131</div>
-                </div>
+                {/*<div className={'row'}>*/}
+                {/*    <div className={'button'}>Seed</div>*/}
+                {/*    <div>Water 100</div>*/}
+                {/*</div>*/}
 
-                <div className={'text row'}>
-                    <div className={'button'}>Seed</div>
-                    <div>{item.items.length}</div>
-                </div>
+                {/*<div className={'row'}>*/}
+                {/*    <div className={'button'}>Root</div>*/}
+                {/*    <div>Water 100</div>*/}
+                {/*</div>*/}
             </div>}
 
-            {selectedItem.user !== '' && <div className={'text'}>
-
-                <div className={'text row'}>
-                    <div className={'button'} onClick={() => {
-                    }}>Upgrade {item.level} → {(item.level + 1)}</div>
-                    <div onClick={() => {
-                    }}>{'Water 300'}</div>
-                </div>
-
-                <div className={'text row'}>
-                    <div className={'button'}>Seed</div>
-                    <div>Water 100</div>
-                </div>
-
-                <div className={'text row'}>
-                    <div className={'button'}>Root</div>
-                    <div>Water 100</div>
-                </div>
-            </div>}
-
-            {selectedItem.user !== '' && <div className={'text row'}>
-                <div className={'button'} onClick={() => prev()}>Prev</div>
-                <div>{userItemsIds.indexOf(selectedItem.id) + 1} / {userItems.length}</div>
-                <div className={'button'} onClick={() => next()}>Next</div>
+            {selectedItem.user !== '' && <div className={'row'}>
+                {/*<div className={'button'} onClick={() => prev()}>Prev</div>*/}
+                {/*<div>{userItemsIds.indexOf(selectedItem.id) + 1} / {userItems.length}</div>*/}
+                {/*<div className={'button'} onClick={() => next()}>Next</div>*/}
             </div>}
 
         </div>

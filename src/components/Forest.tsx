@@ -1,7 +1,12 @@
 import React, {FC, useContext, useEffect} from "react";
+
 import '../css/grid/grid.css'
 import '../css/grid/types.css'
 import '../css/overlay/overlay.css'
+import '../css/overlay/welcome.css'
+import '../css/overlay/entity.css'
+import '../css/overlay/navigation.css'
+
 import {Grid} from "./grid/Grid";
 import Overlay from "./overlay/Overlay";
 import {UserContext} from "../context/UserContext";
