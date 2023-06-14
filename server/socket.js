@@ -16,7 +16,7 @@ const initSocket = (server) => {
 
             const map = getMap()
             socket.emit('map', {time: 0, map})
-            socket.emit('user', {username, userItems: [map[1][1], map[3][3]]})
+            socket.emit('user', {username, userItems: [map[2][7], map[5][5]]})
         })
 
         socket.on('seed', (seed) => {

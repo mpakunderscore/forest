@@ -25,7 +25,7 @@ const Overlay = (props) => {
 
             {selectedItem && <Entity map={props.map} user={props.user}/>}
 
-            <Controls time={props.time} user={props.user} isWelcome={isWelcome} setWelcome={setWelcome}/>
+            {/*<Controls time={props.time} user={props.user} isWelcome={isWelcome} setWelcome={setWelcome}/>*/}
 
             {selectedItem && <Navigation user={props.user}/>}
 

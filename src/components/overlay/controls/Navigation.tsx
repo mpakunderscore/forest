@@ -7,7 +7,7 @@ import {MapContext} from "../../../context/MapContext";
 const Navigation = (props) => {
 
     const userItems = props.user.userItems
-    // console.log(userItems)
+    console.log(props.user)
     const userItemsIds = userItems.map(item => item.id)
 
     const {selectedItem, setSelectedItem} = useContext(UserContext)
@@ -44,7 +44,7 @@ const Navigation = (props) => {
 
             {selectedItem.user !== '' && <div className={'row'}>
                 <div className={'text button'} onClick={() => prev()}>PREV</div>
-                <div className={'text'}>{userItemsIds.indexOf(selectedItem.id)} / {userItems.length}</div>
+                <div className={'text'}>{userItemsIds.indexOf(selectedItem.id) + 1} / {userItems.length}</div>
                 <div className={'text button'} onClick={() => next()}>NEXT</div>
             </div>}
 
