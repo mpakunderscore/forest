@@ -56,7 +56,7 @@ const generateMap2 = (width = DEFAULT_MAP_WIDTH, height = DEFAULT_MAP_HEIGHT) =>
         map[i] = {}
         for (let j = 0; j < DEFAULT_MAP_HEIGHT; j++) {
             let type = world.map[i][j].name
-            map[i][j] = {type}
+            map[i][j] = {ground: type}
         }
     }
 

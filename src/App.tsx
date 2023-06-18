@@ -6,6 +6,7 @@ import {MapContextProvider} from "./context/MapContext";
 import './css/index.css'
 import {UserContext, UserContextProvider} from "./context/UserContext";
 import {User, Map} from "./types";
+import Red from "./components/Red";
 
 function App() {
 
@@ -54,7 +55,8 @@ function App() {
         <div id={'app'}>
             <MapContextProvider>
                 <UserContextProvider>
-                    <Forest map={map} time={time} user={user}/>
+                    {/*<Forest map={map} time={time} user={user}/>*/}
+                    <Red map={map} time={time} user={user}/>
                 </UserContextProvider>
             </MapContextProvider>
         </div>

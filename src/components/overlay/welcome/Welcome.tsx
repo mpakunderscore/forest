@@ -50,7 +50,7 @@ const Welcome = (props) => {
         <div className={'welcome'}>
 
             <div className={'block'}>
-                <img src={'./images/welcome/welcome.png'}/>
+                <img src={'./images/welcome/title.png'}/>
                 <div className={'title'}><span className={'red'}>RED</span> FOREST</div>
             </div>
 

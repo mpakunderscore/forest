@@ -23,15 +23,15 @@ body {
 
     --app-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     height: var(--app-height);
-    overflow: hidden;
+    /*overflow: hidden;*/
 
     margin: 0;
     background-color: black;
 
-    padding-top: env(safe-area-inset-top) !important;
+    /*padding-top: env(safe-area-inset-top) !important;*/
 
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
     letter-spacing: 1px;
 
@@ -96,18 +96,18 @@ main {
 
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 
     z-index: 2;
 }
 
-#app > div {
-    height: var(--app-height);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+/*#app > div {*/
+/*    height: var(--app-height);*/
+/*    overflow: hidden;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*}*/
 
 img {
     -webkit-user-drag: none;
@@ -119,4 +119,14 @@ canvas {
     height: 100%;
     z-index: 10;
     pointer-events: none;
+}
+
+#app {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    #app {
+        display: block;
+    }
 }

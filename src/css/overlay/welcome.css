@@ -61,7 +61,7 @@
 }
 
 .welcome .title span.red {
-    color: red;
+    color: rgba(211, 184, 184, 0.3);
     font-weight: 300;
 }
 
@@ -70,11 +70,12 @@
     font-weight: 300;
     color: whitesmoke;
     line-height: 160%;
+
+    font-size: 18px;
 }
 
 .welcome input {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
     /*padding: 5px 5px 5px 10px;*/
     padding-left: 20px;
     width: 100%;
