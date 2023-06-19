@@ -1,4 +1,4 @@
-    @font-face {
+@font-face {
     font-family: 'Open Sans';
     src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }
@@ -119,14 +119,4 @@ canvas {
     height: 100%;
     z-index: 10;
     pointer-events: none;
-}
-
-#app {
-    display: none;
-}
-
-@media only screen and (max-width: 600px) {
-    #app {
-        display: block;
-    }
 }

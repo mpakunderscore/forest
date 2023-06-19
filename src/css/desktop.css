@@ -1,0 +1,16 @@
+.desktop {
+    color: white;
+    text-align: center;
+
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.desktop span {
+    margin: 2px;
+}
+
+.desktop .red {
+    color: rgba(157, 16, 40, .2);
+    font-weight: 700;
+}

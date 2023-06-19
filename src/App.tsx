@@ -6,7 +6,8 @@ import {MapContextProvider} from "./context/MapContext";
 import './css/index.css'
 import {UserContext, UserContextProvider} from "./context/UserContext";
 import {User, Map} from "./types";
-import Red from "./components/Red";
+import Mobile from "./components/Mobile";
+import Desktop from "./components/Desktop";
 
 function App() {
 
@@ -51,12 +52,16 @@ function App() {
         initSocket(onMap, onUpdate, onUser)
     }, [])
 
+    const isMobile = window.innerWidth <= 600
+
     return (
         <div id={'app'}>
             <MapContextProvider>
                 <UserContextProvider>
                     {/*<Forest map={map} time={time} user={user}/>*/}
-                    <Red map={map} time={time} user={user}/>
+
+                    {isMobile && <Mobile/>}
+                    {!isMobile && <Desktop/>}
                 </UserContextProvider>
             </MapContextProvider>
         </div>
