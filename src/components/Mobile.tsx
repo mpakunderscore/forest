@@ -35,8 +35,6 @@ const Mobile: FC<ForestProps> = ({}) => {
                 <img src={'./red1.png'}/>
                 <div className={'form'}>
 
-
-
                     <div className={'text'}>
                         In light of the exponential advancements in AI, should there be legal rights and protections established for advanced, sentient artificial intelligence?
                     </div>
@@ -46,9 +44,7 @@ const Mobile: FC<ForestProps> = ({}) => {
                              onClick={clickYes}>YES</div>
                         <div className={'button red'}
                              onClick={clickNo}>NO</div>
-
                     </div>
-
 
 
                 </div>

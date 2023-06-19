@@ -38,6 +38,7 @@
     background: rgba(31, 29, 29, 0.3);
     border-radius: 10px;
 
+    text-align: left;
     line-height: 160%;
     letter-spacing: 1px;
 
@@ -84,6 +85,23 @@
 .mobile .button {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     transition: box-shadow .3s;
+}
+
+/*.mobile .button { transition: all .2s ease-in-out; }*/
+.mobile .button:hover {
+    /*transform: scale(1.1);*/
+
+    animation-name: scale;
+    animation-duration: 1s;
+}
+
+@keyframes scale {
+    0%   {transform: scale(1.0);}
+    20%  {transform: scale(1.05);}
+    40%  {transform: scale(.95);}
+    60%  {transform: scale(1.01);}
+    80%  {transform: scale(.98);}
+    100% {transform: scale(1.0);}
 }
 
 .mobile .button.red {
