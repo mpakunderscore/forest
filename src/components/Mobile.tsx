@@ -53,7 +53,7 @@ const Mobile: FC<MobileProps> = ({}) => {
                         <div className={'button red'} onClick={clickNo}>NO</div>
                     </div>
 
-                    <div className={'version'}>{VERSION.toUpperCase()}</div>
+                    <div className={'version'}>{VERSION.toUpperCase().substring(0, 7)}</div>
 
                 </div>
             </div>

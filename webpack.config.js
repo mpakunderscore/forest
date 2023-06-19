@@ -4,8 +4,6 @@ const webpack = new require('webpack')
 const PACKAGE = require("./package.json");
 const {execSync} = require("child_process");
 
-let VERSION
-
 module.exports = () => {
 
     const mode = process.env.NODE_ENV || 'development'
