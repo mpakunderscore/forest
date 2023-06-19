@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 
 import '../css/mobile.css'
 import {texts} from "./mobile/texts";
@@ -17,12 +17,16 @@ const Mobile: FC<MobileProps> = ({}) => {
         }
     }
 
+    const [isStats, setStats] = useState(false)
+
     const clickYes = () => {
         // location.reload()
+        setStats(false)
     }
 
     const clickNo = () => {
         // location.reload()
+        setStats(true)
     }
 
     return (
@@ -31,7 +35,7 @@ const Mobile: FC<MobileProps> = ({}) => {
                 <img src={'./red1.png'}/>
                 <div className={'form'}>
 
-                    <div className={'stats'}>
+                    <div className={'stats ' + (isStats ? 'active' : '')}>
                         <div>
                             <div>4</div>
                             <div>LUCK</div>
