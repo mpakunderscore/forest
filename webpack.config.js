@@ -2,6 +2,7 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = new require('webpack')
 const PACKAGE = require("./package.json");
+const {execSync} = require("child_process");
 
 let VERSION
 
@@ -10,7 +11,9 @@ module.exports = () => {
     const mode = process.env.NODE_ENV || 'development'
     const SOURCE_FOLDER = path.resolve(__dirname, 'src')
     const DIST_FOLDER = path.resolve(__dirname, 'dist')
-    // const VERSION = execSync('git rev-parse --short HEAD').toString().trim()
+    let VERSION = process.env.HEROKU_SLUG_COMMI || execSync('git rev-parse --short HEAD').toString().trim()
+    console.log(VERSION)
+    VERSION = JSON.stringify(VERSION)
 
     const COPY = {
         patterns: [
@@ -23,12 +26,9 @@ module.exports = () => {
 
     const plugins = [];
 
-    let PACKAGE = require('./package.json');
-
-    let now = new Date()
-    VERSION = JSON.stringify(PACKAGE.version + ' ' + now.toUTCString())
-
-    // console.log(VERSION)
+    // let PACKAGE = require('./package.json');
+    // let now = new Date()
+    // VERSION = JSON.stringify(PACKAGE.version + ' ' + now.toUTCString())
 
     plugins.push(new webpack.DefinePlugin({
         VERSION: VERSION,

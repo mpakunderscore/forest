@@ -1,18 +1,13 @@
-import React, {FC, useContext} from "react";
+import React, {FC} from "react";
 
 import '../css/mobile.css'
-import {UserContext} from "../context/UserContext";
-import {MapContext} from "../context/MapContext";
-import {Map, User} from "../types";
 import {texts} from "./mobile/texts";
 
-interface ForestProps {
-    // map: Map
-    // time: number
-    // user: User
-}
+interface MobileProps {}
 
-const Mobile: FC<ForestProps> = ({}) => {
+declare var VERSION: string;
+
+const Mobile: FC<MobileProps> = ({}) => {
 
     const toggleFullScreen = () => {
         if (!document.fullscreenElement) {
@@ -58,6 +53,7 @@ const Mobile: FC<ForestProps> = ({}) => {
                         <div className={'button red'} onClick={clickNo}>NO</div>
                     </div>
 
+                    <div className={'version'}>{VERSION.toUpperCase()}</div>
 
                 </div>
             </div>
