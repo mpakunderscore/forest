@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {MapContext} from "../../context/MapContext";
+import {MapContext} from "../../../context/MapContext";
 
 const Inventory = (props) => {
 

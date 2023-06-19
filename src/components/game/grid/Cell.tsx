@@ -1,4 +1,4 @@
-import {Entity} from "../../types";
+import {Entity} from "../../../types";
 import {FC} from "react";
 import {getSizeByLevel} from "./cells/helpers/getSizeByLevel";
 import {getEntityImage, getGrassImage} from "./cells/helpers/getEntityImage";

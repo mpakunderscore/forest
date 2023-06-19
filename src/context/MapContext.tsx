@@ -1,5 +1,5 @@
 import React, {createContext, useState} from 'react';
-import {getRatioHeight, getRatioWidth} from "../components/grid/cells/helpers/getRatio";
+import {getRatioHeight, getRatioWidth} from "../components/game/grid/cells/helpers/getRatio";
 
 const CELL_SIZE_DEFAULT = 60 // px
 

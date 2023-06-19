@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useContext} from 'react'
 import {MapContext} from "../context/MapContext";
-import {getRatioHeight, getRatioWidth} from "../components/grid/cells/helpers/getRatio";
+import {getRatioHeight, getRatioWidth} from "../components/game/grid/cells/helpers/getRatio";
 
 const Canvas = props => {
 

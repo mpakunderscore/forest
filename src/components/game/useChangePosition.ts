@@ -1,5 +1,5 @@
 import {useCallback, useContext, useEffect, useState} from "react"
-import {MapContext} from "../context/MapContext"
+import {MapContext} from "../../context/MapContext"
 import welcome from "./overlay/welcome/Welcome";
 
 export const useChangePosition = (props) => {

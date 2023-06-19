@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from "react";
-import {MapContext} from "../../../context/MapContext";
-import {UserContext} from "../../../context/UserContext";
+import {MapContext} from "../../../../context/MapContext";
+import {UserContext} from "../../../../context/UserContext";
 const song = new Audio('./ambient.mp3');
 
 const Controls = (props) => {

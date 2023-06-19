@@ -7,8 +7,8 @@ import '../css/overlay/welcome.css'
 import '../css/overlay/entity.css'
 import '../css/overlay/navigation.css'
 
-import {Grid} from "./grid/Grid";
-import Overlay from "./overlay/Overlay";
+import {Grid} from "./game/grid/Grid";
+import Overlay from "./game/overlay/Overlay";
 import {UserContext} from "../context/UserContext";
 import {MapContext} from "../context/MapContext";
 import Canvas from "../canvas/Canvas";

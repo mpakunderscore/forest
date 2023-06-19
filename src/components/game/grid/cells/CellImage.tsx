@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {MapContext} from "../../../context/MapContext";
+import {MapContext} from "../../../../context/MapContext";
 
 const debugBorder = '1px solid rgba(255, 0, 0, 0.5)'
 

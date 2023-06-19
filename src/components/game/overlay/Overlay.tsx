@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import Controls from "./controls/Controls";
 import Entity from "./Entity";
 
-import {UserContext} from "../../context/UserContext";
+import {UserContext} from "../../../context/UserContext";
 import Welcome from "./welcome/Welcome";
 import User from "./User";
 import {useChangePosition} from "../useChangePosition";

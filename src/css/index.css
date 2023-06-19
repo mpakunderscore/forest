@@ -26,7 +26,8 @@ body {
     /*overflow: hidden;*/
 
     margin: 0;
-    background-color: black;
+    /*background-color: black;*/
+    background-color: rgba(0, 2, 9, 31);
 
     /*padding-top: env(safe-area-inset-top) !important;*/
 

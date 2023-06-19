@@ -49,7 +49,7 @@ function App() {
 
     useEffect(() => {
         AppCapacitor.addListener('backButton', () => {})
-        initSocket(onMap, onUpdate, onUser)
+        // initSocket(onMap, onUpdate, onUser)
     }, [])
 
     const isMobile = window.innerWidth <= 600

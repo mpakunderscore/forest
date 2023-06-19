@@ -124,6 +124,38 @@
     display: none;
 }
 
+.stats {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    width: 80%;
+    margin: 20px auto 50px;
+
+    color: white;
+}
+
+.stats > div {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    width: 30%;
+}
+
+
+.stats > div > div:first-child {
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.stats > div > div:last-child {
+    font-size: 14px;
+    font-weight: 700;
+}
+
 .mobile {
     display: none;
 }

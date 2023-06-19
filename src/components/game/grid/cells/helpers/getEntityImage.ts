@@ -1,4 +1,4 @@
-import {Entity} from "../../../../types";
+import {Entity} from "../../../../../types";
 
 export const getEntityImage = (entity: Entity) => {
     switch (entity.type) {

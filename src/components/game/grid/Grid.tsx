@@ -1,10 +1,10 @@
 import React, {FC, useContext, useEffect, useLayoutEffect, useState} from "react";
-import {Map} from '../../types'
-import {MapContext} from "../../context/MapContext";
+import {Map} from '../../../types'
+import {MapContext} from "../../../context/MapContext";
 import {Cell} from "./Cell";
 import entity from "../overlay/Entity";
 import {getRatioWidth, getRatioHeight} from "./cells/helpers/getRatio";
-import {UserContext} from "../../context/UserContext";
+import {UserContext} from "../../../context/UserContext";
 
 
 interface GridProps {

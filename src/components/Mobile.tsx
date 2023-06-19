@@ -4,6 +4,7 @@ import '../css/mobile.css'
 import {UserContext} from "../context/UserContext";
 import {MapContext} from "../context/MapContext";
 import {Map, User} from "../types";
+import {texts} from "./mobile/texts";
 
 interface ForestProps {
     // map: Map
@@ -35,15 +36,26 @@ const Mobile: FC<ForestProps> = ({}) => {
                 <img src={'./red1.png'}/>
                 <div className={'form'}>
 
-                    <div className={'text'}>
-                        In light of the exponential advancements in AI, should there be legal rights and protections established for advanced, sentient artificial intelligence?
+                    <div className={'stats'}>
+                        <div>
+                            <div>4</div>
+                            <div>LUCK</div>
+                        </div>
+                        <div>
+                            <div>7</div>
+                            <div>SENTIENT</div>
+                        </div>
+                        <div>
+                            <div>1</div>
+                            <div>FEAR</div>
+                        </div>
                     </div>
+
+                    <div className={'text'}>{texts.first}</div>
+
                     <div className={'controls'}>
-                        {/*<div className={'button'}><img src={'./button1.png'}/></div>*/}
-                        <div className={'button gray'}
-                             onClick={clickYes}>YES</div>
-                        <div className={'button red'}
-                             onClick={clickNo}>NO</div>
+                        <div className={'button gray'} onClick={clickYes}>YES</div>
+                        <div className={'button red'} onClick={clickNo}>NO</div>
                     </div>
 
 
