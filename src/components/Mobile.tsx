@@ -8,6 +8,12 @@ interface MobileProps {}
 
 declare var VERSION: string;
 
+const statsListDefault = {
+    luck: 4,
+    sentient: 7,
+    fear: 1
+}
+
 const Mobile: FC<MobileProps> = ({}) => {
 
     const toggleFullScreen = () => {
@@ -21,15 +27,21 @@ const Mobile: FC<MobileProps> = ({}) => {
     const [isFirst, setFirst] = useState(true)
     const [isStats, setStats] = useState(false)
     const [isBook, setBook] = useState(false)
+    const [isEat, setEat] = useState(false)
     const [isPoop, setPoop] = useState(false)
     const [isSleep, setSleep] = useState(false)
+
+    const [statsList, setStatsList] = useState(statsListDefault)
 
     const clickBook = () => {
         setBook(!isBook)
     }
 
     const clickEat = () => {
-        setPoop(true)
+        timeout(() => {
+            setEat(true)
+            setStatsList({...statsList, fear: statsList.fear - 1})
+        })
     }
 
     const clickYes = () => {
@@ -57,8 +69,13 @@ const Mobile: FC<MobileProps> = ({}) => {
     }
 
     const clickAlarm = () => {
-        Notification.requestPermission().then((result) => {
-            console.log(result)
+        timeout(() => {
+            Notification.requestPermission().then((result) => {
+                console.log(result)
+                const img = './red1.png';
+                // const text = 'Text';
+                const notification = new Notification('Alarm', { body: 'Good morning human' });
+            })
         })
     }
 
@@ -75,7 +92,7 @@ const Mobile: FC<MobileProps> = ({}) => {
 
                     {/*{isBook && <div className={'book'}>{book}</div>}*/}
 
-                    <Stats isStats={isStats}/>
+                    <Stats isStats={isStats} statsList={statsList}/>
 
                     {isFirst && <div className={'text'}>{texts.first}</div>}
 
@@ -91,7 +108,7 @@ const Mobile: FC<MobileProps> = ({}) => {
 
                     {isStats && <div className={'controls'}>
                         {/*{isPoop && <div className={'button gray'} onClick={clickPoop}>POOP</div>}*/}
-                        {!isSleep && <div className={'button gray'} onClick={clickEat}>EAT</div>}
+                        {!isSleep && <div className={'button gray ' + (isEat ? 'disabled' : '')} onClick={clickEat}>EAT</div>}
                         {!isSleep && <div className={'button gray'} onClick={clickSleep}>SLEEP</div>}
                         {isSleep && <div className={'button white'} onClick={clickAlarm}>ALARM</div>}
                     </div>}

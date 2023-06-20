@@ -1,20 +1,15 @@
 import React, {FC, useEffect, useState} from "react";
 
 interface Props {
-    isStats: boolean
+    isStats: boolean,
+    statsList: {luck, sentient, fear}
 }
 
-const statsList = {
-    luck: 4,
-    sentient: 7,
-    fear: 1
-}
+const Stats: FC<Props> = ({isStats, statsList}) => {
 
-const Stats: FC<Props> = ({isStats}) => {
-
-    const [luck, setLuck] = useState(4)
+    const [luck, setLuck] = useState(statsList.luck)
     const [sentient, setSentient] = useState(0)
-    const [fear, setFear] = useState(1)
+    const [fear, setFear] = useState(statsList.fear)
 
     const setDigitsGrow = () => {
         setOneGrow()
@@ -52,7 +47,7 @@ const Stats: FC<Props> = ({isStats}) => {
             </div>
             <div>
                 <div>Growing</div>
-                <div className={'value'}>{fear}</div>
+                <div className={'value'}>{statsList.fear}</div>
                 <div>FEAR</div>
             </div>
             {/*<div>*/}
