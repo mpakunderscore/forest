@@ -12,6 +12,7 @@
     /*height: 2000px;*/
 
     background-color: rgba(0, 2, 27, 1);
+    /*background-color: rgba(4, 7, 37, 1);*/
 
     padding-top: 480px;
 
@@ -29,8 +30,8 @@
 }
 
 @supports (-webkit-touch-callout: none) {
-    .mobile > .list > img {
-        opacity: .5;
+    .mobile > .list {
+        background-color: rgba(2, 10, 33, 1);
     }
 }
 

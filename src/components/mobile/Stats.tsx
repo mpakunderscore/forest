@@ -20,15 +20,15 @@ const Stats: FC<Props> = ({isStats}) => {
         setOneGrow()
     }
 
-    const setOneGrow = () => {
+    const setOneGrow = (timeout = 100) => {
         setTimeout(() => {
             setSentient(sentient => {
                 if (sentient < statsList.sentient) {
-                    setOneGrow()
+                    setOneGrow(timeout + sentient * 10)
                     return sentient + 1
                 } else return sentient
             })
-        }, 100)
+        }, timeout)
     }
 
     useEffect(() => {
