@@ -18,12 +18,6 @@
     z-index: 1;
 }
 
-@supports (-webkit-touch-callout: none) {
-    .mobile > .list {
-        background-color: rgba(0, 2, 27, .5);
-    }
-}
-
 .mobile > .list > img {
     position: absolute;
     width: 100%;
@@ -32,6 +26,12 @@
     /*mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);*/
 
     z-index: 1;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .mobile > .list > img {
+        opacity: .5;
+    }
 }
 
 .mobile > .list > .form {
