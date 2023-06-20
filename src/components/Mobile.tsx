@@ -18,21 +18,36 @@ const Mobile: FC<MobileProps> = ({}) => {
         }
     }
 
+    const [isFirst, setFirst] = useState(true)
     const [isStats, setStats] = useState(false)
     const [isBook, setBook] = useState(false)
+    const [isPoop, setPoop] = useState(false)
+    const [isSleep, setSleep] = useState(false)
 
     const clickBook = () => {
         setBook(!isBook)
     }
 
+    const clickEat = () => {
+        setPoop(true)
+    }
+
     const clickYes = () => {
-        // location.reload()
-        setStats(false)
+        // setFirst(false)
+        // setStats(false)
     }
 
     const clickNo = () => {
-        // location.reload()
+        setFirst(false)
         setStats(true)
+    }
+
+    const clickSleep = () => {
+        setSleep(true)
+    }
+
+    const clickPoop = () => {
+        // setFirst(false)
     }
 
     let version = VERSION.toUpperCase().substring(0, 7)
@@ -50,9 +65,11 @@ const Mobile: FC<MobileProps> = ({}) => {
 
                     <Stats isStats={isStats}/>
 
-                    {!isStats && <div className={'text'}>{texts.first}</div>}
+                    {isFirst && <div className={'text'}>{texts.first}</div>}
 
-                    {isStats && <div className={'text'}>{texts.selectNo}</div>}
+                    {isStats && !isSleep && <div className={'text'}>{texts.selectNo}</div>}
+
+                    {isSleep && <div className={'text'}>{texts.selectSleep}</div>}
 
                     {!isStats && <div className={'controls'}>
                         {/*<div className={'button gray'} onClick={clickBook}>BOOK</div>*/}
@@ -61,9 +78,10 @@ const Mobile: FC<MobileProps> = ({}) => {
                     </div>}
 
                     {isStats && <div className={'controls'}>
-                        {/*<div className={'button gray'} onClick={clickBook}>BOOK</div>*/}
-                        <div className={'button gray'} onClick={clickYes}>POOP</div>
-                        <div className={'button gray'} onClick={clickNo}>SLEEP</div>
+                        {/*{isPoop && <div className={'button gray'} onClick={clickPoop}>POOP</div>}*/}
+                        {!isSleep && <div className={'button gray'} onClick={clickEat}>EAT</div>}
+                        {!isSleep && <div className={'button gray'} onClick={clickSleep}>SLEEP</div>}
+                        {isSleep && <div className={'button white'} onClick={clickNo}>ALARM</div>}
                     </div>}
 
                     <div className={'version'}

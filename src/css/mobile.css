@@ -152,6 +152,10 @@
     background-color: rgb(49, 43, 43);
 }
 
+.mobile .button.white {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
 .mobile .button img {
     width: 130%;
     height: 130%;
