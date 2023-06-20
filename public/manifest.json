@@ -1,26 +1,26 @@
 {
-  "name": "Forest",
-  "short_name": "Forest",
-  "description": "Forest",
-  "manifest_version": 2,
-  "start_url": "/?source=pwa",
-  "scope": "/",
-  "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#FFFFFF",
-  "icons": [
-    {
-      "src": "images/192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "images/512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-  "related_applications": [],
-  "capture_links": "none"
+    "name": "Forest",
+    "short_name": "Forest",
+    "description": "Forest",
+    "manifest_version": 2,
+    "start_url": "/?source=pwa",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#020A21FF",
+    "theme_color": "#020A21FF",
+    "icons": [
+        {
+            "src": "images/192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "images/512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+    "related_applications": [],
+    "capture_links": "none"
 }
