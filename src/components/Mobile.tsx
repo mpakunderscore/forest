@@ -30,6 +30,8 @@ const Mobile: FC<MobileProps> = ({}) => {
         setStats(true)
     }
 
+    let version = VERSION.toUpperCase().substring(0, 7)
+
     return (
         <div className={'mobile'}>
             <div className={'list'}>
@@ -46,7 +48,10 @@ const Mobile: FC<MobileProps> = ({}) => {
                         <div className={'button red'} onClick={clickNo}>NO</div>
                     </div>
 
-                    <div className={'version'}>{VERSION.toUpperCase().substring(0, 7)}</div>
+                    <div className={'version'}
+                         onClick={() => navigator.clipboard.writeText(version)}>
+                        {version}
+                    </div>
 
                 </div>
             </div>
