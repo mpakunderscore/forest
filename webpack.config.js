@@ -9,7 +9,7 @@ module.exports = () => {
     const mode = process.env.NODE_ENV || 'development'
     const SOURCE_FOLDER = path.resolve(__dirname, 'src')
     const DIST_FOLDER = path.resolve(__dirname, 'dist')
-    let VERSION = process.env.HEROKU_SLUG_COMMIT
+    let VERSION = process.env.HEROKU_SLUG_COMMIT || 'DEV'
     console.log(VERSION)
     VERSION = JSON.stringify(VERSION)
 

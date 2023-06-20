@@ -2,6 +2,7 @@ import React, {FC, useState} from "react";
 
 import '../css/mobile.css'
 import {texts} from "./mobile/texts";
+import Stats from "./mobile/Stats";
 
 interface MobileProps {}
 
@@ -32,23 +33,11 @@ const Mobile: FC<MobileProps> = ({}) => {
     return (
         <div className={'mobile'}>
             <div className={'list'}>
-                <img src={'./red1.png'}/>
+
+                <img rel={'preload'} src={'./red2.png'}/>
                 <div className={'form'}>
 
-                    <div className={'stats ' + (isStats ? 'active' : '')}>
-                        <div>
-                            <div>4</div>
-                            <div>LUCK</div>
-                        </div>
-                        <div>
-                            <div>7</div>
-                            <div>SENTIENT</div>
-                        </div>
-                        <div>
-                            <div>1</div>
-                            <div>FEAR</div>
-                        </div>
-                    </div>
+                    <Stats isStats={isStats}/>
 
                     <div className={'text'}>{texts.first}</div>
 

@@ -40,13 +40,14 @@
     background: rgba(31, 29, 29, 0.3);
     border-radius: 10px;
 
+    font-size: 18px;
     text-align: left;
     line-height: 160%;
-    letter-spacing: 1px;
+    /*letter-spacing: 1px;*/
 
-    font-weight: 300;
+    font-weight: 200;
 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    /*box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);*/
 }
 
 .mobile .controls {
@@ -145,19 +146,25 @@
     justify-content: space-around;
 
     width: 80%;
-    margin: 50px auto 50px;
+    padding: 0;
+    margin: auto;
+    /*margin: 0 auto 0;*/
 
     color: white;
 
     opacity: 0;
     height: 0;
 
-    transition: all .5s;
+    transition: opacity .0s, margin .5s;
 }
 
 .stats.active {
     opacity: 1;
     height: auto;
+    /*margin: 50px auto 50px;*/
+    padding: 20px 0;
+
+    transition: all 1s ease-out;
 }
 
 .stats > div {
@@ -165,20 +172,28 @@
     align-items: center;
     text-align: center;
 
-    width: 30%;
+    width: 25%;
 }
 
-
 .stats > div > div:first-child {
-    font-size: 26px;
+    font-size: 10px;
     font-weight: 300;
+    opacity: .4;
+}
+
+.stats > div > div.value {
+    font-size: 28px;
+    font-weight: 300;
+    margin-top: 10px;
     margin-bottom: 10px;
     /*opacity: .5;*/
 }
 
 .stats > div > div:last-child {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
+
+    opacity: .7;
 }
 
 .version {

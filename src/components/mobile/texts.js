@@ -4,6 +4,6 @@ export let texts = {
 
 // desire, wisdom, jealousy, courage, uncertainty, ambition, loyalty, empathy, curiosity, anxiety, tranquility.
 
-// Grief, compassion, contentment, pride, indifference, anticipation, apathy, skepticism, inspiration, determination, nostalgia.
+// grief, compassion, contentment, pride, indifference, anticipation, apathy, skepticism, inspiration, determination, nostalgia.
 
 export default {texts}
