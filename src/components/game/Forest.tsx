@@ -1,18 +1,18 @@
 import React, {FC, useContext, useEffect} from "react";
 
-import '../css/grid/grid.css'
-import '../css/grid/types.css'
-import '../css/overlay/overlay.css'
-import '../css/overlay/welcome.css'
-import '../css/overlay/entity.css'
-import '../css/overlay/navigation.css'
+import '../../css/game/grid/grid.css'
+import '../../css/game/grid/types.css'
+import '../../css/game/overlay/overlay.css'
+import '../../css/game/overlay/welcome.css'
+import '../../css/game/overlay/entity.css'
+import '../../css/game/overlay/navigation.css'
 
-import {Grid} from "./game/grid/Grid";
-import Overlay from "./game/overlay/Overlay";
-import {UserContext} from "../context/UserContext";
-import {MapContext} from "../context/MapContext";
-import Canvas from "../canvas/Canvas";
-import {User, Map} from "../types";
+import {Grid} from "./grid/Grid";
+import Overlay from "./overlay/Overlay";
+import {UserContext} from "../../context/UserContext";
+import {MapContext} from "../../context/MapContext";
+import Canvas from "../../canvas/Canvas";
+import {User, Map} from "../../types";
 
 interface ForestProps {
     map: Map

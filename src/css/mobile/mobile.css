@@ -54,6 +54,9 @@
 
     font-weight: 200;
 
+    animation-name: show;
+    animation-duration: .3s;
+
     /*box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);*/
 }
 
@@ -106,7 +109,7 @@
 
 .mobile .button {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    transition: box-shadow .3s;
+    transition: all .3s;
 }
 
 /*.mobile .button { transition: all .2s ease-in-out; }*/
@@ -212,7 +215,12 @@
     font-weight: 300;
     margin-top: 10px;
     margin-bottom: 10px;
-    /*opacity: .5;*/
+}
+
+.stats > div > div.value.off {
+    opacity: .2;
+    animation-name: scale;
+    animation-duration: 1s;
 }
 
 .stats > div > div:last-child {
@@ -228,6 +236,17 @@
     font-size: 14px;
     color: rgba(255, 255, 255, 0.1);
     padding-bottom: 20px;
+
+
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .mobile {

@@ -1,8 +1,8 @@
 import React, {FC, useState} from "react";
 
-import '../css/mobile.css'
-import {book, texts} from "./mobile/texts";
-import Stats from "./mobile/Stats";
+import '../../css/mobile/mobile.css'
+import {book, texts} from "./texts";
+import Stats from "./Stats";
 
 interface MobileProps {}
 
@@ -12,6 +12,20 @@ const statsListDefault = {
     luck: 4,
     sentient: 7,
     fear: 1
+}
+
+const statsListHeaderDefault = {
+    luck: '0 / 100',
+    sentient: 'Estimate',
+    fear: 'Growing',
+    hunger: 'Discomfort'
+}
+
+const statsListHeaderListDefault = {
+    luck: '0 / 100',
+    sentient: 'Estimate | Fixed | Current | Growing',
+    fear: 'Growing | Normal | Decreases',
+    hunger: 'Discomfort | Pain | Harm'
 }
 
 const Mobile: FC<MobileProps> = ({}) => {
@@ -32,6 +46,8 @@ const Mobile: FC<MobileProps> = ({}) => {
     const [isSleep, setSleep] = useState(false)
 
     const [statsList, setStatsList] = useState(statsListDefault)
+    const [statsListHeader, setStatsLisHeader] = useState(statsListHeaderDefault)
+
 
     const clickBook = () => {
         setBook(!isBook)
@@ -40,7 +56,11 @@ const Mobile: FC<MobileProps> = ({}) => {
     const clickEat = () => {
         timeout(() => {
             setEat(true)
-            setStatsList({...statsList, fear: statsList.fear - 1})
+            if (statsList.fear > 0) {
+                setStatsList({...statsList, fear: statsList.fear - 1})
+            } else {
+                setStatsList({...statsList, hunger: -1})
+            }
         })
     }
 
@@ -71,9 +91,7 @@ const Mobile: FC<MobileProps> = ({}) => {
     const clickAlarm = () => {
         timeout(() => {
             Notification.requestPermission().then((result) => {
-                console.log(result)
-                const img = './red1.png';
-                // const text = 'Text';
+                // console.log(result)
                 const notification = new Notification('Alarm', { body: 'Good morning human' });
             })
         })
@@ -92,7 +110,7 @@ const Mobile: FC<MobileProps> = ({}) => {
 
                     {/*{isBook && <div className={'book'}>{book}</div>}*/}
 
-                    <Stats isStats={isStats} statsList={statsList}/>
+                    <Stats isStats={isStats} statsList={statsList} statsListHeader={statsListHeader}/>
 
                     {isFirst && <div className={'text'}>{texts.first}</div>}
 

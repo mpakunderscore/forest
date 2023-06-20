@@ -2,14 +2,15 @@ import React, {FC, useEffect, useState} from "react";
 
 interface Props {
     isStats: boolean,
-    statsList: {luck, sentient, fear}
+    statsList: {luck, sentient, fear},
+    statsListHeader: {luck, sentient, fear},
 }
 
-const Stats: FC<Props> = ({isStats, statsList}) => {
+const Stats: FC<Props> = ({isStats, statsList, statsListHeader}) => {
 
-    const [luck, setLuck] = useState(statsList.luck)
     const [sentient, setSentient] = useState(0)
-    const [fear, setFear] = useState(statsList.fear)
+    // const [luck, setLuck] = useState(statsList.luck)
+    // const [fear, setFear] = useState(statsList.fear)
 
     const setDigitsGrow = () => {
         setOneGrow()
@@ -33,28 +34,24 @@ const Stats: FC<Props> = ({isStats, statsList}) => {
         }
     }, [isStats])
 
+    const renderStat = () => {
+        let statsArray = []
+        Object.keys(statsList).forEach((key, index) => {
+
+            let value = key === 'sentient' ? sentient : statsList[key]
+
+            statsArray.push(<div key={key}>
+                <div className={'status'}>{statsListHeader[key]}</div>
+                <div className={'value' + (value === 0 ? ' off' : '')}>{value}</div>
+                <div className={''}>{key.toUpperCase()}</div>
+            </div>)
+        })
+        return statsArray
+    }
+
     return (
         <div className={'stats ' + (isStats ? 'active' : '')}>
-            <div>
-                <div>0 / 100</div>
-                <div className={'value'}>{luck}</div>
-                <div>LUCK</div>
-            </div>
-            <div>
-                <div>Estimate</div>
-                <div className={'value'}>{sentient}</div>
-                <div>SENTIENT</div>
-            </div>
-            <div>
-                <div>Growing</div>
-                <div className={'value'}>{statsList.fear}</div>
-                <div>FEAR</div>
-            </div>
-            {/*<div>*/}
-            {/*    <div>Always</div>*/}
-            {/*    <div className={'value'}>3</div>*/}
-            {/*    <div>{'anxiety'.toUpperCase()}</div>*/}
-            {/*</div>*/}
+            {renderStat()}
         </div>
     )
 }

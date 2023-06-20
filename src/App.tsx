@@ -1,12 +1,12 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {App as AppCapacitor} from '@capacitor/app';
-import Forest from "./components/Forest";
+import Forest from "./components/game/Forest";
 import {initSocket} from "./utils/socket";
 import {MapContextProvider} from "./context/MapContext";
 import './css/index.css'
 import {UserContext, UserContextProvider} from "./context/UserContext";
 import {User, Map} from "./types";
-import Mobile from "./components/Mobile";
+import Mobile from "./components/mobile/Mobile";
 import Desktop from "./components/Desktop";
 
 function App() {
