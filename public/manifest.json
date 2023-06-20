@@ -1,7 +1,7 @@
 {
     "name": "Forest",
     "short_name": "Forest",
-    "description": "Forest",
+    "description": "Red Forest",
     "manifest_version": 2,
     "start_url": "/?source=pwa",
     "scope": "/",

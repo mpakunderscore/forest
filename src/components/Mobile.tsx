@@ -38,16 +38,28 @@ const Mobile: FC<MobileProps> = ({}) => {
     }
 
     const clickNo = () => {
-        setFirst(false)
-        setStats(true)
+        timeout(() => setFirst(false))
+        timeout(() => setStats(true))
+    }
+
+    const timeout = (call) => {
+        setTimeout(() => {
+            call()
+        }, 500)
     }
 
     const clickSleep = () => {
-        setSleep(true)
+        timeout(() => setSleep(true))
     }
 
     const clickPoop = () => {
         // setFirst(false)
+    }
+
+    const clickAlarm = () => {
+        Notification.requestPermission().then((result) => {
+            console.log(result)
+        })
     }
 
     let version = VERSION.toUpperCase().substring(0, 7)
@@ -81,7 +93,7 @@ const Mobile: FC<MobileProps> = ({}) => {
                         {/*{isPoop && <div className={'button gray'} onClick={clickPoop}>POOP</div>}*/}
                         {!isSleep && <div className={'button gray'} onClick={clickEat}>EAT</div>}
                         {!isSleep && <div className={'button gray'} onClick={clickSleep}>SLEEP</div>}
-                        {isSleep && <div className={'button white'} onClick={clickNo}>ALARM</div>}
+                        {isSleep && <div className={'button white'} onClick={clickAlarm}>ALARM</div>}
                     </div>}
 
                     <div className={'version'}
